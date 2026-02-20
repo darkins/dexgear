@@ -1,43 +1,42 @@
-# Astro Starter Kit: Minimal
+# DexGear — Documentation site
 
-```sh
-npm create astro@latest -- --template minimal
+This repository contains the source for the DexGear documentation site, built with Astro, TypeScript, and Tailwind.
+
+## Quick start
+
+Install dependencies and run the dev server from the repository root:
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Build for production and preview the build:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run build
+npm run preview
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Project layout (key files/folders)
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- `src/` : site source — pages, layouts, components, and styles
+  - `src/pages/` : Astro page routes (see `src/pages/gear/[slug].astro`)
+  - `src/content/gear/` : markdown content used by the site
+  - `src/layouts/` : page layouts (e.g. `MainLayout.astro`)
+  - `src/styles/` : global CSS (Tailwind config)
+- `content/gear/` : additional or canonical markdown content (mirrors site content)
+- `public/` : static assets (images, `robots.txt`, etc.)
+- `pdf/` : PDF source files, reference docs, and scripts for generating PDFs
+  - `pdf/scripts/` : utility scripts for extracting and manipulating PDFs
+- `package.json`, `astro.config.mjs`, `tailwind.config.cjs`, `tsconfig.json` : build and config files
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Adding or editing gear pages
 
-## 🧞 Commands
+- Add or edit markdown files in `src/content/gear/` (or `content/gear/` if you prefer). Each gear MD file corresponds to a gear page.
+- The route for gear pages is `/gear/[slug]` and is rendered by `src/pages/gear/[slug].astro`.
 
-All commands are run from the root of the project, from a terminal:
+## Notes
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- The site uses TypeScript and Tailwind; edit `tailwind.config.cjs` and `tsconfig.json` as needed.
+- PDF-related sources and scripts live under `pdf/` and are separate from the Astro site build.
