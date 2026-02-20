@@ -1,0 +1,451 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Shortcuts">
+  <section class="max-w-3xl mx-auto py-12">
+    <h1 class="text-4xl font-extrabold mb-4">Ableton Keyboard Shortcuts</h1>
+    <p class="text-lg mb-6">Keyboard shortcuts and productivity tips for working with your DAW.</p>
+    <article class="prose prose-invert">
+      <p>
+        Full keyboard shortcut reference for Ableton Live is available from Ableton's
+        manual:
+        <a
+          href="https://www.ableton.com/en/manual/live-keyboard-shortcuts"
+          target="_blank"
+          rel="noopener"
+        >
+          Live keyboard shortcuts (Ableton Manual)
+        </a>
+      </p>
+      <style>
+        /* Apply the same header background to all tables inside the prose area */
+        .prose.prose-invert table thead { background: linear-gradient(180deg, rgba(15,23,42,1), rgba(30,41,59,1)); }
+        /* Add vertical spacing above and below each table */
+        .prose.prose-invert table { margin: 1rem 0 3rem; }
+
+        /* Use theme accent color for table of contents markers so they follow theme variables */
+        .toc-list li::marker {
+          color: var(--color-accent);
+        }
+      </style>
+      
+
+      <!-- Table of Contents -->
+      <nav class="my-6">
+        <h3 class="text-lg font-semibold mb-4">Contents</h3>
+        <ul class="toc-list grid grid-cols-1 md:grid-cols-2 gap-3 text-sm list-disc pl-5">
+          <li><a href="#showing-and-hiding-views" class="text-neutral-300 hover:underline">Showing and Hiding Views</a></li>
+          <li><a href="#keyboard-focus-and-navigation" class="text-neutral-300 hover:underline">Keyboard Focus and Navigation</a></li>
+          <li><a href="#working-with-sets-and-the-program" class="text-neutral-300 hover:underline">Working with Sets and the Program</a></li>
+          <li><a href="#working-with-devices-and-plug-ins" class="text-neutral-300 hover:underline">Working with Devices and Plug-Ins</a></li>
+          <li><a href="#editing" class="text-neutral-300 hover:underline">Editing</a></li>
+          <li><a href="#adjusting-values" class="text-neutral-300 hover:underline">Adjusting Values</a></li>
+          <li><a href="#commands-for-breakpoint-envelopes" class="text-neutral-300 hover:underline">Commands for Breakpoint Envelopes</a></li>
+          <li><a href="#loop-brace-and-start-end-markers" class="text-neutral-300 hover:underline">Loop Brace and Start/End Markers</a></li>
+          <li><a href="#zooming-display-and-selections" class="text-neutral-300 hover:underline">Zooming, Display and Selections</a></li>
+          <li><a href="#clip-view-editor-view-modes" class="text-neutral-300 hover:underline">Clip View Editor View Modes</a></li>
+          <li><a href="#clip-view-sample-editor" class="text-neutral-300 hover:underline">Clip View Sample Editor</a></li>
+          <li><a href="#clip-view-midi-note-editor" class="text-neutral-300 hover:underline">Clip View MIDI Note Editor</a></li>
+          <li><a href="#grid-snapping-and-drawing" class="text-neutral-300 hover:underline">Grid Snapping and Drawing</a></li>
+          <li><a href="#global-quantization" class="text-neutral-300 hover:underline">Global Quantization</a></li>
+          <li><a href="#session-view" class="text-neutral-300 hover:underline">Session View</a></li>
+          <li><a href="#arrangement-view" class="text-neutral-300 hover:underline">Arrangement View</a></li>
+          <li><a href="#comping" class="text-neutral-300 hover:underline">Comping</a></li>
+          <li><a href="#bounce-to-audio" class="text-neutral-300 hover:underline">Bounce to Audio</a></li>
+          <li><a href="#commands-for-tracks" class="text-neutral-300 hover:underline">Commands for Tracks</a></li>
+          <li><a href="#transport" class="text-neutral-300 hover:underline">Transport</a></li>
+          <li><a href="#audio-engine" class="text-neutral-300 hover:underline">Audio Engine</a></li>
+          <li><a href="#browser" class="text-neutral-300 hover:underline">Browser</a></li>
+          <li><a href="#similar-sample-swapping" class="text-neutral-300 hover:underline">Similar Sample Swapping</a></li>
+          <li><a href="#key-midi-map-mode" class="text-neutral-300 hover:underline">Key/MIDI Map Mode & Computer MIDI Keyboard</a></li>
+          <li><a href="#momentary-latching-shortcuts" class="text-neutral-300 hover:underline">Momentary Latching Shortcuts</a></li>
+          <li><a href="#general-keyboard-navigation" class="text-neutral-300 hover:underline">General Keyboard Navigation & Workflow</a></li>
+          <li><a href="#editing-automation-modulation" class="text-neutral-300 hover:underline">Editing Automation & Modulation Envelopes</a></li>
+          <li><a href="#accessing-menus" class="text-neutral-300 hover:underline">Accessing Menus</a></li>
+          <li><a href="#using-lives-context-menu" class="text-neutral-300 hover:underline">Using Live’s Context Menu</a></li>
+        </ul>
+      </nav>
+
+      <!-- Sections (paraphrased Windows-only shortcuts) -->
+
+      <h3 id="showing-and-hiding-views" class="mt-6">Showing and Hiding Views</h3>
+      <table class="dg-table table-auto w-full text-sm border-collapse mb-6">
+        <thead class="text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Windows</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Toggle full screen mode</td><td class="px-3 py-2">F11</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Toggle second window</td><td class="px-3 py-2">Ctrl+Shift+W</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Toggle Session / Arrangement view</td><td class="px-3 py-2">Tab</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Toggle between Device / Clip view</td><td class="px-3 py-2">Shift+Tab or F12</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Toggle Hot-Swap mode</td><td class="px-3 py-2">Q</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Toggle Drum Rack / last selected pad</td><td class="px-3 py-2">D</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Hide / Show Info View</td><td class="px-3 py-2">Shift+?</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Hide / Show Video Window</td><td class="px-3 py-2">Ctrl+Alt+V</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Hide / Show Browser</td><td class="px-3 py-2">Ctrl+Alt+B or Ctrl+Alt+5</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Hide / Show Overview</td><td class="px-3 py-2">Ctrl+Alt+O</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Hide / Show In / Out</td><td class="px-3 py-2">Ctrl+Alt+I</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Hide / Show Sends</td><td class="px-3 py-2">Ctrl+Alt+S</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Hide / Show Mixer</td><td class="px-3 py-2">Ctrl+Alt+M</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Hide / Show Clip View</td><td class="px-3 py-2">Ctrl+Alt+3</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Hide / Show Device View</td><td class="px-3 py-2">Ctrl+Alt+4</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Hide / Show the Groove Pool</td><td class="px-3 py-2">Ctrl+Alt+6</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Open the Settings</td><td class="px-3 py-2">Ctrl+,</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Close window / dialog</td><td class="px-3 py-2">Esc</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="keyboard-focus-and-navigation">Keyboard Focus and Navigation</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Key</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Move focus to the Control Bar</td><td class="px-3 py-2">Alt+0</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Move focus to the Session View</td><td class="px-3 py-2">Alt+1</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Move focus to the Arrangement View</td><td class="px-3 py-2">Alt+2</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Move focus to the Clip View</td><td class="px-3 py-2">Alt+3</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Move focus to the Device View</td><td class="px-3 py-2">Alt+4</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Move focus to the Browser</td><td class="px-3 py-2">Alt+5</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Move focus to the Groove Pool</td><td class="px-3 py-2">Alt+6</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Move focus to the Help View</td><td class="px-3 py-2">Alt+7</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Move focus to the Selected Clip Panel</td><td class="px-3 py-2">Alt+8</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Move focus to the Clip Panels</td><td class="px-3 py-2">Alt+Shift+P</td></tr>
+        </tbody>
+      </table>
+
+      <p class="text-sm text-neutral-300 mb-2">The following shortcuts are available when the <em>Use Tab to Move Focus</em> command is enabled:</p>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Key</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Move to next focusable control</td><td class="px-3 py-2">Tab</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Move to previous focusable control</td><td class="px-3 py-2">Shift+Tab</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Move to next neighbor of current control (same row)</td><td class="px-3 py-2">Ctrl+Tab</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Move to previous neighbor of current control (same row)</td><td class="px-3 py-2">Ctrl+Shift+Tab</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="working-with-sets-and-the-program">Working with Sets and the Program</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Key</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">New Live Set</td><td class="px-3 py-2">Ctrl+N</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Open Live Set</td><td class="px-3 py-2">Ctrl+O</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Save Live Set</td><td class="px-3 py-2">Ctrl+S</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Save Live Set As…</td><td class="px-3 py-2">Ctrl+Shift+S</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Quit Live</td><td class="px-3 py-2">Ctrl+Q</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Export Audio/Video</td><td class="px-3 py-2">Ctrl+Shift+R</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="working-with-devices-and-plug-ins">Working with Devices and Plug-Ins</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Key</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Group Devices</td><td class="px-3 py-2">Ctrl+G</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Ungroup Devices</td><td class="px-3 py-2">Ctrl+Shift+G</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Reset Parameter Value</td><td class="px-3 py-2">Delete or double-click</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Load Selected Device from Browser</td><td class="px-3 py-2">Enter</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Hot-Swap Selected Device</td><td class="px-3 py-2">Q</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Show/Hide Plug-In Window</td><td class="px-3 py-2">Ctrl+Alt+P</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="editing">Editing</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Key</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Cut</td><td class="px-3 py-2">Ctrl+X</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Copy</td><td class="px-3 py-2">Ctrl+C</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Paste</td><td class="px-3 py-2">Ctrl+V</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Duplicate</td><td class="px-3 py-2">Ctrl+D</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Undo</td><td class="px-3 py-2">Ctrl+Z</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Redo</td><td class="px-3 py-2">Ctrl+Y</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Rename</td><td class="px-3 py-2">Ctrl+R</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Split</td><td class="px-3 py-2">Ctrl+E</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Join</td><td class="px-3 py-2">Ctrl+J</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Select All</td><td class="px-3 py-2">Ctrl+A</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Select Multiple Items</td><td class="px-3 py-2">Ctrl+click / Shift+click</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="adjusting-values">Adjusting Values</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Key</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Decrement/Increment</td><td class="px-3 py-2">Up and Down arrow keys</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Decrement/Increment in Octaves or Fine Adjustments</td><td class="px-3 py-2">Shift + Up/Down arrow keys</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Finer Resolution When Dragging</td><td class="px-3 py-2">Shift</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Return to Default</td><td class="px-3 py-2">Delete</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Type In Value</td><td class="px-3 py-2">0 … 9</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Cancel Value Entry</td><td class="px-3 py-2">Esc</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Confirm Value Entry</td><td class="px-3 py-2">Enter</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="commands-for-breakpoint-envelopes">Commands for Breakpoint Envelopes</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Key</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Toggle Automation Mode</td><td class="px-3 py-2">A</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Finer Resolution When Dragging</td><td class="px-3 py-2">Shift</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Create Curved Automation Segment</td><td class="px-3 py-2">Alt</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Momentarily Toggle Fade Controls</td><td class="px-3 py-2">F</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Delete Selected Breakpoint Envelope</td><td class="px-3 py-2">Ctrl+Delete</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="loop-brace-and-start-end-markers">Loop Brace and Start/End Markers</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Key</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Set Start Marker</td><td class="px-3 py-2">Ctrl+F9</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Set Loop Brace Start</td><td class="px-3 py-2">Ctrl+F10</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Set Loop Brace End</td><td class="px-3 py-2">Ctrl+F11</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Set End Marker</td><td class="px-3 py-2">Ctrl+F12</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Nudge Loop Left/Right</td><td class="px-3 py-2">Left / Right arrow keys</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Move Loop by Loop Length</td><td class="px-3 py-2">Up / Down arrow keys</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Halve/Double Loop Length</td><td class="px-3 py-2">Ctrl + Up/Down arrow keys</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="zooming-display-and-selections">Zooming, Display and Selections</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Key</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Zoom In Window</td><td class="px-3 py-2">Ctrl +</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Zoom Out Window</td><td class="px-3 py-2">Ctrl -</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Zoom In Time Ruler</td><td class="px-3 py-2">+</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Zoom Out Time Ruler</td><td class="px-3 py-2">-</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Scroll Display to Follow Playback</td><td class="px-3 py-2">Ctrl+Shift+F</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Scroll Left/Right</td><td class="px-3 py-2">Shift + scroll</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Pan Left/Right of Selection</td><td class="px-3 py-2">Ctrl+Alt drag</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="clip-view-editor-view-modes">Clip View Editor View Modes</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Key</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Switch Between Sample/Envelopes Tabs</td><td class="px-3 py-2">Ctrl Tab</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Switch Between Notes/Envelopes/MPE Tabs</td><td class="px-3 py-2">Ctrl Tab</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Switch to Sample/Notes Tab</td><td class="px-3 py-2">Alt+Shift+1</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Switch to Envelopes Tab</td><td class="px-3 py-2">Alt+Shift+2</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Switch to MPE Tab</td><td class="px-3 py-2">Alt+Shift+3</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="clip-view-sample-editor">Clip View Sample Editor</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Key</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Quantize</td><td class="px-3 py-2">Ctrl+U</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Quantize Settings…</td><td class="px-3 py-2">Ctrl+Shift+U</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Move Selected Warp Marker</td><td class="px-3 py-2">Left / Right arrow keys</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Select Warp Marker</td><td class="px-3 py-2">Ctrl + Left/Right arrow keys</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Scroll Display to Follow Playback</td><td class="px-3 py-2">Ctrl+Shift+F</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Zoom to Clip Selection</td><td class="px-3 py-2">Z</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Zoom Back from Clip Selection</td><td class="px-3 py-2">X</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Insert Warp Marker</td><td class="px-3 py-2">Ctrl+I</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Delete Warp Marker</td><td class="px-3 py-2">Delete</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Insert Transient</td><td class="px-3 py-2">Ctrl+Shift+I</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Delete Transient</td><td class="px-3 py-2">Ctrl+Shift+Delete</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Fit Content to View Width</td><td class="px-3 py-2">W</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Fit Content to View Height</td><td class="px-3 py-2">H</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="clip-view-midi-note-editor">Clip View MIDI Note Editor</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Key</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Select All Notes</td><td class="px-3 py-2">Ctrl+A</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Copy Notes</td><td class="px-3 py-2">Ctrl drag</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Chop Selected Notes on Grid / Split Notes</td><td class="px-3 py-2">Ctrl+E</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Chop Notes in Increments</td><td class="px-3 py-2">Ctrl+E drag / Ctrl+Shift+E</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Join Notes</td><td class="px-3 py-2">Ctrl+J</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Fit Notes to Time Range</td><td class="px-3 py-2">Ctrl+Alt+J</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Fit Content to View Width</td><td class="px-3 py-2">W</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Fit Content to View Height</td><td class="px-3 py-2">H</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Scroll Editor Vertically</td><td class="px-3 py-2">Page Up / Page Down</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Scroll Editor Vertically in Fine Increments</td><td class="px-3 py-2">Shift + Page Up / Page Down</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Scroll Editor Horizontally</td><td class="px-3 py-2">Ctrl + Page Up / Page Down</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Move Insert Marker to Beginning/End</td><td class="px-3 py-2">Home / End</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Select Next/Previous Note</td><td class="px-3 py-2">Alt + Up/Down arrow keys</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="grid-snapping-and-drawing">Grid Snapping and Drawing</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Key</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Toggle Draw Mode (Pitch Lock Off)</td><td class="px-3 py-2">B</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Narrow Grid</td><td class="px-3 py-2">Ctrl+1</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Widen Grid</td><td class="px-3 py-2">Ctrl+2</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Triplet Grid</td><td class="px-3 py-2">Ctrl+3</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Snap to Grid</td><td class="px-3 py-2">Ctrl+4</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Fixed/Zoom-Adaptive Grid</td><td class="px-3 py-2">Ctrl+5</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="global-quantization">Global Quantization</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Windows</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Sixteenth-Note Quantization</td><td class="px-3 py-2">Ctrl+6</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Eighth-Note Quantization</td><td class="px-3 py-2">Ctrl+7</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Quarter-Note Quantization</td><td class="px-3 py-2">Ctrl+8</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">1-Bar Quantization</td><td class="px-3 py-2">Ctrl+9</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Quantization Off</td><td class="px-3 py-2">Ctrl+0</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="session-view">Session View</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Windows</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Launch Selected Clip/Slot</td><td class="px-3 py-2">Enter</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Select Neighboring Clip/Slot</td><td class="px-3 py-2">Arrow keys</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Select All Clips/Slots</td><td class="px-3 py-2">Ctrl+A</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Copy Clips</td><td class="px-3 py-2">Ctrl drag</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Insert MIDI clip</td><td class="px-3 py-2">Ctrl+Shift+M</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Insert Scene</td><td class="px-3 py-2">Ctrl+I</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Capture MIDI</td><td class="px-3 py-2">Ctrl+Shift+C</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Record to Session View</td><td class="px-3 py-2">Ctrl+Shift+F9</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="arrangement-view">Arrangement View</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Windows</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Split Clip at Selection</td><td class="px-3 py-2">Ctrl+E</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Consolidate Selection into Clip</td><td class="px-3 py-2">Ctrl+J</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Crop Selected Clips</td><td class="px-3 py-2">Ctrl+Shift+J</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Create Fade/Crossfade</td><td class="px-3 py-2">Ctrl+Alt+F</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Momentarily Toggle Fade Handles</td><td class="px-3 py-2">F</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Toggle Loop Brace</td><td class="px-3 py-2">Ctrl+L</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Adjust Loop Brace Length</td><td class="px-3 py-2">Ctrl + Left/Right arrow keys</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="comping">Comping</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Windows</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Show Take Lanes</td><td class="px-3 py-2">Ctrl+Alt+U</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Add Selected Take Lane Area to Main Track Lane</td><td class="px-3 py-2">Enter</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Audition Selected Take Lane</td><td class="px-3 py-2">T</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Add Take Lane</td><td class="px-3 py-2">Shift+Alt+T</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="bounce-to-audio">Bounce to Audio</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Windows</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Bounce to New Track</td><td class="px-3 py-2">Ctrl+B</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Paste Bounced Audio</td><td class="px-3 py-2">Ctrl+Alt+V</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="commands-for-tracks">Commands for Tracks</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Windows</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Insert Audio Track</td><td class="px-3 py-2">Ctrl+T</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Insert MIDI Track</td><td class="px-3 py-2">Ctrl+Shift+T</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Insert Return Track</td><td class="px-3 py-2">Ctrl+Alt+T</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Rename Selected Track</td><td class="px-3 py-2">Ctrl+R</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Group Selected Tracks</td><td class="px-3 py-2">Ctrl+G</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Ungroup Tracks</td><td class="px-3 py-2">Ctrl+Shift+G</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Arm Selected Tracks</td><td class="px-3 py-2">C</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Solo Selected Tracks</td><td class="px-3 py-2">S</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Deactivate Selected Track</td><td class="px-3 py-2">0</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="transport">Transport</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Windows</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Play</td><td class="px-3 py-2">Space</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Continue Play from Stop Point</td><td class="px-3 py-2">Shift+Space</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Stop Playback at End of Selection</td><td class="px-3 py-2">Ctrl+Space</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Move Insert Marker to Beginning</td><td class="px-3 py-2">Home</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Move Insert Marker to End</td><td class="px-3 py-2">End</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Record</td><td class="px-3 py-2">F9</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="audio-engine">Audio Engine</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Windows</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Turn Audio Engine On/Off</td><td class="px-3 py-2">Ctrl+Alt+Shift+E</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="browser">Browser</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Windows</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Scroll Down/Up</td><td class="px-3 py-2">Up and Down arrow keys</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Hide/Show Browser</td><td class="px-3 py-2">Ctrl+Alt+B</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Close/Open Folders</td><td class="px-3 py-2">Right and Left arrow keys</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Load Selected Item from Browser</td><td class="px-3 py-2">Enter</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Preview Selected File</td><td class="px-3 py-2">Shift+Enter or Right arrow key</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Search in Browser</td><td class="px-3 py-2">Ctrl+F</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Browser History Back/Forward</td><td class="px-3 py-2">Ctrl+[ / Ctrl+]</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Show Similar Files Using Similarity Search</td><td class="px-3 py-2">Ctrl+Shift+F</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="similar-sample-swapping">Similar Sample Swapping</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Windows</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Swap to Next Similar Sample</td><td class="px-3 py-2">Ctrl+Right arrow</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Swap to Previous Similar Sample</td><td class="px-3 py-2">Ctrl+Left arrow</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Save as Similarity Reference</td><td class="px-3 py-2">Ctrl+Up arrow</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Return to Reference</td><td class="px-3 py-2">Ctrl+Down arrow</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="key-midi-map-mode">Key/MIDI Map Mode & Computer MIDI Keyboard</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Windows</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Toggle MIDI Map Mode</td><td class="px-3 py-2">Ctrl+M</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Toggle Key Map Mode</td><td class="px-3 py-2">Ctrl+K</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Computer MIDI Keyboard</td><td class="px-3 py-2">M</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Adjust Computer MIDI Keyboard Octave Range Up/Down</td><td class="px-3 py-2">X / Z</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Adjust Computer MIDI Keyboard Velocity Up/Down</td><td class="px-3 py-2">C / V</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="momentary-latching-shortcuts">Momentary Latching Shortcuts</h3>
+      <p class="text-sm text-neutral-300 mb-4">Certain shortcuts toggle while held — examples: A, B, S, Z, Tab, F1–F8.</p>
+
+      <h3 id="general-keyboard-navigation">General Keyboard Navigation & Workflow</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Windows</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Use Tab to move focus / navigate</td><td class="px-3 py-2">Tab / Shift+Tab</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Ctrl+Tab / Ctrl+Shift+Tab for neighbor navigation</td><td class="px-3 py-2">Ctrl+Tab / Ctrl+Shift+Tab</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="editing-automation-modulation">Editing Automation & Modulation Envelopes</h3>
+      <p class="text-sm text-neutral-300 mb-4">Use the keyboard to add, move and delete envelope breakpoints; common modifiers: Ctrl / Alt / Shift.</p>
+
+      <h3 id="accessing-menus">Accessing Menus</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Windows</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Open menu by letter (Windows)</td><td class="px-3 py-2">Alt + first letter (e.g., Alt+F for File)</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="using-lives-context-menu">Using Live’s Context Menu</h3>
+      <p class="text-sm text-neutral-300 mb-6">Open context menu with right-click or Menu / Shift+F10 on Windows; common context actions vary by area.</p>
+    </article>
+  </section>
+</MainLayout>

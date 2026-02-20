@@ -1,0 +1,17 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+const gearList = await getCollection('gear');
+---
+
+<MainLayout title="Home">
+  <section class="text-center py-16">
+    <h1 class="text-5xl font-extrabold mb-4 tracking-tight">Welcome to Dex-Gear</h1>
+    <p class="text-xl max-w-2xl mx-auto mb-8">Explore guides, tips, and resources for your favorite music gear. Navigate to each device page for details, references, and more.</p>
+    <div class="flex flex-wrap justify-center gap-6 mt-8">
+      {gearList.map(gear => (
+        <a href={`/gear/${gear.slug}`} class="px-6 py-3 rounded-lg bg-fuchsia-700 hover:bg-fuchsia-500 transition-colors font-bold shadow-lg">{gear.data.title}</a>
+      ))}
+    </div>
+  </section>
+</MainLayout>

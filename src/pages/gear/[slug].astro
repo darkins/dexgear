@@ -1,0 +1,31 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection, getEntryBySlug } from 'astro:content';
+
+export async function getStaticPaths() {
+  const gear = await (getCollection as any)('gear') as any[];
+  return gear.map((g) => ({ params: { slug: g.slug ?? g.id } }));
+}
+
+const { slug } = Astro.params;
+let gear = await (getEntryBySlug as any)('gear', slug) as any;
+if (!gear) {
+  const all = await (getCollection as any)('gear') as any[];
+  gear = all.find((g) => g.slug === slug || g.id === slug) as any;
+}
+if (!gear) throw new Error('Gear not found');
+
+const rendered = typeof gear.render === 'function' ? await gear.render() : null;
+const Content = rendered?.Content;
+---
+
+<MainLayout title={gear.data.title}>
+  <section class="max-w-2xl mx-auto py-12">
+    <h1 class="text-4xl font-extrabold mb-4">{gear.data.title}</h1>
+    <p class="mb-4 text-lg">{gear.data.description}</p>
+    {gear.data.url && <a href={gear.data.url} class="text-fuchsia-400 underline hover:text-fuchsia-200" target="_blank" rel="noopener">Official Site</a>}
+    <article class="prose prose-invert mt-8">
+      {Content ? <Content /> : <div set:html={gear.body} />}
+    </article>
+  </section>
+</MainLayout>
