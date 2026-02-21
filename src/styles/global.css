@@ -1,123 +1,121 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Space+Grotesk:wght@400;700&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
-  /* Default (Neon) theme */
-  --color-bg: #0a0a0a;
-  --color-accent: #f0abfc;
-  --color-accent2: #22d3ee;
-  --color-text: #ffffff;
-  --color-accent-rgb: 240, 171, 252;
-  --color-accent2-rgb: 34, 211, 238;
-  --dropdown-bg: rgba(10, 10, 10, 0.85);
+	/* Default (Neon) theme */
+	--color-bg: #0a0a0a;
+	--color-accent: #f0abfc;
+	--color-accent2: #22d3ee;
+	--color-text: #ffffff;
+	--color-accent-rgb: 240, 171, 252;
+	--color-accent2-rgb: 34, 211, 238;
+	--dropdown-bg: rgba(10, 10, 10, 0.85);
 }
 
 /* Alternative theme presets. To use, add one of these classes to the <body> element: */
 .theme-sunset {
-  --color-bg: #081623; /* deep navy */
-  --color-accent: #ff7a59; /* coral */
-  --color-accent2: #ffc857; /* warm gold */
-  --color-text: #fff8f2;
-  --dropdown-bg: rgba(8, 22, 35, 0.85);
+	--color-bg: #081623; /* deep navy */
+	--color-accent: #ff7a59; /* coral */
+	--color-accent2: #ffc857; /* warm gold */
+	--color-text: #fff8f2;
+	--dropdown-bg: rgba(8, 22, 35, 0.85);
 }
 
 .theme-forest {
-  --color-bg: #08110b; /* near-black green */
-  --color-accent: #78c2a3; /* soft mint */
-  --color-accent2: #2b8a3e; /* deep green */
-  --color-text: #eaf7ee;
-  --dropdown-bg: rgba(8, 17, 11, 0.85);
+	--color-bg: #08110b; /* near-black green */
+	--color-accent: #78c2a3; /* soft mint */
+	--color-accent2: #2b8a3e; /* deep green */
+	--color-text: #eaf7ee;
+	--dropdown-bg: rgba(8, 17, 11, 0.85);
 }
 
 .theme-midnight {
-  --color-bg: #030422; /* near-black indigo */
-  --color-accent: #6ee7b7; /* aqua */
-  --color-accent2: #7c3aed; /* violet */
-  --color-text: #e6f0ff;
-  --color-accent-rgb: 110, 231, 183;
-  --color-accent2-rgb: 124, 58, 237;
-  --dropdown-bg: rgba(3, 4, 34, 0.85);
+	--color-bg: #030422; /* near-black indigo */
+	--color-accent: #6ee7b7; /* aqua */
+	--color-accent2: #7c3aed; /* violet */
+	--color-text: #e6f0ff;
+	--color-accent-rgb: 110, 231, 183;
+	--color-accent2-rgb: 124, 58, 237;
+	--dropdown-bg: rgba(3, 4, 34, 0.85);
 }
 
 /* Sunset RGBs */
 .theme-sunset {
-  --color-accent-rgb: 255, 122, 89;
-  --color-accent2-rgb: 255, 200, 87;
+	--color-accent-rgb: 255, 122, 89;
+	--color-accent2-rgb: 255, 200, 87;
 }
 
 /* Forest RGBs */
 .theme-forest {
-  --color-accent-rgb: 120, 194, 163;
-  --color-accent2-rgb: 43, 138, 62;
+	--color-accent-rgb: 120, 194, 163;
+	--color-accent2-rgb: 43, 138, 62;
 }
 
 /* Theme-aware link/button overrides for Tailwind utility classes */
 /* Buttons using bg-fuchsia-700 and bg-cyan-700 will follow the current theme */
 .bg-fuchsia-700 {
-  background-color: var(--color-accent) !important;
-  color: var(--color-text) !important;
+	background-color: var(--color-accent) !important;
+	color: var(--color-text) !important;
 }
 .bg-cyan-700 {
-  background-color: var(--color-accent2) !important;
-  color: var(--color-text) !important;
+	background-color: var(--color-accent2) !important;
+	color: var(--color-text) !important;
 }
 
 /* Hover states mapped to accent2 for contrast */
 .hover\:bg-fuchsia-500:hover,
 .hover\:bg-fuchsia-400:hover {
-  background-color: var(--color-accent2) !important;
+	background-color: var(--color-accent2) !important;
 }
 .hover\:text-fuchsia-400:hover {
-  color: var(--color-accent) !important;
+	color: var(--color-accent) !important;
 }
 
 /* Focus ring mapping */
 .focus\:ring-fuchsia-400:focus {
-  box-shadow: 0 0 0 4px rgba(var(--color-accent-rgb), 0.15);
-  outline: none;
+	box-shadow: 0 0 0 4px rgba(var(--color-accent-rgb), 0.15);
+	outline: none;
 }
 
 /* Links default to accent, hover to accent2 */
 
 /* Links default to accent, hover to accent2 (global) */
 a {
-  color: var(--color-accent);
+	color: var(--color-accent);
 }
 a:hover {
-  color: var(--color-accent2);
+	color: var(--color-accent2);
 }
 
 /* Keep navigation links white by default, but use theme accent on hover */
 header nav a,
 header #mobile-menu a {
-  color: #ffffff !important;
-  transition: color 0.18s;
+	color: #ffffff !important;
+	transition: color 0.18s;
 }
 header nav a:hover,
 header #mobile-menu a:hover {
-  color: var(--color-accent) !important;
+	color: var(--color-accent) !important;
 }
 
 /* Ensure text in nav uses theme variable when not overridden */
 .text-white {
-  color: var(--color-text) !important;
+	color: var(--color-text) !important;
 }
 
 /* Normalize utility classes so theme-based accents apply to text utilities */
 .text-fuchsia-400 {
-  color: var(--color-accent) !important;
+	color: var(--color-accent) !important;
 }
 .hover\:text-fuchsia-200:hover {
-  color: var(--color-accent2) !important;
+	color: var(--color-accent2) !important;
 }
 
 body {
-  font-family: "Space Grotesk", "Orbitron", Arial, sans-serif;
-  background: var(--color-bg);
-  color: var(--color-text);
+	font-family: "Space Grotesk", "Orbitron", Arial, sans-serif;
+	background: var(--color-bg);
+	color: var(--color-text);
 }
 
 h1,
@@ -126,55 +124,59 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Orbitron", "Space Grotesk", Arial, sans-serif;
-  letter-spacing: 0.02em;
+	font-family: "Orbitron", "Space Grotesk", Arial, sans-serif;
+	letter-spacing: 0.02em;
+}
+
+p {
+	margin-bottom: 1rem;
 }
 
 .bg-gradient-to-r {
-  background: linear-gradient(
-    90deg,
-    var(--color-accent),
-    var(--color-bg),
-    var(--color-accent2)
-  );
+	background: linear-gradient(
+		90deg,
+		var(--color-accent),
+		var(--color-bg),
+		var(--color-accent2)
+	);
 }
 
 .animate-pulse {
-  animation: pulse 2s infinite;
+	animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.7;
+	}
 }
 
 /* Custom button and link styles */
 .bg-fuchsia-700,
 .bg-cyan-700 {
-  transition: background 0.2s;
+	transition: background 0.2s;
 }
 
 a {
-  text-underline-offset: 2px;
+	text-underline-offset: 2px;
 }
 
 /* Responsive tweaks */
 @media (max-width: 600px) {
-  .text-5xl {
-    font-size: 2.25rem;
-  }
-  .text-4xl {
-    font-size: 1.75rem;
-  }
-  .p-8,
-  .py-16,
-  .py-12 {
-    padding: 1rem !important;
-  }
+	.text-5xl {
+		font-size: 2.25rem;
+	}
+	.text-4xl {
+		font-size: 1.75rem;
+	}
+	.p-8,
+	.py-16,
+	.py-12 {
+		padding: 1rem !important;
+	}
 }
 /* Tailwind directives are included above */
