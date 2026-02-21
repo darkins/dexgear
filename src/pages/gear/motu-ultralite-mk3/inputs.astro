@@ -1,0 +1,21 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+import MotuSidebar from '../../../components/MotuSidebar.astro';
+const title = "Mic/Guitar Inputs";
+---
+<MainLayout title={title}>
+  <div class="flex gap-8 items-start">
+    <div class="w-[250px] flex-shrink-0">
+      <MotuSidebar />
+    </div>
+    <article class="prose max-w-none">
+      <h1>{title}</h1>
+      <p>Source: <a href="https://motu.com/products/motuaudio/ultralite-mk3/inputs.html" target="_blank" rel="noopener">MOTU product page</a></p>
+      <p>The interface provides clean preamps and instrument-level inputs designed to capture vocals, guitars, and other sources with low noise and wide dynamic range. Input routing and monitoring are handled in the onboard mixer for zero-latency monitoring when needed.</p>
+      <figure>
+        <img src="/assets/motu/ultralite-mk3/inputs.jpg" alt="Mic and guitar inputs" />
+        <figcaption>Absolute asset path: C:\\www\\dexgear\\public\\assets\\motu\\ultralite-mk3\\inputs.jpg</figcaption>
+      </figure>
+    </article>
+  </div>
+</MainLayout>

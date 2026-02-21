@@ -1,0 +1,21 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+import MotuSidebar from '../../../components/MotuSidebar.astro';
+const title = "Vintage Compression";
+---
+<MainLayout title={title}>
+  <div class="flex gap-8 items-start">
+    <div class="w-[250px] flex-shrink-0">
+      <MotuSidebar />
+    </div>
+    <article class="prose max-w-none">
+      <h1>{title}</h1>
+      <p>Source: <a href="https://motu.com/products/motuaudio/ultralite-mk3/cuemix-fx-overview.html" target="_blank" rel="noopener">MOTU product page</a></p>
+      <p>The vintage compression effect provides smooth gain control and characterful dynamics shaping inspired by classic hardware. It’s useful for controlling peaks and adding analog-style coloration when desired.</p>
+      <figure>
+        <img src="/assets/motu/ultralite-mk3/vintage-compression.jpg" alt="Vintage compression" />
+        <figcaption>Absolute asset path: C:\\www\\dexgear\\public\\assets\\motu\\ultralite-mk3\\vintage-compression.jpg</figcaption>
+      </figure>
+    </article>
+  </div>
+</MainLayout>

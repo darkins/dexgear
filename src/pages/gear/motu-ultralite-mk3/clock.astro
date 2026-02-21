@@ -1,0 +1,21 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+import MotuSidebar from '../../../components/MotuSidebar.astro';
+const title = "Clock and Sync";
+---
+<MainLayout title={title}>
+  <div class="flex gap-8 items-start">
+    <div class="w-[250px] flex-shrink-0">
+      <MotuSidebar />
+    </div>
+    <article class="prose max-w-none">
+      <h1>{title}</h1>
+      <p>Source: <a href="https://motu.com/products/motuaudio/ultralite-mk3/clock.html" target="_blank" rel="noopener">MOTU product page</a></p>
+      <p>The UltraLite-mk3 offers robust clocking and sync options so it can run reliably as a master or sync to external devices. Stable clocking preserves audio quality and ensures tight timing across digital connections.</p>
+      <figure>
+        <img src="/assets/motu/ultralite-mk3/clock.jpg" alt="Clock and sync" />
+        <figcaption>Absolute asset path: C:\\www\\dexgear\\public\\assets\\motu\\ultralite-mk3\\clock.jpg</figcaption>
+      </figure>
+    </article>
+  </div>
+</MainLayout>

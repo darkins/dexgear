@@ -1,0 +1,22 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+import MotuSidebar from '../../../components/MotuSidebar.astro';
+
+const title = "Analog I/O & S/PDIF — UltraLite-mk3";
+const description = "Analog and digital I/O overview.";
+---
+
+<MainLayout title={title} description={description}>
+    <div class="flex gap-8 items-start">
+      <div class="w-[250px] flex-shrink-0">
+        <MotuSidebar />
+      </div>
+      <article class="prose max-w-none">
+      <h1>Analog I/O & S/PDIF</h1>
+      <img src="http://cdn-data.motu.com/site/images/ultralite-mk3/web1-5/ultralite-mk3-large-front.jpg" alt="UltraLite-mk3 front" class="w-full rounded" />
+      <p>The UltraLite‑mk3 offers 6 balanced quarter‑inch analog inputs and 10 balanced quarter‑inch outputs, plus two combo XLR/TRS mic‑pre inputs on the front panel. RCA S/PDIF in/out provides stereo digital I/O.</p>
+      <p>Use front-panel trims and the 20 dB pad on mic inputs for correct gain staging. Rear TRS inputs accept +4 dBu line sources when needed.</p>
+      <p><a href="/gear/motu-ultralite-mk3">Back to MOTU page</a></p>
+    </article>
+  </div>
+</MainLayout>

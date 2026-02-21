@@ -41,6 +41,22 @@ const navLinks = desiredOrder
         ],
       };
     }
+    // Add dropdown children for Motu (surface feature pages)
+    if (g.slug === 'motu-ultralite-mk3') {
+      return {
+        label: labelOverrides[g.slug] ?? g.data.title,
+        children: [
+          { href: '/gear/motu-ultralite-mk3/general-settings', label: 'General Settings' },
+          { href: '/gear/motu-ultralite-mk3/cuemix-settings', label: 'Cuemix Settings' },
+          { href: '/gear/motu-ultralite-mk3/cuemix', label: 'CueMix' },
+          { href: '/gear/motu-ultralite-mk3/connectivity', label: 'Connectivity' },
+          { href: '/gear/motu-ultralite-mk3/io', label: 'I/O' },
+          { href: '/gear/motu-ultralite-mk3/console', label: 'Console' },
+          { href: '/gear/motu-ultralite-mk3/converters', label: 'Converters' },
+          { href: '/gear/motu-ultralite-mk3/monitoring', label: 'Monitoring' },
+        ],
+      };
+    }
     return { href: `/gear/${g.slug}`, label: labelOverrides[g.slug] ?? g.data.title };
   });
 

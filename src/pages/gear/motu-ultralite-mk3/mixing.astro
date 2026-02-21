@@ -1,0 +1,21 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+import MotuSidebar from '../../../components/MotuSidebar.astro';
+const title = "Mixing and Effects";
+---
+<MainLayout title={title}>
+  <div class="flex gap-8 items-start">
+    <div class="w-[250px] flex-shrink-0">
+      <MotuSidebar />
+    </div>
+    <article class="prose max-w-none">
+      <h1>{title}</h1>
+      <p>Source: <a href="https://motu.com/products/motuaudio/ultralite-mk3/mixing.html" target="_blank" rel="noopener">MOTU product page</a></p>
+      <p>The integrated mixer provides channel-based routing, level control, and sends to onboard effects, allowing users to craft monitor mixes and manage signal flow without taxing the host CPU. Presets and recallable settings simplify common workflows.</p>
+      <figure>
+        <img src="/assets/motu/ultralite-mk3/mixing.jpg" alt="Mixing and effects" />
+        <figcaption>Absolute asset path: C:\\www\\dexgear\\public\\assets\\motu\\ultralite-mk3\\mixing.jpg</figcaption>
+      </figure>
+    </article>
+  </div>
+</MainLayout>

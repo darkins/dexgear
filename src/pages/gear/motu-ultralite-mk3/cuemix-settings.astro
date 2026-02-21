@@ -1,0 +1,52 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+import MotuSidebar from '../../../components/MotuSidebar.astro';
+---
+
+<MainLayout title="MOTU Cuemix FX Software Setup">
+  <div class="flex gap-8 items-start">
+    <div class="w-[250px] flex-shrink-0">
+      <MotuSidebar />
+    </div>
+    <section class="max-w-3xl mx-auto py-12">
+    <h1 class="text-4xl font-extrabold mb-4">MOTU Cuemix FX Software Setup</h1>
+    <p class="text-lg mb-6">Cuemix FX is MOTU's powerful mixer and effects software that runs alongside your interface. It allows for near-zero latency monitoring, routing, and applying effects before the signal even hits your DAW.</p>
+
+    <article class="prose prose-invert">
+      <div class="mb-8">
+        <h2 id="latency-free-monitoring">Latency-Free Monitoring</h2>
+        <p>This is Cuemix's biggest advantage. When recording, instead of monitoring through Ableton (which introduces some latency), you can monitor directly through Cuemix.</p>
+        <p>To do this:</p>
+        <ol>
+          <li>In Cuemix, route your input (e.g., SM58 input) directly to your main outputs (Mon L/R).</li>
+          <li>In Ableton, make sure the track you're recording to has "Monitor" set to "Off" or "Auto" (and disable monitoring during recording). This prevents doubling of the signal (one from Cuemix, one from Ableton).</li>
+        </ol>
+      </div>
+
+      <div class="mb-8">
+        <h2 id="creating-submixes">Creating Submixes</h2>
+        <p>You can create separate mixes for different purposes. For example:</p>
+        <ul>
+          <li>A main mix for your studio monitors.</li>
+          <li>A headphone mix for yourself with a different balance of instruments.</li>
+          <li>A "send" mix if you were sending outgoing audio to an external effects unit (though your current setup mainly relies on internal effects).</li>
+        </ul>
+      </div>
+
+      <div class="mb-8">
+        <h2 id="onboard-dsp">Using Onboard DSP Effects</h2>
+        <p>The UltraLite mk3 has built-in DSP effects (reverb, compression, EQ). You can apply these in Cuemix FX before the signal reaches your DAW. This is great for:</p>
+        <ul>
+          <li><strong>Comfort Monitoring:</strong> Adding a touch of reverb to your vocals or guitar while tracking can make the performance feel more natural.</li>
+          <li><strong>"Printing" Effects:</strong> If you like the sound of the UltraLite's compressor or EQ, you can apply them directly and record the processed signal into Ableton. Be aware that once recorded, these effects are "baked in" and cannot be undone in Ableton (unless you record a dry signal simultaneously).</li>
+        </ul>
+      </div>
+
+      <div class="mb-8">
+        <h2 id="saving-scenes">Saving Scenes</h2>
+        <p>Once you have a setup you like (input gains, monitor mixes, effects), save it as a "Scene" in Cuemix. This allows you to quickly recall different configurations for recording vocals, guitars, or synths.</p>
+      </div>
+    </article>
+    </section>
+  </div>
+</MainLayout>

@@ -1,0 +1,22 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+import MotuSidebar from '../../../components/MotuSidebar.astro';
+
+const title = "MOTU Audio Console — UltraLite-mk3";
+const description = "Control app for routing, clocking and CueMix FX.";
+---
+
+<MainLayout title={title} description={description}>
+  <div class="flex gap-8 items-start">
+    <MotuSidebar />
+      <div class="w-[250px] flex-shrink-0">
+        <MotuSidebar />
+      </div>
+      <article class="prose max-w-none">
+      <h1>MOTU Audio Console</h1>
+      <p><img src="http://cdn-data.motu.com/site/images/ultralite-mk3/os-support.jpg" alt="OS support" class="w-48 inline-block mr-4" />MOTU Audio Console is the control application for the UltraLite‑mk3. Use it to enable/disable I/O, set clock source and sample rate, route channels, and edit CueMix FX parameters with a graphic interface.</p>
+      <p>When using Ableton Live with the MOTU ASIO driver, open MOTU Audio Console via the Hardware Setup button to ensure the desired inputs and outputs are enabled.</p>
+      <p><a href="/gear/motu-ultralite-mk3">Back to MOTU page</a></p>
+    </article>
+  </div>
+</MainLayout>

@@ -1,0 +1,21 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+import MotuSidebar from '../../../components/MotuSidebar.astro';
+
+const title = "Low-latency Monitoring — UltraLite-mk3";
+const description = "Direct monitoring and buffer settings.";
+---
+
+<MainLayout title={title} description={description}>
+    <div class="flex gap-8 items-start">
+      <div class="w-[250px] flex-shrink-0">
+        <MotuSidebar />
+      </div>
+      <article class="prose max-w-none">
+      <h1>Low‑latency Monitoring & Samples Per Buffer</h1>
+      <p><img src="http://cdn-data.motu.com/site/images/ultralite-mk3/hybrid-sm.png" alt="Hybrid" class="w-36 inline-block mr-4" />Direct monitoring via CueMix FX provides near‑zero latency. For Ableton Live monitoring, reduce the Samples Per Buffer setting in the MOTU driver or Live’s audio preferences to reduce monitoring latency.</p>
+      <p>Smaller buffer sizes lower latency but increase CPU load; test settings to find a stable balance for live tracking.</p>
+      <p><a href="/gear/motu-ultralite-mk3">Back to MOTU page</a></p>
+    </article>
+  </div>
+</MainLayout>

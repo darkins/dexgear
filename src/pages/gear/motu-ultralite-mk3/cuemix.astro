@@ -1,0 +1,22 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+import MotuSidebar from '../../../components/MotuSidebar.astro';
+
+const title = "CueMix FX — UltraLite-mk3";
+const description = "On-board DSP mixer and effects (CueMix FX).";
+---
+
+<MainLayout title={title} description={description}>
+    <div class="flex gap-8 items-start">
+      <div class="w-[250px] flex-shrink-0">
+        <MotuSidebar />
+      </div>
+      <article class="prose max-w-none">
+      <h1>CueMix FX</h1>
+      <img src="http://cdn-data.motu.com/site/images/ultralite-mk3/web1-5/ultralite-mk3-large-front.jpg" alt="UltraLite-mk3 front" class="w-full rounded" />
+      <p>All UltraLite-mk3 inputs and outputs can be routed to the on-board CueMix FX 16-bus (8 stereo) digital mixer driven by hardware DSP with 32‑bit floating point precision. CueMix FX provides no‑latency monitoring, Classic Reverb™, modeled analog EQ, and compression (including the Leveler™).</p>
+      <p>Configure CueMix FX from the MOTU Audio Console or the front-panel CUEMIX mode. The software includes graphic mixing, parametric‑EQ editing, and a DSP meter to manage processing resources.</p>
+      <p><a href="/gear/motu-ultralite-mk3">Back to MOTU page</a></p>
+    </article>
+  </div>
+</MainLayout>

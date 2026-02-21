@@ -1,0 +1,21 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+import MotuSidebar from '../../../components/MotuSidebar.astro';
+const title = "Feature Summary";
+---
+<MainLayout title={title}>
+  <div class="flex gap-8 items-start">
+    <div class="w-[250px] flex-shrink-0">
+      <MotuSidebar />
+    </div>
+    <article class="prose max-w-none">
+      <h1>{title}</h1>
+      <p>Source: <a href="https://motu.com/products/motuaudio/ultralite-mk3/summary.html" target="_blank" rel="noopener">MOTU product page</a></p>
+      <p>Key features include portable, bus-powered operation, high-quality preamps, flexible I/O and routing, onboard DSP effects, and software control via CueMix FX — designed to serve both mobile and studio workflows.</p>
+      <figure>
+        <img src="/assets/motu/ultralite-mk3/summary.jpg" alt="Feature summary" />
+        <figcaption>Absolute asset path: C:\\www\\dexgear\\public\\assets\\motu\\ultralite-mk3\\summary.jpg</figcaption>
+      </figure>
+    </article>
+  </div>
+</MainLayout>

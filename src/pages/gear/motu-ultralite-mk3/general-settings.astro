@@ -1,0 +1,68 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+import MotuSidebar from '../../../components/MotuSidebar.astro';
+---
+
+<MainLayout title="MOTU UltraLite mk3 Hybrid Best Practices">
+  <div class="flex gap-8 items-start">
+    <div class="w-[250px] flex-shrink-0">
+      <MotuSidebar />
+    </div>
+    <section class="max-w-3xl mx-auto py-12">
+    <h1 class="text-4xl font-extrabold mb-4">MOTU UltraLite mk3 Hybrid</h1>
+    <p class="text-lg mb-6">The UltraLite mk3 is a solid interface known for its clean preamps and reliable performance.</p>
+
+    <article class="prose prose-invert">
+      <div class="mb-8">
+        <h2 id="driver-installation">Driver Installation</h2>
+        <p>Always ensure you have the latest drivers installed from the MOTU website. This is crucial for stability and performance.</p>
+        <p>Download the latest drivers: <a href="https://motu.com/en-us/download/#category=8&product=235" class="text-blue-400 underline" rel="noopener noreferrer" target="_blank">MOTU UltraLite mk3 drivers</a></p>
+      </div>
+
+      <div class="mb-8">
+        <h2 id="clocking">Clocking</h2>
+        <p>If the UltraLite is your only digital audio device, it should be set as the master clock. This is usually the default. If you ever add other digital devices (like an ADAT expander), make sure only one device is the master and the others are slaved to it to avoid clicks and pops.</p>
+      </div>
+
+      <div class="mb-8">
+        <h2 id="gain-staging">Gain Staging</h2>
+        <p>This is critical for good sound quality.</p>
+        <ul>
+          <li><strong>Input Gain:</strong> Use the trim knobs on the front of the UltraLite to set your input levels. Aim for a healthy signal that peaks around -6dBFS in your DAW. This leaves headroom to prevent clipping while still providing a strong signal.</li>
+          <li><strong>Avoid Red LEDs:</strong> If the "clip" LED above an input lights up, your signal is too hot. Turn down the input gain.</li>
+        </ul>
+      </div>
+
+      <div class="mb-8">
+        <h2 id="phantom-power">Phantom Power (48V)</h2>
+        <p>The Shure SM58 is a dynamic microphone and does <strong>NOT</strong> require phantom power. Make sure phantom power is off for the input you're using with the SM58. However, if you ever use a condenser microphone, you will need to enable 48V phantom power for that input.</p>
+      </div>
+
+      <div class="mb-8">
+        <h2 id="connecting-instruments">Connecting Your Instruments</h2>
+        <ul>
+          <li><strong>Shure SM58:</strong> Connect to the front combo input (Input 1 — XLR or 1/4" Hi‑Z) on the front panel.</li>
+          <li><strong>Bass Guitar/Electric Guitar:</strong> Connect direct to the 1/4" Hi‑Z (instrument-level) input on the front (Input 1). This input is designed for guitars and basses and provides the correct impedance.</li>
+          <li><strong>ASM Hydrasynth Explorer:</strong> This is a synth with line-level outputs. You can connect its stereo outputs to a pair of 1/4" TRS line inputs on the back of the UltraLite (e.g., Inputs 3/4 or 5/6).</li>
+        </ul>
+      </div>
+
+      <div class="mb-8">
+        <h2 id="monitoring">Monitoring</h2>
+        <p>Connect your studio monitors to the Main Outs (TRS 1/2) on the back using balanced TRS cables. Use the main volume knob on the front panel to control the overall playback level.</p>
+
+        <h3 class="mt-4">Yamaha HS7 — recommended setup</h3>
+        <p>The Yamaha HS7 are accurate nearfield monitors well suited for mixing. For consistent results when using them with the MOTU UltraLite mk3:</p>
+        <ul>
+          <li><strong>Placement:</strong> Create an equilateral triangle between the two speakers and your listening position. Position the tweeters at roughly ear height and toe the speakers in slightly toward your ears.</li>
+          <li><strong>Distance from walls:</strong> Keep the monitors at least 30–60 cm (1–2 ft) away from room boundaries where possible. If they must sit close to a wall, use the monitor's room/low-frequency control to reduce bass buildup.</li>
+          <li><strong>Connections & levels:</strong> Use balanced TRS cables from the UltraLite Main Outs to the HS7 inputs. Start with monitor trims and EQ controls set flat/neutral. Set the Motu main output to a sensible unity level in CueMix or your DAW and use the front-panel monitor knob for coarse adjustments—avoid driving the monitors into clipping.</li>
+          <li><strong>Room treatment & calibration:</strong> Add acoustic treatment at first-reflection points and consider measuring the room with a calibration tool to address problematic frequency response.</li>
+        </ul>
+
+        <p>In short: balanced TRS connections to the Motu Main Outs, neutral monitor trims, proper placement, and modest room treatment produce the most reliable mixes with HS7s.</p>
+      </div>
+    </article>
+    </section>
+  </div>
+</MainLayout>

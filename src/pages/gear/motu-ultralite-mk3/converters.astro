@@ -1,0 +1,22 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+import MotuSidebar from '../../../components/MotuSidebar.astro';
+
+const title = "Converters & Sample Rates — UltraLite-mk3";
+const description = "Converter and sample-rate capabilities.";
+---
+
+<MainLayout title={title} description={description}>
+  <div class="flex gap-8 items-start">
+    <div class="w-[250px] flex-shrink-0">
+    <MotuSidebar />
+    </div>
+    <article class="prose">
+      <h1>Converters & Sample Rates</h1>
+      <img src="http://cdn-data.motu.com/site/images/ultralite-mk3/os-support.jpg" alt="OS support" class="w-48" />
+      <p>The UltraLite‑mk3 has a 24‑bit signal path and supports professional sample rates; some I/O supports up to 192 kHz. Choose the sample rate in MOTU Audio Console to match your Ableton Live session for consistent recording/playback.</p>
+      <p>Note: higher sample rates increase CPU and disk usage; pick a rate that balances fidelity and system performance.</p>
+      <p><a href="/gear/motu-ultralite-mk3">Back to MOTU page</a></p>
+    </article>
+  </div>
+</MainLayout>

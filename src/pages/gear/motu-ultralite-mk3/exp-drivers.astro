@@ -1,0 +1,34 @@
+---
+import MainLayout from '../../../layouts/MainLayout.astro';
+import MotuSidebar from '../../../components/MotuSidebar.astro';
+
+// Define page title before usage for type safety and clarity
+const title = "Expansion & Drivers";
+---
+
+<MainLayout title={title}>
+  <div class="flex gap-8 items-start">
+    <div class="w-[250px] flex-shrink-0">
+      <MotuSidebar />
+    </div>
+    <article class="prose max-w-none">
+      <h1>{title}</h1>
+      <p>
+        Source:
+        <a href="https://motu.com/products/motuaudio/ultralite-mk3/exp-drivers.html" target="_blank" rel="noopener">
+          MOTU product page
+        </a>
+      </p>
+      <p>
+        MOTU provides drivers and firmware updates to ensure compatibility and performance across platforms.
+        Expansion options and driver support allow the UltraLite-mk3 to integrate into larger systems as needs grow.
+      </p>
+      <figure>
+        <img src="/assets/motu/ultralite-mk3/expansion-drivers.jpg" alt="Expansion and drivers" loading="lazy" />
+        <figcaption>
+          Expansion drivers
+        </figcaption>
+      </figure>
+    </article>
+  </div>
+</MainLayout>

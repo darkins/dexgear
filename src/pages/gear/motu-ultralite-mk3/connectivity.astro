@@ -1,0 +1,23 @@
+---
+import MainLayout from "../../../layouts/MainLayout.astro";
+import MotuSidebar from '../../../components/MotuSidebar.astro';
+
+const title = "Hybrid Connectivity — UltraLite-mk3";
+const description = "USB2 and FireWire connectivity details.";
+---
+
+<MainLayout title={title} description={description}>
+  <div class="flex gap-8 items-start">
+    <div class="w-[250px] flex-shrink-0">
+    <MotuSidebar />
+    </div>
+    <article class="prose">
+      <h1>Hybrid Connectivity (USB2 & FireWire)</h1>
+      <img src="http://cdn-data.motu.com/site/images/ultralite-mk3/hybrid-sm.png" alt="Hybrid logo" class="w-48" />
+      <p>The UltraLite‑mk3 supports both hi‑speed USB2 and FireWire A. FireWire enables bus‑powered operation; USB2 requires the included DC adapter if bus power is not available.</p>
+      <p>Pick FireWire when you need bus power or dedicated bandwidth. USB2 offers broad compatibility where FireWire hardware is not available.</p>
+      <p><a href="/gear/motu-ultralite-mk3">Back to MOTU page</a></p>
+    </article>
+    </div>
+  </div>
+</MainLayout>
