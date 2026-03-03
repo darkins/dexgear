@@ -4,7 +4,7 @@ This repository contains the source for the DexGear documentation site, built wi
 
 ## Quick start
 
-Install dependencies and run the dev server from the repository root: 12344
+Install dependencies and run the dev server from the repository root:
 
 ```bash
 npm install
