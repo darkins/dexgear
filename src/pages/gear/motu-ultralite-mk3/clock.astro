@@ -11,10 +11,26 @@ const title = "Clock and Sync";
     <article class="prose max-w-none">
       <h1>{title}</h1>
       <p>Source: <a href="https://motu.com/products/motuaudio/ultralite-mk3/clock.html" target="_blank" rel="noopener">MOTU product page</a></p>
-      <p>The UltraLite-mk3 offers robust clocking and sync options so it can run reliably as a master or sync to external devices. Stable clocking preserves audio quality and ensures tight timing across digital connections.</p>
+
+      <h2>Internal Clock (Master Mode)</h2>
+      <p>When the MOTU is the only digital audio device in the chain, set it to <strong>Internal</strong> clock. All converters run from the same internal reference oscillator, ensuring zero inter-channel jitter. This is the default and correct setting for a standalone studio setup.</p>
+
+      <h2>How Ableton Slaves to the MOTU Clock</h2>
+      <p>When using the MOTU ASIO driver in Ableton Live, Live locks its sample rate to the hardware clock. <strong>Do not set conflicting sample rates</strong> — if CueMix FX is at 44.1 kHz and Ableton is also set to 44.1 kHz, they run synchronously. Mismatched rates cause pitch shifting, dropouts, or error messages. Always set the sample rate once in CueMix FX and let Ableton follow.</p>
+
+      <h2>S/PDIF Clock Input</h2>
+      <p>If a future device (e.g. a hardware reverb unit, an ADAT expander, or an external converter) connects via S/PDIF, change the clock source in CueMix FX to <strong>S/PDIF</strong> to slave the MOTU to that device's clock. The external device becomes the master; the MOTU follows. Only one device in a digital chain can be the master — all others must slave to it.</p>
+
+      <h2>Clock Stability</h2>
+      <ul>
+        <li>Keep the sample rate constant for the duration of an entire session — switching sample rates mid-session causes brief glitches or dropouts on all hardware outputs.</li>
+        <li>If you must change sample rate (e.g. switching from 44.1 kHz production to 96 kHz high-resolution recording), stop playback, change in CueMix FX, re-open Ableton preferences to confirm the new rate, and restart playback.</li>
+        <li>A stable clock also benefits the Hydrasynth and P-225 — if they are sending MIDI-synced arpeggiators, consistent word clock prevents any MIDI timing drift that could occur with an unstable audio clock.</li>
+      </ul>
+
       <figure>
-        <img src="/assets/motu/ultralite-mk3/clock.jpg" alt="Clock and sync" />
-        <figcaption>Absolute asset path: C:\\www\\dexgear\\public\\assets\\motu\\ultralite-mk3\\clock.jpg</figcaption>
+        <img src="https://cdn-data.motu.com/site/images/ultralite-mk3/smpte.jpg" alt="MOTU SMPTE Console" />
+        <figcaption>Official MOTU-hosted SMPTE sync image.</figcaption>
       </figure>
     </article>
   </div>

@@ -2,11 +2,19 @@
 import MainLayout from '../../layouts/MainLayout.astro';
 ---
 
-<MainLayout title="Max for Live (M4L)">
-  <section class="max-w-3xl mx-auto py-12">
-    <h1 class="text-4xl font-extrabold mb-4">Max for Live (M4L)</h1>
-    <p class="text-lg mb-6">Resources and tips for using Max for Live devices.</p>
-    <article class="prose prose-invert">
+<MainLayout title="Max for Live (M4L)" description="Resources, links, and notes for using Max for Live devices inside Ableton workflows.">
+  <section class="content-intro">
+    <div>
+      <p class="eyebrow">Ableton Workflow</p>
+      <h1>Max for Live (M4L)</h1>
+      <p class="content-intro__lede">A compact launch point for devices, creators, and learning resources worth bookmarking.</p>
+    </div>
+    <div class="content-intro__actions">
+      <a href="https://www.ableton.com/en/packs/#?item_type=max_for_live" class="button-primary" target="_blank" rel="noopener">Ableton Device Packs</a>
+      <a href="/daw/shortcuts" class="button-secondary">Open Shortcuts</a>
+    </div>
+  </section>
+  <article class="prose prose-invert">
       <ul>
         <li>
           <a 
@@ -108,6 +116,25 @@ import MainLayout from '../../layouts/MainLayout.astro';
           </a>
         </li>
       </ul>
+
+      <h2 class="mt-8">Ableton Built-in M4L Utility Devices</h2>
+      <p>These devices ship with Ableton Live Suite and are worth keeping on quick-access in the Browser. Drag them from <em>Max for Live → Max MIDI Effect</em> or <em>Max Audio Effect</em>.</p>
+      <ul>
+        <li>
+          <strong>MIDI Monitor</strong> — displays incoming note, CC, pitch bend, and clock messages in real time. Essential for debugging what Hydrasynth, Launchkey, or Knobbler MIDI is actually sending before it hits an instrument.
+        </li>
+        <li>
+          <strong>MPE Control</strong> — translates MPE expression data (pressure, slide, glide) from the ROLI Seaboard M into per-note CCs that non-MPE instruments understand. Particularly useful when routing the Seaboard M into the Hydrasynth Explorer over MIDI.
+        </li>
+        <li>
+          <strong>Note Length</strong> — forces all notes to a fixed duration regardless of how long the key is held. Good for percussive sequence work on Push 1's step sequencer where tight gate times matter.
+        </li>
+        <li>
+          <strong>Expression Control</strong> — maps any modulation source (aftertouch, velocity, CC74) to any automatable Live parameter. Use it to route Polytouch pressure from the Hydrasynth to Reverb send amount without writing automation curves.
+        </li>
+        <li>
+          <strong>Envelope Follower</strong> — generates a control signal from audio amplitude. Sidechain from a drum bus to modulate Hydrasynth filter cutoff or VT-3 Mix knob for rhythmically pumping effects.
+        </li>
+      </ul>
     </article>
-  </section>
 </MainLayout>

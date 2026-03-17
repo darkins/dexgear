@@ -1,8 +1,9 @@
 ---
 import MainLayout from '../../../layouts/MainLayout.astro';
 import MotuSidebar from '../../../components/MotuSidebar.astro';
-const title = "Mixing and Effects";
+const title = 'Mixing and Effects';
 ---
+
 <MainLayout title={title}>
   <div class="flex gap-8 items-start">
     <div class="w-[250px] flex-shrink-0">
@@ -11,10 +12,30 @@ const title = "Mixing and Effects";
     <article class="prose max-w-none">
       <h1>{title}</h1>
       <p>Source: <a href="https://motu.com/products/motuaudio/ultralite-mk3/mixing.html" target="_blank" rel="noopener">MOTU product page</a></p>
-      <p>The integrated mixer provides channel-based routing, level control, and sends to onboard effects, allowing users to craft monitor mixes and manage signal flow without taxing the host CPU. Presets and recallable settings simplify common workflows.</p>
+
+      <h2>On-Board DSP Mixer</h2>
+      <p>The UltraLite-mk3's built-in DSP mixer operates at 32-bit floating-point precision entirely in hardware. Any input can be routed to any output at zero latency — the computer is completely bypassed in the signal path. This is the foundation of latency-free monitoring.</p>
+
+      <h2>Zero-Latency Monitor Mix</h2>
+      <p>When a vocalist is recording through the SM58, the standard DAW monitoring path (mic → MOTU → computer → DAW → MOTU → headphones) adds audible delay. The CueMix FX solution:</p>
+      <ol>
+        <li>In CueMix FX, create a direct send from Input 1 (SM58) to the Phones output bus — zero computer involvement.</li>
+        <li>In Ableton, set the vocal Audio Track's Monitor to <strong>Off</strong> (or <strong>Auto</strong> with recording enabled). This prevents the computer-processed signal from doubling with the hardware monitor signal.</li>
+        <li>The vocalist hears themselves with zero perceptible delay.</li>
+      </ol>
+
+      <h2>Separate Parallel Mixes</h2>
+      <ul>
+        <li><strong>Mix 1 (Main):</strong> flat, accurate monitoring signal to the HS7 studio monitors. Represents what's actually in the session without enhancement.</li>
+        <li><strong>Mix 2 (Phones/Cue):</strong> customized headphone mix for the vocalist — their own voice louder (+6 dB relative to backing track), with a touch of CueMix Classic Reverb for comfort and feel during recording.</li>
+      </ul>
+
+      <h2>Standalone Mixer Mode</h2>
+      <p>All CueMix FX mix settings are saved to the MOTU's internal flash memory. Disconnect the computer entirely — the UltraLite-mk3 operates as a standalone hardware mixer, retaining all your routing, levels, and effects settings. This is useful for live performance where a laptop isn't required.</p>
+
       <figure>
-        <img src="/assets/motu/ultralite-mk3/mixing.jpg" alt="Mixing and effects" />
-        <figcaption>Absolute asset path: C:\\www\\dexgear\\public\\assets\\motu\\ultralite-mk3\\mixing.jpg</figcaption>
+        <img src="/assets/motu/ultralite-mk3/mixing.jpg" alt="CueMix and mixing overview for the UltraLite-mk3" />
+        <figcaption>Mixing and effects section from the UltraLite-mk3 product materials.</figcaption>
       </figure>
     </article>
   </div>

@@ -1,0 +1,83 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Session Template" description="Recommended Ableton Live session template for this studio — track layout, return chains, and hardware assignments.">
+  <section class="content-intro">
+    <div>
+      <p class="eyebrow">Studio Workflow</p>
+      <h1>Session Template</h1>
+      <p class="content-intro__lede">A recommended Ableton Live session template tailored to this studio's hardware. Save it as a Default Set so every new project starts configured and ready.</p>
+    </div>
+    <div class="content-intro__actions">
+      <a href="/workflow/signal-chain" class="button-secondary">Signal Chain</a>
+    </div>
+  </section>
+
+  <article class="prose prose-invert">
+
+    <h2>MIDI Tracks</h2>
+    <table>
+      <thead>
+        <tr><th>Track name</th><th>MIDI From</th><th>MIDI To</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Hydra MIDI</td><td>Hydrasynth Explorer (USB)</td><td>No Output (or External Instrument → MOTU Out)</td><td>Capture Hydrasynth note data; External Instrument device routes audio back in on Inputs 3/4</td></tr>
+        <tr><td>Piano MIDI</td><td>P-225 (USB-B)</td><td>No Output (or soft synth)</td><td>Use P-225 as MIDI controller for NI Kontakt, Addictive Keys, etc.</td></tr>
+        <tr><td>Launchkey MIDI</td><td>Launchkey 37 Mk3 (USB)</td><td>All instruments via racks or routing</td><td>Scale Mode active; Chord Mode optional</td></tr>
+        <tr><td>Seaboard MPE</td><td>Seaboard M (USB)</td><td>MPE-enabled instrument rack</td><td>Enable MPE in track's MIDI input — use MPE Control M4L device for non-MPE targets</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Audio Tracks</h2>
+    <table>
+      <thead>
+        <tr><th>Track name</th><th>Audio From</th><th>Channel</th><th>Default device chain</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Vocal</td><td>Ext. In</td><td>1 (Mono)</td><td>EQ Eight → Compressor → De-esser; sends to Verb and Delay returns</td></tr>
+        <tr><td>VT-3 FX</td><td>Ext. In</td><td>2 (Mono)</td><td>EQ Eight; blend against clean Vocal track</td></tr>
+        <tr><td>Hydra Audio</td><td>Ext. In</td><td>3/4 (Stereo)</td><td>EQ Eight; send to Verb return</td></tr>
+        <tr><td>Piano Audio</td><td>Ext. In</td><td>5/6 (Stereo)</td><td>EQ Eight; optional light compression</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Return Tracks</h2>
+    <ul>
+      <li><strong>Return A — Reverb:</strong> Valhalla Supermassive (or Live's Reverb) — long, lush tail. All instruments send here; vocal send lower than synths.</li>
+      <li><strong>Return B — Delay:</strong> Ping Pong Delay — tempo-synced 1/8 or 1/4 note. Vocal send for slapback; Hydrasynth send for spacious pads.</li>
+      <li><strong>Return C — Vinyl Sim:</strong> Vinyl Distortion M4L or Redux — optional lo-fi bus. Send Hydrasynth or Piano for degraded texture layers.</li>
+    </ul>
+
+    <h2>Master Track</h2>
+    <ul>
+      <li><strong>Glue Compressor:</strong> subtle bus glue — ratio 2:1, attack 30 ms, release auto, threshold just catching peaks, 1–2 dB GR.</li>
+      <li><strong>EQ Eight:</strong> high-pass at 30 Hz to cut sub rumble; gentle shelf adjustments only for reference checking.</li>
+      <li><strong>Loudness Meter M4L (optional):</strong> monitor LUFS-I during mixdown; target −14 LUFS-I for streaming delivery.</li>
+    </ul>
+
+    <h2>Push 1 Setup</h2>
+    <ul>
+      <li>Push 1 automatically reflects whichever track is selected in Live.</li>
+      <li>Pre-assign Macro 1–4 on key Instrument Racks to the most-used sound-shaping parameters (e.g., Filter Cutoff, Resonance, Reverb Send, Envelope Release).</li>
+      <li>Save clip names in the Session View grid before performance: rows A–C = intro / verse / chorus variations per instrument column.</li>
+      <li>Set Push metronome and tempo in the template to your usual working BPM (e.g., 120 BPM).</li>
+    </ul>
+
+    <h2>Knobbler Assignment</h2>
+    <ul>
+      <li>Knobs 1–4 → Hydrasynth Macro 1–4 (via MIDI Map Mode in Ableton: assign to External Instrument device macro parameters).</li>
+      <li>Knobs 5–6 → Reverb Return send level (Vocal / Hydra).</li>
+      <li>Knobs 7–8 → Master EQ treble and bass shelves for quick reference adjustment.</li>
+    </ul>
+
+    <h2>Saving as Default Set</h2>
+    <ol>
+      <li>Build and confirm the template loads without errors (all inputs present, no missing devices).</li>
+      <li>In Ableton: <em>File → Save Live Set As Template</em>.</li>
+      <li>Name it <em>Studio Template — [date]</em> and save to your User Library Templates folder.</li>
+      <li>Go to <em>Preferences → File/Folder → Save Current Set as Default</em> so every File → New uses this layout.</li>
+    </ol>
+
+  </article>
+</MainLayout>

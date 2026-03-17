@@ -13,10 +13,33 @@ const description = "Converter and sample-rate capabilities.";
     </div>
     <article class="prose">
       <h1>Converters & Sample Rates</h1>
-      <img src="http://cdn-data.motu.com/site/images/ultralite-mk3/os-support.jpg" alt="OS support" class="w-48" />
-      <p>The UltraLite‑mk3 has a 24‑bit signal path and supports professional sample rates; some I/O supports up to 192 kHz. Choose the sample rate in MOTU Audio Console to match your Ableton Live session for consistent recording/playback.</p>
-      <p>Note: higher sample rates increase CPU and disk usage; pick a rate that balances fidelity and system performance.</p>
-      <p><a href="/gear/motu-ultralite-mk3">Back to MOTU page</a></p>
+
+      <h2>Specifications</h2>
+      <ul>
+        <li><strong>Bit depth:</strong> 24-bit ADC and DAC on all analog inputs and outputs.</li>
+        <li><strong>Sample rates:</strong> 44.1, 48, 88.2, 96, 176.4, and 192 kHz. Note: at 176.4/192 kHz, available I/O count is reduced.</li>
+        <li><strong>Dynamic range (EIN):</strong> approximately 116 dB — well above the threshold of audibility for any noise floor concern in a home studio environment.</li>
+      </ul>
+
+      <h2>Practical Sample Rate Guide</h2>
+      <table>
+        <thead><tr><th>Sample Rate</th><th>Use Case</th><th>File Size Impact</th></tr></thead>
+        <tbody>
+          <tr><td>44.1 kHz</td><td>Standard music production (CD quality)</td><td>Baseline</td></tr>
+          <tr><td>48 kHz</td><td>Video/post-production standard</td><td>+9% vs 44.1</td></tr>
+          <tr><td>96 kHz</td><td>High-resolution recording (recommended for Hydrasynth wavetable content)</td><td>2× baseline</td></tr>
+          <tr><td>192 kHz</td><td>Mastering and archival; reduced I/O count</td><td>4× baseline</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Why 24-bit Matters for This Gear</h2>
+      <ul>
+        <li><strong>Hydrasynth Explorer:</strong> recording at 24-bit/96 kHz captures the full harmonic resolution of wavetable morphing. The WAVELIST morph positions between waveforms produce subtle transient details that 16-bit would quantise away. At 96 kHz, upper harmonic content above 20 kHz (present in complex waveforms) is preserved during the recording and only filtered at the output stage.</li>
+        <li><strong>Yamaha P-225:</strong> the GHC keybed produces genuine dynamic range across piano octaves. 24-bit provides 144 dB theoretical dynamic range — enough headroom to capture both the quietest pianissimo and the loudest fortissimo without compression or gain rides.</li>
+        <li><strong>Shure SM58:</strong> dynamic mics produce a lower signal level. Recording at 24-bit means you can use more preamp gain without noise becoming audible — benefiting from the MOTU preamp's ~116 dB dynamic range directly.</li>
+      </ul>
+
+      <img src="https://cdn-data.motu.com/site/images/ultralite-mk3/os-support.jpg" alt="OS support" class="w-48" />
     </article>
   </div>
 </MainLayout>

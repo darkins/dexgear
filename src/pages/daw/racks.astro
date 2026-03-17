@@ -2,12 +2,58 @@
 import MainLayout from '../../layouts/MainLayout.astro';
 ---
 
-<MainLayout title="Racks">
-  <section class="max-w-3xl mx-auto py-12">
-    <h1 class="text-4xl font-extrabold mb-4">Racks</h1>
-    <p class="text-lg mb-6">Templates, instrument racks, and workflow approaches.</p>
-    <article class="prose prose-invert">
-      <p>Placeholder content for Racks.</p>
-    </article>
+<MainLayout title="Racks" description="Templates, instrument racks, and workflow approaches for organized Ableton sessions.">
+  <section class="content-intro">
+    <div>
+      <p class="eyebrow">Ableton Workflow</p>
+      <h1>Racks</h1>
+      <p class="content-intro__lede">Templates, instrument racks, and workflow structures for faster session startup and cleaner sound design recall.</p>
+    </div>
+    <div class="content-intro__actions">
+      <a href="/daw/m4l" class="button-secondary">Browse M4L Resources</a>
+    </div>
   </section>
+  <article class="prose prose-invert">
+
+    <h2 id="instrument-racks">Instrument Racks</h2>
+    <p>An Instrument Rack holds one or more instrument chains in parallel or serial, giving each chain its own MIDI/Note filter and volume. Use Instrument Racks to:</p>
+    <ul>
+      <li><strong>Layer patches:</strong> stack the Hydrasynth Explorer (via External Instrument) alongside a soft synth (e.g., Analog or Operator). The MIDI goes to both; blend with chain volumes.</li>
+      <li><strong>Split the keyboard:</strong> set separate Key Zone ranges on each chain — bass drone on the lower octaves, melodic patch on top.</li>
+      <li><strong>Velocity split:</strong> soft notes trigger a pad texture; hard hits trigger a pluck — without any additional tracks.</li>
+      <li><strong>Macro Knobs:</strong> expose up to 8 Macros to control parameters across multiple chains from a single Macro control. Map these to Knobbler knobs for hands-on control.</li>
+    </ul>
+
+    <h2 id="effect-racks">Effect Racks</h2>
+    <p>An Audio Effect Rack chains effects in serial or parallel within a single device slot. Key uses:</p>
+    <ul>
+      <li><strong>Parallel processing:</strong> dry signal runs through Chain 1 unaffected, wet signal takes a different effect chain (e.g., bitcrusher into reverb). Blend with chain volumes and the Dry/Wet macro.</li>
+      <li><strong>Mid/Side processing:</strong> use the chain filter's note zones with an M/S matrix to apply separate EQ to mid and side signals on a master bus.</li>
+      <li><strong>Macro automation:</strong> map reverb size, delay feedback, and filter cutoff across chains to a single Macro for one-knob transitional sweeps.</li>
+      <li><strong>Grouping effects for recall:</strong> save a rack preset of your finished vocal chain (EQ → Compressor → De-esser → Reverb send) so it can be dragged onto any vocal track in future sessions.</li>
+    </ul>
+
+    <h2 id="drum-racks">Drum Racks</h2>
+    <p>A Drum Rack maps sounds to individual MIDI pads (C1–B5 by default), each with its own chain containing a sampler and any effects. The Push 1 pad grid maps directly to the Drum Rack's 16-pad "hot view".</p>
+    <ul>
+      <li><strong>Per-pad effects:</strong> each pad has its own insert chain — apply transient shaping only to the snare, reverb only to the hi-hat, etc., without affecting other pads.</li>
+      <li><strong>Send chains:</strong> Drum Racks have separate Return chains for shared reverb or sidechain compression across all pads simultaneously.</li>
+      <li><strong>Choke groups:</strong> assign open and closed hi-hats to the same choke group so the closed hat cuts the open hat, just like a real cymbal.</li>
+      <li><strong>Slicing breaks:</strong> drag an audio loop into a Drum Rack to auto-slice it to pads — each slice triggered individually from Push 1 or Launchkey.</li>
+    </ul>
+
+    <h2 id="rack-chain-selector">Rack Chain Selector &amp; Automation</h2>
+    <p>The Chain List selector lets you automate which chain plays at any point in Arrangement view — useful for live instrument "switching" without duplicating tracks. Map the Chain Selector to a Macro; automate that Macro to crossfade between acoustic-style and distorted synth layers over a song section.</p>
+
+    <h2 id="nesting-racks">Nesting Racks</h2>
+    <p>Racks can be nested — an Instrument Rack can contain chains that themselves contain Effect Racks. Keep nesting to two levels for clarity. Typical pattern: Instrument Rack (keyboard split) → per-chain Effect Rack (per-split processing) → top-level Macros controlling the most important parameter across both.</p>
+
+    <h2 id="saving-racks">Saving Rack Presets</h2>
+    <ul>
+      <li>Save a finished Rack to the User Library with <kbd>Ctrl+Shift+S</kbd> (or drag to the Browser) — it appears under User Library → Instruments or User Library → Effects.</li>
+      <li>Name presets descriptively: <em>Hydrasynth Pad Layer — Macros EQ+Filter</em> is more useful than <em>Untitled Rack</em>.</li>
+      <li>Use the Save icon inside the device title bar to embed any referenced samples into the preset for portability.</li>
+    </ul>
+
+  </article>
 </MainLayout>

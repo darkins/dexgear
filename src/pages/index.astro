@@ -2,15 +2,88 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
 const gearList = await getCollection('gear');
+const vendorLabels: Record<string, string> = {
+  'ableton': 'DAW',
+  'motu-ultralite-mk3': 'Interface',
+  'knobbler': 'Controller',
+  'hydrasynth': 'Synth',
+  'push': 'Performance',
+  'block-m': 'Modular',
+  'launch-control-xl': 'Mixer',
+};
 ---
 
-<MainLayout title="Home">
-  <section class="text-center py-16">
-    <h1 class="text-5xl font-extrabold mb-4 tracking-tight">Welcome to Dex-Gear</h1>
-    <p class="text-xl max-w-2xl mx-auto mb-8">Explore guides, tips, and resources for my music gear.</p>
-    <div class="flex flex-wrap justify-center gap-6 mt-8">
+<MainLayout title="Home" description="Dex-Gear is a curated library of practical notes for hardware, controllers, DAW workflows, and hybrid studio setups.">
+  <section class="hero-surface">
+    <div class="hero-copy">
+      <p class="eyebrow">Studio Operating System</p>
+      <h1>Sharper routing, faster recall, better sessions.</h1>
+      <p>Dex-Gear turns scattered product notes into a focused reference library for audio interfaces, controllers, synths, and Ableton workflows.</p>
+      <div class="hero-actions">
+        <a href="#gear-library" class="button-primary">Browse the Library</a>
+        <a href="/gear/motu-ultralite-mk3" class="button-secondary">Open MOTU Guide</a>
+      </div>
+      <div class="hero-stats" aria-label="Site summary">
+        <div class="hero-stat">
+          <strong>{gearList.length}+</strong>
+          <span>gear references</span>
+        </div>
+        <div class="hero-stat">
+          <strong>3 lanes</strong>
+          <span>hardware, DAW, workflow</span>
+        </div>
+        <div class="hero-stat">
+          <strong>Zero fluff</strong>
+          <span>practical setup notes only</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-panel">
+      <div class="signal-card">
+        <div>
+          <span class="signal-chip">Featured Stack</span>
+          <h2>MOTU, Ableton, performance control, and hybrid routing.</h2>
+          <p>The site now leans into a cleaner editorial dashboard feel: crisp surfaces, glass panels, and your violet-teal-lime palette used with restraint instead of a full neon wash.</p>
+        </div>
+        <div class="signal-points" aria-label="Key themes">
+          <span>Low-latency monitoring</span>
+          <span>CueMix and routing</span>
+          <span>Controller workflows</span>
+        </div>
+        <div class="feature-strip">
+          <div>
+            <strong>Dex</strong>
+            <span>Focused notes for repeatable setups</span>
+          </div>
+          <div>
+            <strong>Gear</strong>
+            <span>Hardware context without hunting manuals</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-card" id="gear-library">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Library</p>
+        <h2>Reference pages by device and workflow</h2>
+      </div>
+      <p>Each entry opens into the redesigned reading shell, with clearer hierarchy for long-form notes, specs, and setup steps.</p>
+    </div>
+
+    <div class="gear-grid">
       {gearList.map(gear => (
-        <a href={`/gear/${gear.slug}`} class="px-6 py-3 rounded-lg bg-fuchsia-700 hover:bg-fuchsia-500 transition-colors font-bold shadow-lg">{gear.data.title}</a>
+        <a href={`/gear/${gear.slug}`} class="gear-card">
+          <div>
+            <span class="gear-card__kicker">{vendorLabels[gear.slug] ?? 'Guide'}</span>
+            <h3>{gear.data.title}</h3>
+            <p>{gear.data.description}</p>
+          </div>
+          <span class="gear-card__cta">Open notes</span>
+        </a>
       ))}
     </div>
   </section>

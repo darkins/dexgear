@@ -12,10 +12,32 @@ const description = "Direct monitoring and buffer settings.";
         <MotuSidebar />
       </div>
       <article class="prose max-w-none">
-      <h1>Low‑latency Monitoring & Samples Per Buffer</h1>
-      <p><img src="http://cdn-data.motu.com/site/images/ultralite-mk3/hybrid-sm.png" alt="Hybrid" class="w-36 inline-block mr-4" />Direct monitoring via CueMix FX provides near‑zero latency. For Ableton Live monitoring, reduce the Samples Per Buffer setting in the MOTU driver or Live’s audio preferences to reduce monitoring latency.</p>
-      <p>Smaller buffer sizes lower latency but increase CPU load; test settings to find a stable balance for live tracking.</p>
-      <p><a href="/gear/motu-ultralite-mk3">Back to MOTU page</a></p>
+      <h1>Monitoring &amp; Headphones</h1>
+
+      <h2>Main Output → HS7 Monitors</h2>
+      <p>Assign <strong>CueMix FX Mix 1</strong> to the Main Outputs (channels 1/2) and connect those to the Yamaha HS7 monitors with balanced TRS cables. The Mix 1 main output represents the studio reference monitoring environment — keep it flat and accurate.</p>
+
+      <h2>Headphone Monitoring</h2>
+      <p>The front-panel headphone output has its own dedicated volume knob, independent from the main output level. Assign a separate CueMix FX mix bus (e.g. Mix 2) to the headphone output for a completely different balance than what the monitors hear.</p>
+
+      <h2>Zero-Latency Vocal Monitoring Chain</h2>
+      <p>This is the optimal recording chain for tracking vocals through the SM58:</p>
+      <ol>
+        <li>SM58 → MOTU input 1 (XLR, mic preamp, +48V OFF).</li>
+        <li>In CueMix FX, create a direct send from Input 1 → Mix 2 (headphone bus). No computer involved in this path.</li>
+        <li>Add Classic Reverb send in Mix 2 for vocal comfort monitoring (keep the reverb only in the headphone mix, not Mix 1).</li>
+        <li>In Ableton, set the vocal Audio Track Monitor to <strong>Off</strong> (prevents software-path doubling with the CueMix direct monitor).</li>
+        <li>Vocalist hears their own voice with zero added latency through headphones connected to the front-panel PHONES jack.</li>
+      </ol>
+
+      <h2>Multiple Cue Mix Management</h2>
+      <ul>
+        <li><strong>Mix 1 (Main/Studio monitors):</strong> flat, accurate, everything at session balance. What goes to the HS7s.</li>
+        <li><strong>Mix 2 (Headphone cue):</strong> vocalist's headphone mix. SM58 input +6 dB relative to the backing track, reverb send active, everything else at normal level.</li>
+      </ul>
+      <p>Both mixes can be configured and saved simultaneously in CueMix FX — no need to reconfigure when switching between studio listening and recorded tracking.</p>
+
+      <img src="https://cdn-data.motu.com/site/images/ultralite-mk3/hybrid-sm.png" alt="Hybrid" class="w-36 inline-block mr-4" />
     </article>
   </div>
 </MainLayout>

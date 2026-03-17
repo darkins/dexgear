@@ -13,10 +13,26 @@ const description = "On-board DSP mixer and effects (CueMix FX).";
       </div>
       <article class="prose max-w-none">
       <h1>CueMix FX</h1>
-      <img src="http://cdn-data.motu.com/site/images/ultralite-mk3/web1-5/ultralite-mk3-large-front.jpg" alt="UltraLite-mk3 front" class="w-full rounded" />
-      <p>All UltraLite-mk3 inputs and outputs can be routed to the on-board CueMix FX 16-bus (8 stereo) digital mixer driven by hardware DSP with 32‑bit floating point precision. CueMix FX provides no‑latency monitoring, Classic Reverb™, modeled analog EQ, and compression (including the Leveler™).</p>
-      <p>Configure CueMix FX from the MOTU Audio Console or the front-panel CUEMIX mode. The software includes graphic mixing, parametric‑EQ editing, and a DSP meter to manage processing resources.</p>
-      <p><a href="/gear/motu-ultralite-mk3">Back to MOTU page</a></p>
+
+      <h2>Quick Start: From Power-On to a Working Monitor Mix</h2>
+      <ol>
+        <li><strong>Power on the MOTU</strong> and connect USB or FireWire to the computer.</li>
+        <li><strong>Open CueMix FX</strong> — the interface should appear on the left pane of the mixer.</li>
+        <li><strong>Enable inputs and outputs:</strong> in the CueMix FX Device settings, ensure Input 1 (mic) and Outputs 1/2 (main) are enabled. Check that the sample rate matches your intended session (44.1 kHz for standard work).</li>
+        <li><strong>Set input gain:</strong> on the front panel or CueMix input strip, adjust Input 1 gain so the SM58 peaks in the upper yellow zone of the level meter without clipping.</li>
+        <li><strong>Route input to output:</strong> in the Mix 1 tab, locate the Input 1 channel strip and raise the send level fader. Confirm you can hear signal through the HS7 monitors connected to Main Outputs 1/2.</li>
+      </ol>
+
+      <h2>Vocal Recording Setup</h2>
+      <p>After the quick start above, create a separate headphone cue mix for the vocalist:</p>
+      <ol>
+        <li>Click the <strong>Mix 2</strong> tab to switch to the second mix bus (assigned to the headphone output).</li>
+        <li>Raise the Input 1 (SM58) fader in Mix 2 to a higher level than the backing track sources — approximately +6 dB above the music. The vocalist needs to clearly hear themselves without fighting the music level.</li>
+        <li>Add a reverb send: click the Reverb Send knob on the Input 1 strip in Mix 2 and raise it slightly. This adds a touch of comfort reverb to the headphone mix only.</li>
+        <li>Leave Mix 1 (the studio monitor mix) with a flat, unprocessed signal for accurate monitoring during production.</li>
+      </ol>
+
+      <img src="https://cdn-data.motu.com/site/images/ultralite-mk3/web1-5/ultralite-mk3-large-front.jpg" alt="UltraLite-mk3 front" class="w-full rounded" />
     </article>
   </div>
 </MainLayout>

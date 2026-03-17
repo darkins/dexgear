@@ -13,10 +13,34 @@ const description = "Analog and digital I/O overview.";
       </div>
       <article class="prose max-w-none">
       <h1>Analog I/O & S/PDIF</h1>
-      <img src="http://cdn-data.motu.com/site/images/ultralite-mk3/web1-5/ultralite-mk3-large-front.jpg" alt="UltraLite-mk3 front" class="w-full rounded" />
-      <p>The UltraLite‑mk3 offers 6 balanced quarter‑inch analog inputs and 10 balanced quarter‑inch outputs, plus two combo XLR/TRS mic‑pre inputs on the front panel. RCA S/PDIF in/out provides stereo digital I/O.</p>
-      <p>Use front-panel trims and the 20 dB pad on mic inputs for correct gain staging. Rear TRS inputs accept +4 dBu line sources when needed.</p>
-      <p><a href="/gear/motu-ultralite-mk3">Back to MOTU page</a></p>
+
+      <h2>Complete I/O Map</h2>
+      <table>
+        <thead><tr><th>Channel</th><th>Type</th><th>Connector</th><th>Location</th></tr></thead>
+        <tbody>
+          <tr><td>In 1–2</td><td>Mic/Instrument</td><td>XLR/TRS combo</td><td>Front panel</td></tr>
+          <tr><td>In 3–8</td><td>Line-level balanced</td><td>TRS ¼”</td><td>Rear panel</td></tr>
+          <tr><td>Out 1–8</td><td>Line-level balanced</td><td>TRS ¼”</td><td>Rear panel</td></tr>
+          <tr><td>Main Out L/R</td><td>Main stereo output</td><td>TRS ¼”</td><td>Rear panel</td></tr>
+          <tr><td>Phones</td><td>Headphone stereo output</td><td>TRS ¼”</td><td>Front panel</td></tr>
+          <tr><td>S/PDIF In</td><td>Stereo digital input</td><td>RCA</td><td>Rear panel</td></tr>
+          <tr><td>S/PDIF Out</td><td>Stereo digital output</td><td>RCA</td><td>Rear panel</td></tr>
+          <tr><td>MIDI In</td><td>MIDI receive</td><td>5-pin DIN</td><td>Rear panel</td></tr>
+          <tr><td>MIDI Out</td><td>MIDI transmit</td><td>5-pin DIN</td><td>Rear panel</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Output Assignments in This Studio</h2>
+      <ul>
+        <li><strong>Main Out L/R → Yamaha HS7:</strong> balanced TRS cables from MOTU Main Outputs to HS7 L/R inputs. Use TRS-to-TRS if both connectors are TRS; TRS-to-XLR if the HS7 uses XLR inputs.</li>
+        <li><strong>Phones → Headphones:</strong> connect studio or tracking headphones to the front-panel PHONES jack for cue monitoring during recording.</li>
+        <li><strong>S/PDIF:</strong> currently reserved for future expansion (e.g., a hardware reverb unit, ADAT expander, or outboard S/PDIF converter).</li>
+      </ul>
+
+      <h2>Balanced vs Unbalanced Connections</h2>
+      <p>Always use balanced TRS cables between the MOTU and HS7 monitors. Balanced connections cancel out electromagnetic interference (hum from power supplies, USB cables) because both signal wires carry identical signals — one inverted. At the receiving end, the inverting leg is flipped back and the noise cancels. This is especially important in a studio with multiple USB devices and switching power supplies nearby.</p>
+
+      <img src="https://cdn-data.motu.com/site/images/ultralite-mk3/web1-5/ultralite-mk3-large-front.jpg" alt="UltraLite-mk3 front" class="w-full rounded" />
     </article>
   </div>
 </MainLayout>

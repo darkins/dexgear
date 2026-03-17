@@ -1,8 +1,9 @@
 ---
 import MainLayout from '../../../layouts/MainLayout.astro';
 import MotuSidebar from '../../../components/MotuSidebar.astro';
-const title = "Mic/Guitar Inputs";
+const title = 'Mic/Guitar Inputs';
 ---
+
 <MainLayout title={title}>
   <div class="flex gap-8 items-start">
     <div class="w-[250px] flex-shrink-0">
@@ -11,10 +12,32 @@ const title = "Mic/Guitar Inputs";
     <article class="prose max-w-none">
       <h1>{title}</h1>
       <p>Source: <a href="https://motu.com/products/motuaudio/ultralite-mk3/inputs.html" target="_blank" rel="noopener">MOTU product page</a></p>
-      <p>The interface provides clean preamps and instrument-level inputs designed to capture vocals, guitars, and other sources with low noise and wide dynamic range. Input routing and monitoring are handled in the onboard mixer for zero-latency monitoring when needed.</p>
+
+      <h2>Input Channels at a Glance</h2>
+      <ul>
+        <li><strong>Channels 1–2 (front panel):</strong> XLR/TRS combo jacks with mic preamps. Support +48V phantom power independently per channel. Include a 20 dB pad switch for high-level sources.</li>
+        <li><strong>Channels 3–8 (rear panel):</strong> balanced TRS line-level inputs. Accept +4 dBu professional line sources. Trim controlled from the front-panel LCD or CueMix FX software.</li>
+      </ul>
+
+      <h2>Gain Staging for This Gear Stack</h2>
+      <table>
+        <thead><tr><th>Source</th><th>Connection</th><th>Starting Gain</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Shure SM58</td><td>XLR → Input 1</td><td>~55–65%</td><td>Dynamic mic — no phantom needed, ensure +48V is OFF</td></tr>
+          <tr><td>Roland VT-3</td><td>Stereo TRS → Inputs 3/4</td><td>12 o'clock</td><td>Line level output from VT-3; set gain conservatively</td></tr>
+          <tr><td>Hydrasynth Explorer</td><td>Stereo TRS → Inputs 5/6</td><td>12 o'clock</td><td>Balanced line out; watch for peaks on loud patches</td></tr>
+          <tr><td>Yamaha P-225 (audio)</td><td>TRS → Inputs 7/8</td><td>12 o'clock</td><td>Only needed if recording P-225 audio direct vs USB MIDI</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Reading the Input Meters</h2>
+      <p>Monitor all input levels inside CueMix FX. The goal is to keep signal peaks in the <strong>upper yellow zone</strong> (approximately −6 to −3 dBFS). Never allow the signal to clip into red — digital clipping is immediate and harsh. If peaks hit red, reduce the input trim by 2–3 dB and re-check.</p>
+
+      <p>The SM58, being a dynamic microphone with a low output level, often requires more preamp gain than expected. A gain setting that appears high on the knob is normal — the mic simply outputs less voltage than a condenser or line-level source.</p>
+
       <figure>
-        <img src="/assets/motu/ultralite-mk3/inputs.jpg" alt="Mic and guitar inputs" />
-        <figcaption>Absolute asset path: C:\\www\\dexgear\\public\\assets\\motu\\ultralite-mk3\\inputs.jpg</figcaption>
+        <img src="/assets/motu/ultralite-mk3/inputs.jpg" alt="Mic and guitar inputs on the UltraLite-mk3" />
+        <figcaption>Front-panel input section from the UltraLite-mk3 product materials.</figcaption>
       </figure>
     </article>
   </div>

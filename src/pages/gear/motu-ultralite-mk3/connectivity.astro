@@ -13,10 +13,36 @@ const description = "USB2 and FireWire connectivity details.";
     </div>
     <article class="prose">
       <h1>Hybrid Connectivity (USB2 & FireWire)</h1>
-      <img src="http://cdn-data.motu.com/site/images/ultralite-mk3/hybrid-sm.png" alt="Hybrid logo" class="w-48" />
-      <p>The UltraLite‑mk3 supports both hi‑speed USB2 and FireWire A. FireWire enables bus‑powered operation; USB2 requires the included DC adapter if bus power is not available.</p>
-      <p>Pick FireWire when you need bus power or dedicated bandwidth. USB2 offers broad compatibility where FireWire hardware is not available.</p>
-      <p><a href="/gear/motu-ultralite-mk3">Back to MOTU page</a></p>
+
+      <h2>USB2 on Windows — Setup Steps</h2>
+      <ol>
+        <li>Connect the UltraLite-mk3 to a <strong>rear motherboard USB port directly</strong>. Avoid USB hubs, front-panel USB headers, or unpowered USB splitters — these do not provide reliable bandwidth for audio.</li>
+        <li>Download and install the latest MOTU Windows ASIO driver from <a href="https://motu.com/en-us/download/" target="_blank" rel="noopener">motu.com/download</a>. Select the UltraLite-mk3 product.</li>
+        <li>Reboot after installation.</li>
+        <li>Open CueMix FX — the interface should appear connected. Set sample rate and clock source.</li>
+      </ol>
+
+      <h2>Configuring Ableton Live ASIO Driver</h2>
+      <ol>
+        <li>Open Ableton Live → Preferences (Ctrl + ,) → <strong>Audio</strong> tab.</li>
+        <li>Set <strong>Driver Type</strong> to <strong>ASIO</strong>.</li>
+        <li>Set <strong>Audio Device</strong> to <strong>MOTU UltraLite-mk3</strong> (or MOTU FireWire/USB Audio if shown).</li>
+        <li>Click <strong>Hardware Setup</strong> to open CueMix FX and confirm inputs/outputs are enabled.</li>
+      </ol>
+
+      <h2>Recommended Buffer Sizes</h2>
+      <table>
+        <thead><tr><th>Use Case</th><th>Buffer Size</th><th>Approximate Latency @ 44.1 kHz</th></tr></thead>
+        <tbody>
+          <tr><td>Live performance / tracking</td><td>64 samples</td><td>~1.5 ms round-trip</td></tr>
+          <tr><td>Recording with monitoring</td><td>128 samples</td><td>~3 ms round-trip</td></tr>
+          <tr><td>Production / mixing</td><td>256 samples</td><td>~5.8 ms round-trip (comfortable)</td></tr>
+          <tr><td>Mixing + heavy plugins</td><td>512 samples</td><td>~11.6 ms (safe for non-live use)</td></tr>
+        </tbody>
+      </table>
+      <p>Use 128–256 samples for most Ableton production sessions. Drop to 64 for live performance when playing along with hardware and needing the tightest possible response from the MOTU ASIO driver.</p>
+
+      <img src="https://cdn-data.motu.com/site/images/ultralite-mk3/hybrid-sm.png" alt="Hybrid logo" class="w-48" />
     </article>
     </div>
   </div>

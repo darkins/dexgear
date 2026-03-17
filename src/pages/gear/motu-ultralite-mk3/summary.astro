@@ -11,10 +11,40 @@ const title = "Feature Summary";
     <article class="prose max-w-none">
       <h1>{title}</h1>
       <p>Source: <a href="https://motu.com/products/motuaudio/ultralite-mk3/summary.html" target="_blank" rel="noopener">MOTU product page</a></p>
-      <p>Key features include portable, bus-powered operation, high-quality preamps, flexible I/O and routing, onboard DSP effects, and software control via CueMix FX — designed to serve both mobile and studio workflows.</p>
+
+      <h2>Technical Specifications</h2>
+      <table>
+        <thead><tr><th>Feature</th><th>Specification</th></tr></thead>
+        <tbody>
+          <tr><td>Analog Inputs</td><td>10 (2 mic/inst combo XLR/TRS front + 8 balanced TRS rear)</td></tr>
+          <tr><td>Analog Outputs</td><td>14 (10 line + 2 main + 2 phones)</td></tr>
+          <tr><td>Digital I/O</td><td>S/PDIF stereo in/out (RCA)</td></tr>
+          <tr><td>MIDI</td><td>1× 5-pin DIN In, 1× 5-pin DIN Out</td></tr>
+          <tr><td>Sample Rates</td><td>44.1, 48, 88.2, 96, 176.4, 192 kHz</td></tr>
+          <tr><td>Bit Depth</td><td>24-bit</td></tr>
+          <tr><td>Dynamic Range (EIN)</td><td>~116 dB (mic preamps)</td></tr>
+          <tr><td>Computer Connection</td><td>FireWire 400/800, hi-speed USB2</td></tr>
+          <tr><td>Bus Power</td><td>FireWire only (USB2 requires included DC supply)</td></tr>
+          <tr><td>On-board Effects</td><td>Classic Reverb™, 7-band Modeled EQ, LA-2A Leveler™, Conventional Compressor</td></tr>
+          <tr><td>DSP Mixer</td><td>16-bus (8 stereo), 32-bit float precision</td></tr>
+          <tr><td>Standalone Operation</td><td>Yes — mix settings stored in flash memory</td></tr>
+          <tr><td>Control Software</td><td>CueMix FX (Win/Mac), AudioDesk (Mac only)</td></tr>
+          <tr><td>Form Factor</td><td>Half-rack, 1U rack mount possible with optional bracket</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Role in This Studio</h2>
+      <ul>
+        <li>Central audio hub: SM58 (input 1), VT-3 (inputs 3/4), Hydrasynth (inputs 5/6)</li>
+        <li>Main output to Yamaha HS7 studio monitors (channels 1/2)</li>
+        <li>Headphone monitoring for tracking (front-panel phones output)</li>
+        <li>MIDI router: receives 5-pin DIN from controllers; sends to Hydrasynth</li>
+        <li>Latency-free monitoring via CueMix FX DSP mixer — no computer processing in the monitoring path</li>
+      </ul>
+
       <figure>
-        <img src="/assets/motu/ultralite-mk3/summary.jpg" alt="Feature summary" />
-        <figcaption>Absolute asset path: C:\\www\\dexgear\\public\\assets\\motu\\ultralite-mk3\\summary.jpg</figcaption>
+        <img src="https://cdn-data.motu.com/site/images/ultralite-mk3/web1-5/ultralite-mk3-large-front.jpg" alt="UltraLite-mk3 front view" />
+        <figcaption>UltraLite-mk3 front panel.</figcaption>
       </figure>
     </article>
   </div>

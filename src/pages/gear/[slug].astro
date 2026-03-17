@@ -19,13 +19,19 @@ const rendered = typeof gear.render === 'function' ? await gear.render() : null;
 const Content = rendered?.Content;
 ---
 
-<MainLayout title={gear.data.title}>
-  <section class="max-w-2xl mx-auto py-12">
-    <h1 class="text-4xl font-extrabold mb-4">{gear.data.title}</h1>
-    <p class="mb-4 text-lg">{gear.data.description}</p>
-    {gear.data.url && <a href={gear.data.url} class="text-fuchsia-400 underline hover:text-fuchsia-200" target="_blank" rel="noopener">Official Site</a>}
-    <article class="prose prose-invert mt-8">
+<MainLayout title={gear.data.title} description={gear.data.description}>
+  <section class="content-intro">
+    <div>
+      <p class="eyebrow">Gear Profile</p>
+      <h1>{gear.data.title}</h1>
+      <p class="content-intro__lede">{gear.data.description}</p>
+    </div>
+    <div class="content-intro__actions">
+      {gear.data.url && <a href={gear.data.url} class="button-primary" target="_blank" rel="noopener">Official Site</a>}
+      <a href="/" class="button-secondary">Back to Library</a>
+    </div>
+  </section>
+  <article class="prose mt-8">
       {Content ? <Content /> : <div set:html={gear.body} />}
     </article>
-  </section>
 </MainLayout>

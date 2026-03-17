@@ -3,50 +3,48 @@ import MainLayout from '../../../layouts/MainLayout.astro';
 import MotuSidebar from '../../../components/MotuSidebar.astro';
 ---
 
-<MainLayout title="MOTU Cuemix FX Software Setup">
+<MainLayout title="CueMix FX Settings">
   <div class="flex gap-8 items-start">
     <div class="w-[250px] flex-shrink-0">
       <MotuSidebar />
     </div>
-    <section class="max-w-3xl mx-auto py-12">
-    <h1 class="text-4xl font-extrabold mb-4">MOTU Cuemix FX Software Setup</h1>
-    <p class="text-lg mb-6">Cuemix FX is MOTU's powerful mixer and effects software that runs alongside your interface. It allows for near-zero latency monitoring, routing, and applying effects before the signal even hits your DAW.</p>
+    <article class="prose max-w-none">
+      <h1>CueMix FX Settings</h1>
 
-    <article class="prose prose-invert">
-      <div class="mb-8">
-        <h2 id="latency-free-monitoring">Latency-Free Monitoring</h2>
-        <p>This is Cuemix's biggest advantage. When recording, instead of monitoring through Ableton (which introduces some latency), you can monitor directly through Cuemix.</p>
-        <p>To do this:</p>
-        <ol>
-          <li>In Cuemix, route your input (e.g., SM58 input) directly to your main outputs (Mon L/R).</li>
-          <li>In Ableton, make sure the track you're recording to has "Monitor" set to "Off" or "Auto" (and disable monitoring during recording). This prevents doubling of the signal (one from Cuemix, one from Ableton).</li>
-        </ol>
-      </div>
+      <h2>Sample Rate</h2>
+      <p>Set the sample rate in CueMix FX (or MOTU Audio Console) before opening your Ableton session. The MOTU clock drives Ableton — both must agree on sample rate.</p>
+      <ul>
+        <li><strong>44.1 kHz:</strong> standard music production. Best DAW plugin compatibility. Lowest file sizes and CPU load.</li>
+        <li><strong>48 kHz:</strong> use when the project will be synced to video or exported for video post-production.</li>
+        <li><strong>96 kHz:</strong> recommended for high-resolution recording of the Hydrasynth — captures upper harmonics from wavetable morphing. 2× the data rate of 44.1 kHz.</li>
+        <li><strong>192 kHz:</strong> mastering and archival use only; reduces available I/O channel count on the MOTU.</li>
+      </ul>
 
-      <div class="mb-8">
-        <h2 id="creating-submixes">Creating Submixes</h2>
-        <p>You can create separate mixes for different purposes. For example:</p>
-        <ul>
-          <li>A main mix for your studio monitors.</li>
-          <li>A headphone mix for yourself with a different balance of instruments.</li>
-          <li>A "send" mix if you were sending outgoing audio to an external effects unit (though your current setup mainly relies on internal effects).</li>
-        </ul>
-      </div>
+      <h2>Buffer Size and Latency</h2>
+      <table>
+        <thead><tr><th>Buffer Size</th><th>Approx. Latency @ 44.1 kHz</th><th>Recommended For</th></tr></thead>
+        <tbody>
+          <tr><td>64 samples</td><td>~1.5 ms</td><td>Live performance, real-time monitoring</td></tr>
+          <tr><td>128 samples</td><td>~3 ms</td><td>Recording with musicians</td></tr>
+          <tr><td>256 samples</td><td>~5.8 ms</td><td>General Ableton sessions</td></tr>
+          <tr><td>512 samples</td><td>~11.6 ms</td><td>Mixing with heavy plugin loads</td></tr>
+        </tbody>
+      </table>
+      <p>Start at 256 samples for production work. Reduce to 128 when tracking live instruments or vocals. Drop to 64 only when performing live alongside a drummer or other locked-tempo musicians where even 3 ms matters.</p>
 
-      <div class="mb-8">
-        <h2 id="onboard-dsp">Using Onboard DSP Effects</h2>
-        <p>The UltraLite mk3 has built-in DSP effects (reverb, compression, EQ). You can apply these in Cuemix FX before the signal reaches your DAW. This is great for:</p>
-        <ul>
-          <li><strong>Comfort Monitoring:</strong> Adding a touch of reverb to your vocals or guitar while tracking can make the performance feel more natural.</li>
-          <li><strong>"Printing" Effects:</strong> If you like the sound of the UltraLite's compressor or EQ, you can apply them directly and record the processed signal into Ableton. Be aware that once recorded, these effects are "baked in" and cannot be undone in Ableton (unless you record a dry signal simultaneously).</li>
-        </ul>
-      </div>
+      <h2>Clock Source</h2>
+      <p>Set to <strong>Internal</strong> in almost all cases. The MOTU generates its own stable word clock and Ableton slaves to it via the ASIO driver. Only switch to S/PDIF or an external clock source if a dedicated external clock generator is present in the studio.</p>
 
-      <div class="mb-8">
-        <h2 id="saving-scenes">Saving Scenes</h2>
-        <p>Once you have a setup you like (input gains, monitor mixes, effects), save it as a "Scene" in Cuemix. This allows you to quickly recall different configurations for recording vocals, guitars, or synths.</p>
-      </div>
+      <h2>Latency-Free Monitoring</h2>
+      <p>This is CueMix's biggest advantage. When recording a vocalist through the SM58:</p>
+      <ol>
+        <li>In CueMix, route the SM58 input (Input 1) directly to the headphone output bus (Mix 2).</li>
+        <li>In Ableton, set the tracking Audio Track's Monitor to <strong>Off</strong>. This prevents the software-path signal from doubling with the CueMix direct monitor.</li>
+        <li>The vocalist hears themselves with zero perceptible delay — the signal never touches the computer in the monitoring path.</li>
+      </ol>
+
+      <h2>Saving CueMix Scenes</h2>
+      <p>Use <strong>File → Save As</strong> to save complete CueMix FX configurations. Create named scenes for: Tracking (minimal reverb, direct mic monitoring), Production (full bus routing), and Live (standalone mixer layout). Recall any scene in seconds at the start of a session.</p>
     </article>
-    </section>
   </div>
 </MainLayout>

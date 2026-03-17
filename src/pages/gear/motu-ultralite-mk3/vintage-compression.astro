@@ -11,10 +11,37 @@ const title = "Vintage Compression";
     <article class="prose max-w-none">
       <h1>{title}</h1>
       <p>Source: <a href="https://motu.com/products/motuaudio/ultralite-mk3/cuemix-fx-overview.html" target="_blank" rel="noopener">MOTU product page</a></p>
-      <p>The vintage compression effect provides smooth gain control and characterful dynamics shaping inspired by classic hardware. It’s useful for controlling peaks and adding analog-style coloration when desired.</p>
+
+      <p>The UltraLite-mk3 provides two types of compression in CueMix FX, both running in hardware DSP with zero impact on the computer's CPU.</p>
+
+      <h2>Conventional Compressor</h2>
+      <p>A standard compressor with manual parameters:</p>
+      <ul>
+        <li><strong>Threshold:</strong> the level at which compression begins. Set lower for more compression; higher for only peak control.</li>
+        <li><strong>Ratio:</strong> how much the signal is reduced once it crosses the threshold. 2:1 for gentle levelling; 4:1–8:1 for more aggressive control; 10:1+ for limiting.</li>
+        <li><strong>Attack:</strong> how quickly the compressor responds after the signal crosses threshold. Slower attack preserves the initial transient (punch); faster attack controls it immediately.</li>
+        <li><strong>Release:</strong> how quickly the compressor stops compressing after the signal drops below threshold.</li>
+        <li><strong>Makeup Gain:</strong> compensates for the gain reduction — bring the compressed signal back up to the original perceived level.</li>
+      </ul>
+
+      <h2>Leveler™ (LA-2A Model)</h2>
+      <p>An accurate model of the legendary Teletronix LA-2A optical compressor — one of the most musical vocal compressors ever made:</p>
+      <ul>
+        <li><strong>Program-dependent response:</strong> the attack and release times are not fixed — they react dynamically to the nature of the audio program material. Loud transients compress faster; quieter sustained notes release more naturally. This is what makes it sound "invisible".</li>
+        <li><strong>Peak Reduction:</strong> the primary control. Turn clockwise to increase compression depth. Start at 30–40% for transparent gain riding on the SM58 vocal; increase to 50–60% for more visible levelling on dynamic vocalists.</li>
+        <li><strong>Gain:</strong> makeup gain to restore output level after compression.</li>
+      </ul>
+
+      <h2>Recommended Settings</h2>
+      <ul>
+        <li><strong>SM58 vocals:</strong> use the Leveler (LA-2A). Set Peak Reduction to 35–45% for transparent dynamic control. Let the optical response handle timing automatically — no attack/release adjustment needed.</li>
+        <li><strong>Hydrasynth bus:</strong> use the Conventional Compressor with high threshold (−6 dBFS), 2:1 ratio, fast attack (5–10 ms), medium release (100–200 ms). Catches only the loudest peaks without affecting the dynamic expression of the patches.</li>
+        <li><strong>General limiting:</strong> Conventional Compressor at 10:1 ratio, −3 dBFS threshold, fast attack — prevents clipping on unexpected loud sources without affecting the overall sound.</li>
+      </ul>
+
       <figure>
-        <img src="/assets/motu/ultralite-mk3/vintage-compression.jpg" alt="Vintage compression" />
-        <figcaption>Absolute asset path: C:\\www\\dexgear\\public\\assets\\motu\\ultralite-mk3\\vintage-compression.jpg</figcaption>
+        <img src="https://cdn-data.motu.com/site/images/cuemix-fx/mix_large.jpg" alt="CueMix FX software interface" />
+        <figcaption>Vintage compression accessible via the CueMix FX Dynamics tab.</figcaption>
       </figure>
     </article>
   </div>

@@ -11,11 +11,62 @@ const title = "Comprehensive I/O";
     <article class="prose max-w-none">
       <h1>{title}</h1>
       <p>Source: <a href="https://motu.com/products/motuaudio/ultralite-mk3/i-o.html" target="_blank" rel="noopener">MOTU product page</a></p>
-      <p>The UltraLite-mk3 delivers a versatile set of inputs and outputs suitable for project and professional studios, offering flexible routing to connect microphones, instruments, monitors, and external processors. Digital and analog I/O options make it easy to integrate with existing rigs.</p>
-      <figure>
-        <img src="/assets/motu/ultralite-mk3/io.jpg" alt="Comprehensive I/O" />
-        <figcaption>Absolute asset path: C:\\www\\dexgear\\public\\assets\\motu\\ultralite-mk3\\io.jpg</figcaption>
-      </figure>
+      <p>The UltraLite-mk3 delivers 18 inputs and 22 outputs across analog, digital (S/PDIF), and MIDI connections — all accessible without a breakout cable. The images below show front and rear panel layouts; the table that follows maps every connector to its studio role.</p>
+
+      <h2>Complete I/O Map — Studio Assignment</h2>
+      <table>
+        <thead>
+          <tr><th>Connector</th><th>Direction</th><th>Type</th><th>Connected to (this studio)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Input 1 (front XLR/TRS combo)</td><td>In</td><td>Mic/Line/Hi-Z</td><td>Shure SM58 (XLR, phantom OFF)</td></tr>
+          <tr><td>Input 2 (front XLR/TRS combo)</td><td>In</td><td>Mic/Line/Hi-Z</td><td>Roland VT-3 main out (TRS)</td></tr>
+          <tr><td>Inputs 3–4 (rear TRS)</td><td>In</td><td>Line</td><td>Hydrasynth Explorer L/R (TRS)</td></tr>
+          <tr><td>Inputs 5–6 (rear TRS)</td><td>In</td><td>Line</td><td>Yamaha P-225 L/R (TRS)</td></tr>
+          <tr><td>Inputs 7–8 (rear TRS)</td><td>In</td><td>Line</td><td>spare / Launchkey 37 Mk3 audio (if needed)</td></tr>
+          <tr><td>S/PDIF In (rear RCA)</td><td>In</td><td>Digital coax</td><td>unconnected (reserved for future expander)</td></tr>
+          <tr><td>Main Out 1–2 (rear TRS)</td><td>Out</td><td>Balanced line</td><td>Yamaha HS7 monitors L/R</td></tr>
+          <tr><td>Phones (front 1/4")</td><td>Out</td><td>Headphone</td><td>Monitoring headphones</td></tr>
+          <tr><td>Outputs 3–4 (rear TRS)</td><td>Out</td><td>Balanced line</td><td>spare / alternate monitor feed</td></tr>
+          <tr><td>S/PDIF Out (rear RCA)</td><td>Out</td><td>Digital coax</td><td>unconnected</td></tr>
+          <tr><td>MIDI In (rear DIN-5)</td><td>In</td><td>MIDI 1.0</td><td>Hydrasynth Explorer MIDI Out / Launchkey DIN In chain</td></tr>
+          <tr><td>MIDI Out (rear DIN-5)</td><td>Out</td><td>MIDI 1.0</td><td>Yamaha P-225 MIDI In (for clock/program change)</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Front Panel Quick-Reference</h2>
+      <ul>
+        <li><strong>Input 1 gain trim (front):</strong> SM58 microphone — set so peaks hit −12 to −6 dBFS in Ableton; never engage phantom power (+48V) on this channel.</li>
+        <li><strong>Input 2 gain trim (front):</strong> VT-3 output is already line-level; keep trim low (9 o'clock) to avoid overloading.</li>
+        <li><strong>Monitor knob (front):</strong> Controls the Main Out 1–2 level to the HS7 monitors independently of DAW faders.</li>
+        <li><strong>Phones knob (front):</strong> Controls the front headphone jack level; sources are set per-mix inside CueMix FX.</li>
+      </ul>
+
+      <h2>Rear Panel Notes</h2>
+      <ul>
+        <li>All rear TRS inputs/outputs are balanced; use balanced TRS cables for the cleanest signal path.</li>
+        <li>The S/PDIF coaxial pair is wired 75 Ω — use proper coax RCA cables, not standard instrument cables, if you connect digital devices later.</li>
+        <li>MIDI In/Out connectors follow standard DIN-5 pin assignments and can be used simultaneously with USB MIDI.</li>
+      </ul>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        <figure>
+          <img src="https://cdn-data.motu.com/site/images/ultralite-mk3/web1-5/ultralite-mk3-large-front.jpg" alt="UltraLite-mk3 front view" />
+          <figcaption>Front view from the official MOTU I/O page.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://cdn-data.motu.com/site/images/ultralite-mk3/web1-5/ultralite-mk3-large-rear.jpg" alt="UltraLite-mk3 rear panel" />
+          <figcaption>Rear panel view from the official MOTU I/O page.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://cdn-data.motu.com/site/images/ultralite-mk3/web1-5/ultralite-mk3-large-iso.jpg" alt="UltraLite-mk3 isometric product view" />
+          <figcaption>Isometric product view from the official MOTU I/O page.</figcaption>
+        </figure>
+        <figure>
+          <img src="https://cdn-data.motu.com/site/images/ultralite-mk3/web1-5/ultralite-mk3-large-stack.jpg" alt="UltraLite-mk3 stacked product view" />
+          <figcaption>Stacked product view from the official MOTU I/O page.</figcaption>
+        </figure>
+      </div>
     </article>
   </div>
 </MainLayout>

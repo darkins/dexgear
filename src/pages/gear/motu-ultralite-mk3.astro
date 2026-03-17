@@ -9,6 +9,17 @@ const tags = ["Audio Interface", "MOTU"];
 ---
 
 <MainLayout title={title} description={description} url={url} tags={tags}>
+  <section class="content-intro">
+    <div>
+      <p class="eyebrow">Featured Device</p>
+      <h1>{title}</h1>
+      <p class="content-intro__lede">{description}</p>
+    </div>
+    <div class="content-intro__actions">
+      <a href={url} class="button-primary" target="_blank" rel="noopener noreferrer">Official MOTU Page</a>
+      <a href="/" class="button-secondary">Back to Library</a>
+    </div>
+  </section>
   <div class="flex gap-8 items-start">
     <div class="w-[250px] flex-shrink-0">
       <MotuSidebar />

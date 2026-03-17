@@ -19,16 +19,46 @@ const title = "Expansion & Drivers";
           MOTU product page
         </a>
       </p>
-      <p>
-        MOTU provides drivers and firmware updates to ensure compatibility and performance across platforms.
-        Expansion options and driver support allow the UltraLite-mk3 to integrate into larger systems as needs grow.
-      </p>
+      <p>MOTU provides ASIO (Windows) and Core Audio (macOS) drivers for the UltraLite-mk3, along with periodic firmware updates. This page covers installation, configuration, and common troubleshooting steps.</p>
+
       <figure>
-        <img src="/assets/motu/ultralite-mk3/expansion-drivers.jpg" alt="Expansion and drivers" loading="lazy" />
-        <figcaption>
-          Expansion drivers
-        </figcaption>
+        <img src="https://cdn-data.motu.com/site/images/ultralite-mk3/os-support.jpg" alt="MOTU audio hardware OS support logo" loading="lazy" />
+        <figcaption>Official MOTU OS support image — Windows 10/11 and macOS 12+ are fully supported.</figcaption>
       </figure>
+
+      <h2>Windows — ASIO Driver Installation</h2>
+      <ol>
+        <li>Go to <a href="https://motu.com/en-us/download/#category=8&amp;product=235" target="_blank" rel="noopener">MOTU UltraLite-mk3 download page</a> and grab the latest Windows driver package (<code>.exe</code> installer).</li>
+        <li>Disconnect the UltraLite from USB, run the installer, and reboot Windows when prompted.</li>
+        <li>Reconnect the UltraLite to a <strong>rear motherboard USB 2.0 port</strong> — USB hubs and front-panel ports can cause dropouts.</li>
+        <li>Open Ableton Live → <em>Preferences → Audio</em> → Driver Type: <strong>ASIO</strong> → Audio Device: <strong>MOTU UltraLite-mk3</strong>.</li>
+        <li>Set the buffer size to 256 samples (5.8 ms) for recording or 512 samples (11.6 ms) for mixing/playback.</li>
+      </ol>
+
+      <h2>macOS — Core Audio</h2>
+      <p>On macOS the UltraLite-mk3 is class-compliant and recognised automatically by Core Audio — no driver download is needed. MOTU still offers an optional driver package that unlocks CueMix FX and the hardware settings panel; download it from the same downloads page above.</p>
+
+      <h2>AudioDesk (MOTU's Bundled DAW)</h2>
+      <p>MOTU bundles <strong>AudioDesk</strong>, a streamlined DAW included with the UltraLite-mk3. It supports all 18 inputs / 22 outputs with full Core Audio / ASIO integration and is a useful fallback if Ableton is unavailable. MOTU no longer sells new licences but the bundled copy that ships with the hardware remains valid.</p>
+
+      <h2>Common Issues &amp; Fixes</h2>
+      <table>
+        <thead><tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr><td>Device not seen in Ableton</td><td>Driver not installed or wrong port</td><td>Reinstall driver; use rear motherboard USB port</td></tr>
+          <tr><td>Clicks and pops during playback</td><td>Buffer too small or USB bandwidth conflict</td><td>Increase buffer size; unplug other USB devices</td></tr>
+          <tr><td>No sound on Main Outs</td><td>CueMix mix bus not routed or gain at zero</td><td>Open CueMix FX, check Mix 1 output assignment to Analog 1–2</td></tr>
+          <tr><td>High latency in Ableton</td><td>Large ASIO buffer size</td><td>Reduce to 128–256 samples; ensure no background apps are using ASIO</td></tr>
+          <tr><td>Firmware update fails</td><td>USB instability during write</td><td>Use rear motherboard port; close all audio apps before updating</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Keeping Drivers Current</h2>
+      <ul>
+        <li>MOTU releases driver updates that fix known issues with new OS versions — check the download page after every major Windows or macOS update.</li>
+        <li>Firmware updates (for the hardware itself) are separate from driver updates; both are distributed on the same MOTU download page.</li>
+        <li>After a driver update, re-open Ableton and confirm the ASIO device is still selected in <em>Preferences → Audio</em>.</li>
+      </ul>
     </article>
   </div>
 </MainLayout>

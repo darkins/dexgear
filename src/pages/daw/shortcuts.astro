@@ -2,11 +2,26 @@
 import MainLayout from '../../layouts/MainLayout.astro';
 ---
 
-<MainLayout title="Shortcuts">
-  <section class="max-w-3xl mx-auto py-12">
-    <h1 class="text-4xl font-extrabold mb-4">Ableton Keyboard Shortcuts</h1>
-    <p class="text-lg mb-6">Keyboard shortcuts and productivity tips for working with your DAW.</p>
-    <article class="prose prose-invert">
+<MainLayout title="Shortcuts" description="Ableton keyboard shortcuts and productivity references for faster DAW navigation.">
+  <section class="content-intro">
+    <div>
+      <p class="eyebrow">Ableton Workflow</p>
+      <h1>Ableton Keyboard Shortcuts</h1>
+      <p class="content-intro__lede">A longer-form shortcut reference, now presented in the same reading shell as the rest of the redesigned site.</p>
+    </div>
+    <div class="content-intro__actions">
+      <a
+        href="https://www.ableton.com/en/manual/live-keyboard-shortcuts"
+        class="button-primary"
+        target="_blank"
+        rel="noopener"
+      >
+        Official Ableton Manual
+      </a>
+      <a href="/daw/m4l" class="button-secondary">Open M4L</a>
+    </div>
+  </section>
+  <article class="prose prose-invert">
       <p>
         Full keyboard shortcut reference for Ableton Live is available from Ableton's
         manual:
@@ -25,7 +40,7 @@ import MainLayout from '../../layouts/MainLayout.astro';
         .prose.prose-invert table { margin: 1rem 0 3rem; }
 
         /* Use theme accent color for table of contents markers so they follow theme variables */
-        .toc-list li::marker {
+	      .toc-list li::marker {
           color: var(--color-accent);
         }
       </style>
@@ -63,8 +78,8 @@ import MainLayout from '../../layouts/MainLayout.astro';
           <li><a href="#general-keyboard-navigation" class="text-neutral-300 hover:underline">General Keyboard Navigation & Workflow</a></li>
           <li><a href="#editing-automation-modulation" class="text-neutral-300 hover:underline">Editing Automation & Modulation Envelopes</a></li>
           <li><a href="#accessing-menus" class="text-neutral-300 hover:underline">Accessing Menus</a></li>
-          <li><a href="#using-lives-context-menu" class="text-neutral-300 hover:underline">Using Live’s Context Menu</a></li>
-        </ul>
+          <li><a href="#using-lives-context-menu" class="text-neutral-300 hover:underline">Using Live’s Context Menu</a></li>          <li><a href="#live-12-additions" class="text-neutral-300 hover:underline">Live 12 Additions</a></li>
+          <li><a href="#push-1-quick-reference" class="text-neutral-300 hover:underline">Push 1 Quick Reference</a></li>        </ul>
       </nav>
 
       <!-- Sections (paraphrased Windows-only shortcuts) -->
@@ -446,6 +461,37 @@ import MainLayout from '../../layouts/MainLayout.astro';
 
       <h3 id="using-lives-context-menu">Using Live’s Context Menu</h3>
       <p class="text-sm text-neutral-300 mb-6">Open context menu with right-click or Menu / Shift+F10 on Windows; common context actions vary by area.</p>
-    </article>
-  </section>
+      <h3 id="live-12-additions">Live 12 Additions</h3>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Windows</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Open MIDI Transformations panel</td><td class="px-3 py-2">Ctrl+Shift+M (in Clip editor)</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Generate MIDI (AI generate clip)</td><td class="px-3 py-2">Right-click clip slot → Generate MIDI</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Humanize selected notes</td><td class="px-3 py-2">MIDI Transform → Humanize (no default key)</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Seed new session (re-roll generative clip)</td><td class="px-3 py-2">Right-click generated clip → Generate Again</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Enable / disable Collection colour filter</td><td class="px-3 py-2">Click coloured dot in Browser header bar</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Capture MIDI (as in Live 10+, unchanged)</td><td class="px-3 py-2">Shift+Ctrl+C</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="push-1-quick-reference">Push 1 Physical Quick Reference</h3>
+      <p class="text-sm text-neutral-300 mb-3">Hardware button combos for common Push 1 tasks — supplement to the full <a href="/gear/push">Push reference page</a>.</p>
+      <table class="table-auto w-full text-sm border-collapse mb-6">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Push 1 Button Combo</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Enter Note Mode (pad grid)</td><td class="px-3 py-2">Note</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Enter Session Mode (clip grid)</td><td class="px-3 py-2">Session</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Enter 64-Pad Mode</td><td class="px-3 py-2">Note → double-press bottom-left pad</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Add new instrument track</td><td class="px-3 py-2">Add Track</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Select device on track</td><td class="px-3 py-2">Device (then ◄ ► encoder buttons)</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Record clip in Session view</td><td class="px-3 py-2">Record + pad</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Undo last action</td><td class="px-3 py-2">Shift + Back (= Undo)</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Delete selected clip</td><td class="px-3 py-2">Delete + pad</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Toggle Metronome</td><td class="px-3 py-2">Metronome (tap)</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Tap Tempo</td><td class="px-3 py-2">Tap Tempo (repeated presses)</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Change Scale Root / Mode</td><td class="px-3 py-2">Shift + Note, then soft-buttons</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Automate a parameter</td><td class="px-3 py-2">Automation → touch encoder to write</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Access User Mode (custom MIDI)</td><td class="px-3 py-2">User 1 or User 2</td></tr>
+        </tbody>
+      </table>    </article>
 </MainLayout>

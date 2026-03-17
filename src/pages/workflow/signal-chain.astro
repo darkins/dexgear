@@ -1,0 +1,148 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+---
+
+<MainLayout title="Signal Chain" description="Complete signal routing reference for all instruments in the studio — from source to Ableton track.">
+  <section class="content-intro">
+    <div>
+      <p class="eyebrow">Studio Workflow</p>
+      <h1>Signal Chain</h1>
+      <p class="content-intro__lede">Every instrument's path from its physical output to its Ableton Live track, including connection type, input assignment, and gain staging target.</p>
+    </div>
+    <div class="content-intro__actions">
+      <a href="/gear/motu-ultralite-mk3" class="button-secondary">MOTU Overview</a>
+    </div>
+  </section>
+
+  <article class="prose prose-invert">
+
+    <h2>Full Signal Routing Table</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th>Output connector</th>
+          <th>Cable</th>
+          <th>MOTU input</th>
+          <th>Ableton track type</th>
+          <th>Peak target (dBFS)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Shure SM58 (vocal mic)</td>
+          <td>XLR (male)</td>
+          <td>XLR balanced</td>
+          <td>Input 1 (front combo)</td>
+          <td>Audio — Ext. In 1 (Mono)</td>
+          <td>−12 to −6</td>
+        </tr>
+        <tr>
+          <td>Roland VT-3 Voice Transformer</td>
+          <td>1/4" Output L (mono chain exit)</td>
+          <td>TRS balanced</td>
+          <td>Input 2 (front combo)</td>
+          <td>Audio — Ext. In 2 (Mono)</td>
+          <td>−12 to −6</td>
+        </tr>
+        <tr>
+          <td>ASM Hydrasynth Explorer</td>
+          <td>1/4" Outputs L + R</td>
+          <td>TRS balanced ×2</td>
+          <td>Inputs 3 + 4 (rear TRS)</td>
+          <td>Audio — Ext. In 3/4 (Stereo)</td>
+          <td>−12 to −6</td>
+        </tr>
+        <tr>
+          <td>Yamaha P-225 digital piano</td>
+          <td>1/4" L + R (rear)</td>
+          <td>TRS balanced ×2 (or TS if unbalanced piano out)</td>
+          <td>Inputs 5 + 6 (rear TRS)</td>
+          <td>Audio — Ext. In 5/6 (Stereo) — or MIDI only via USB-B</td>
+          <td>−12 to −6</td>
+        </tr>
+        <tr>
+          <td>Novation Launchkey 37 Mk3</td>
+          <td>USB-B → USB-A</td>
+          <td>USB</td>
+          <td>USB MIDI direct to computer</td>
+          <td>MIDI — All channels</td>
+          <td>n/a (MIDI only)</td>
+        </tr>
+        <tr>
+          <td>ROLI Seaboard M (Block M)</td>
+          <td>USB-C → USB-A</td>
+          <td>USB</td>
+          <td>USB MIDI direct to computer</td>
+          <td>MIDI — MPE (Ch 1–16)</td>
+          <td>n/a (MIDI only)</td>
+        </tr>
+        <tr>
+          <td>Ableton Push 1</td>
+          <td>USB-B → USB-A</td>
+          <td>USB</td>
+          <td>USB MIDI + control surface</td>
+          <td>Control surface (not a MIDI track source)</td>
+          <td>n/a</td>
+        </tr>
+        <tr>
+          <td>Novation Launch Control XL</td>
+          <td>USB Micro-B → USB-A</td>
+          <td>USB</td>
+          <td>USB MIDI + control surface</td>
+          <td>Control surface (MIDI Remote Script)</td>
+          <td>n/a</td>
+        </tr>
+        <tr>
+          <td>Knobbler</td>
+          <td>USB-C → USB-A</td>
+          <td>USB</td>
+          <td>USB MIDI direct to computer</td>
+          <td>MIDI CC → mapped parameters (no dedicated track)</td>
+          <td>n/a</td>
+        </tr>
+        <tr>
+          <td>Roland VT-3 (MIDI)</td>
+          <td>USB-B MIDI</td>
+          <td>USB</td>
+          <td>USB MIDI direct to computer</td>
+          <td>MIDI Out track (for pitch / effect control via CC)</td>
+          <td>n/a</td>
+        </tr>
+        <tr>
+          <td>Yamaha HS7 monitors</td>
+          <td>1/4" TRS balanced inputs</td>
+          <td>TRS balanced ×2</td>
+          <td>MOTU Main Out 1 + 2</td>
+          <td>Master bus output</td>
+          <td>n/a (output)</td>
+        </tr>
+        <tr>
+          <td>Headphones</td>
+          <td>1/4" TRS (front panel)</td>
+          <td>1/4" TRS</td>
+          <td>MOTU Phones Out (front)</td>
+          <td>CueMix mix bus (assignable)</td>
+          <td>n/a (output)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>MIDI Routing Notes</h2>
+    <ul>
+      <li><strong>Hydrasynth Explorer MIDI DIN:</strong> connect MOTU MIDI Out → Hydrasynth MIDI In for DAW-sequenced control and clock sync. For standalone play, the Hydrasynth is its own MIDI controller via USB or DIN.</li>
+      <li><strong>Yamaha P-225 DIN MIDI:</strong> MOTU MIDI Out → P-225 MIDI In for program-change and transport commands from Ableton when using the P-225 as a soft synth controller.</li>
+      <li><strong>Launchkey 37 Mk3 Standalone:</strong> if the computer is off, use the Launchkey's MIDI Out (5-pin DIN) → Hydrasynth MIDI In for hardware-only performance.</li>
+      <li><strong>MPE routing (Seaboard M):</strong> Seaboard M USB → computer → Ableton MIDI track input; set MIDI track to All Channels + MPE. Use the M4L MPE Control device if routing into a non-MPE instrument.</li>
+    </ul>
+
+    <h2>Audio Bus Structure in Ableton</h2>
+    <ul>
+      <li><strong>Vocal bus:</strong> SM58 (Ext. In 1) → Vocal Audio track → EQ Eight → Compressor → VT-3 Return (Ext. In 2 on a second track or Send/Return from the VT-3's Audio Out)</li>
+      <li><strong>Synth bus:</strong> Hydrasynth (Ext. In 3/4) → Hydrasynth Audio track → sends to Reverb and Delay Return tracks</li>
+      <li><strong>Piano bus:</strong> P-225 (Ext. In 5/6) → Piano Audio track (or MIDI track via External Instrument → instrument)</li>
+      <li><strong>Master chain:</strong> all buses → Master track → Glue Compressor → EQ Eight (reference check) → out to MOTU Main Out 1/2 → HS7 monitors</li>
+    </ul>
+
+  </article>
+</MainLayout>

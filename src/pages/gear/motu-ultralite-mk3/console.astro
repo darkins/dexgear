@@ -13,10 +13,36 @@ const description = "Control app for routing, clocking and CueMix FX.";
         <MotuSidebar />
       </div>
       <article class="prose max-w-none">
-      <h1>MOTU Audio Console</h1>
-      <p><img src="http://cdn-data.motu.com/site/images/ultralite-mk3/os-support.jpg" alt="OS support" class="w-48 inline-block mr-4" />MOTU Audio Console is the control application for the UltraLite‑mk3. Use it to enable/disable I/O, set clock source and sample rate, route channels, and edit CueMix FX parameters with a graphic interface.</p>
-      <p>When using Ableton Live with the MOTU ASIO driver, open MOTU Audio Console via the Hardware Setup button to ensure the desired inputs and outputs are enabled.</p>
-      <p><a href="/gear/motu-ultralite-mk3">Back to MOTU page</a></p>
+      <h1>Front Panel Console</h1>
+
+      <h2>LCD Navigation</h2>
+      <p>The UltraLite-mk3's front panel provides complete hardware control via the LCD screen and rotary encoder. This allows full setup and monitoring management without a computer.</p>
+      <ul>
+        <li><strong>Turn the encoder:</strong> scroll through parameter options or change a numeric value.</li>
+        <li><strong>Press the encoder:</strong> select the highlighted item or confirm a value change.</li>
+        <li><strong>Hold Select button:</strong> jump to the top-level menu from any sub-level.</li>
+      </ul>
+
+      <h2>Key LCD Parameters</h2>
+      <table>
+        <thead><tr><th>Parameter</th><th>Location in Menu</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Input Gain (all channels)</td><td>Inputs submenu</td><td>Adjust in 1 dB steps; shows dBFS reading</td></tr>
+          <tr><td>Monitor output level</td><td>Outputs submenu</td><td>Main output to HS7 monitors</td></tr>
+          <tr><td>Headphone volume</td><td>Phones</td><td>Independent of main output</td></tr>
+          <tr><td>Phantom power (+48V)</td><td>Inputs → Channel 1/2</td><td>Per-channel toggle</td></tr>
+          <tr><td>Sample rate</td><td>Clock submenu</td><td>Set before opening Ableton</td></tr>
+          <tr><td>Clock source</td><td>Clock submenu</td><td>Internal / S/PDIF</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Hardware Mix Access (CUEMIX Mode)</h2>
+      <p>Press the <strong>CUEMIX</strong> button on the front panel to switch the LCD into mixer mode. In this mode, the encoder controls the currently selected mix bus fader. Use track-select buttons (if present on the model) to navigate between mix channels and adjust levels directly on the hardware.</p>
+
+      <h2>Saving a Hardware Snapshot</h2>
+      <p>All current mix settings (levels, routings, effects parameters) are automatically stored in the MOTU's flash memory whenever you make a change in CueMix FX. When the MOTU powers up without a computer, it loads the last-saved state from flash memory — enabling reliable standalone operation with a repeatable setup every time.</p>
+
+      <img src="https://cdn-data.motu.com/site/images/ultralite-mk3/os-support.jpg" alt="MOTU Audio Console" class="w-48 inline-block mr-4" />
     </article>
   </div>
 </MainLayout>
