@@ -54,7 +54,7 @@ import MainLayout from '../../layouts/MainLayout.astro';
           <li><a href="#keyboard-focus-and-navigation" class="text-neutral-300 hover:underline">Keyboard Focus and Navigation</a></li>
           <li><a href="#working-with-sets-and-the-program" class="text-neutral-300 hover:underline">Working with Sets and the Program</a></li>
           <li><a href="#working-with-devices-and-plug-ins" class="text-neutral-300 hover:underline">Working with Devices and Plug-Ins</a></li>
-          <li><a href="#editing" class="text-neutral-300 hover:underline">Editing</a></li>
+          <li><a href="#midi-editing" class="text-neutral-300 hover:underline">MIDI Editing</a></li>
           <li><a href="#adjusting-values" class="text-neutral-300 hover:underline">Adjusting Values</a></li>
           <li><a href="#commands-for-breakpoint-envelopes" class="text-neutral-300 hover:underline">Commands for Breakpoint Envelopes</a></li>
           <li><a href="#loop-brace-and-start-end-markers" class="text-neutral-300 hover:underline">Loop Brace and Start/End Markers</a></li>
@@ -163,21 +163,77 @@ import MainLayout from '../../layouts/MainLayout.astro';
         </tbody>
       </table>
 
-      <h3 id="editing">Editing</h3>
+      <h3 id="midi-editing">MIDI Editing</h3>
+      <p class="text-sm text-neutral-300 mb-3">All shortcuts apply when the MIDI Note Editor has focus and Draw Mode is <em>off</em>, unless noted.</p>
+
+      <h4 class="text-sm font-semibold text-neutral-400 uppercase tracking-wide mt-4 mb-2">Drawing &amp; Input</h4>
+      <table class="table-auto w-full text-sm border-collapse mb-4">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Key</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Toggle Draw Mode</td><td class="px-3 py-2">B</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Toggle pitch-lock drawing (when Draw Mode with Pitch Lock is on)</td><td class="px-3 py-2">Alt</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Delete note (not in Draw Mode)</td><td class="px-3 py-2">Double-click note</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Deactivate / reactivate selected note(s)</td><td class="px-3 py-2">0</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Copy notes to new position</td><td class="px-3 py-2">Ctrl+drag</td></tr>
+        </tbody>
+      </table>
+
+      <h4 class="text-sm font-semibold text-neutral-400 uppercase tracking-wide mt-4 mb-2">Selecting Notes</h4>
+      <table class="table-auto w-full text-sm border-collapse mb-4">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Key</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Select all notes</td><td class="px-3 py-2">Ctrl+A</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Deselect all / collapse selection</td><td class="px-3 py-2">Esc</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Toggle between timespan and enclosed notes</td><td class="px-3 py-2">Enter</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Select note nearest insert marker</td><td class="px-3 py-2">Ctrl+Up / Ctrl+Down</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Next / previous note in same key track</td><td class="px-3 py-2">Ctrl+Left / Ctrl+Right</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Add next / previous note to selection</td><td class="px-3 py-2">Ctrl+Shift+Up / Ctrl+Shift+Down</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Extend timespan selection by grid</td><td class="px-3 py-2">Shift+Left / Shift+Right</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Extend selection to note boundary</td><td class="px-3 py-2">Shift+Alt+Left / Shift+Alt+Right</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Add / remove key track notes to selection</td><td class="px-3 py-2">Shift+click piano key</td></tr>
+        </tbody>
+      </table>
+
+      <h4 class="text-sm font-semibold text-neutral-400 uppercase tracking-wide mt-4 mb-2">Moving &amp; Transposing</h4>
+      <table class="table-auto w-full text-sm border-collapse mb-4">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Key</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Move note left / right by grid</td><td class="px-3 py-2">Left / Right arrow</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Transpose note by semitone</td><td class="px-3 py-2">Up / Down arrow</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Transpose note by octave</td><td class="px-3 py-2">Shift+Up / Shift+Down</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Move insert marker to note boundary</td><td class="px-3 py-2">Ctrl+Left / Ctrl+Right (no selection)</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Move insert marker to start / end of clip</td><td class="px-3 py-2">Home / End</td></tr>
+        </tbody>
+      </table>
+
+      <h4 class="text-sm font-semibold text-neutral-400 uppercase tracking-wide mt-4 mb-2">Note Length</h4>
+      <table class="table-auto w-full text-sm border-collapse mb-4">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Key</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Extend / shorten selected note(s) by grid</td><td class="px-3 py-2">Shift+Right / Shift+Left</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Extend / shorten without grid snap</td><td class="px-3 py-2">Shift+Alt+Right / Shift+Alt+Left</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Fit notes to time range</td><td class="px-3 py-2">Ctrl+Alt+J</td></tr>
+        </tbody>
+      </table>
+
+      <h4 class="text-sm font-semibold text-neutral-400 uppercase tracking-wide mt-4 mb-2">Split, Chop &amp; Join</h4>
+      <table class="table-auto w-full text-sm border-collapse mb-4">
+        <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Key</th></tr></thead>
+        <tbody class="divide-y">
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Freehand split — hold then draw line across notes</td><td class="px-3 py-2">Hold E + drag</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Split notes at insert marker (no selection) / Chop selected notes on grid</td><td class="px-3 py-2">Ctrl+E</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Increase / decrease chop parts (while chopping)</td><td class="px-3 py-2">Up / Down arrow</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Increase / decrease chop parts by power of two</td><td class="px-3 py-2">Shift+Up / Shift+Down (while chopping)</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Join selected notes of same pitch</td><td class="px-3 py-2">Ctrl+J</td></tr>
+        </tbody>
+      </table>
+
+      <h4 class="text-sm font-semibold text-neutral-400 uppercase tracking-wide mt-4 mb-2">Quantization</h4>
       <table class="table-auto w-full text-sm border-collapse mb-6">
         <thead class="dg-table text-left text-white"><tr><th class="px-3 py-2">Action</th><th class="px-3 py-2">Key</th></tr></thead>
         <tbody class="divide-y">
-          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Cut</td><td class="px-3 py-2">Ctrl+X</td></tr>
-          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Copy</td><td class="px-3 py-2">Ctrl+C</td></tr>
-          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Paste</td><td class="px-3 py-2">Ctrl+V</td></tr>
-          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Duplicate</td><td class="px-3 py-2">Ctrl+D</td></tr>
-          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Undo</td><td class="px-3 py-2">Ctrl+Z</td></tr>
-          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Redo</td><td class="px-3 py-2">Ctrl+Y</td></tr>
-          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Rename</td><td class="px-3 py-2">Ctrl+R</td></tr>
-          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Split</td><td class="px-3 py-2">Ctrl+E</td></tr>
-          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Join</td><td class="px-3 py-2">Ctrl+J</td></tr>
-          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Select All</td><td class="px-3 py-2">Ctrl+A</td></tr>
-          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Select Multiple Items</td><td class="px-3 py-2">Ctrl+click / Shift+click</td></tr>
+          <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2">Quantize selected notes</td><td class="px-3 py-2">Ctrl+U</td></tr>
+          <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2">Apply last quantization settings</td><td class="px-3 py-2">Ctrl+Shift+U</td></tr>
         </tbody>
       </table>
 

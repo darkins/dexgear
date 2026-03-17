@@ -391,6 +391,9 @@ pre {
 	border-radius: 1.5rem;
 	position: relative;
 	z-index: 1;
+	max-height: calc(100dvh - 5.5rem);
+	overflow-y: auto;
+	overscroll-behavior: contain;
 }
 
 .mobile-menu ul {

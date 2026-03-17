@@ -2,7 +2,7 @@
 title: "Yamaha HS7"
 slug: "yamaha-hs7"
 description: "Yamaha HS7 — bi-amplified studio reference monitor with a flat response designed to expose mix problems rather than flatter them."
-url: "https://europe.yamaha.com/en/products/music_production/speakers/hs_series/"
+url: "https://europe.yamaha.com/en/audio/music-audio-production/products/studio-monitors/hs-series/#d1915923"
 tags:
   - Monitors
   - Yamaha

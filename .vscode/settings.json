@@ -1,0 +1,8 @@
+{
+	"chat.tools.terminal.autoApprove": {
+		"/^python -m pip list 2>\\$null \\| Select-String \"pdf\\|markdown\\|pymupdf\\|pypdf\\|pdfplumber\\|fitz\"$/": {
+			"approve": true,
+			"matchCommandLine": true
+		}
+	}
+}

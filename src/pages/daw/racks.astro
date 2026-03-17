@@ -2,12 +2,12 @@
 import MainLayout from '../../layouts/MainLayout.astro';
 ---
 
-<MainLayout title="Racks" description="Templates, instrument racks, and workflow approaches for organized Ableton sessions.">
+<MainLayout title="Racks" description="Complete reference for all Ableton Live rack types — Instrument, Audio Effect, MIDI Effect, and Drum Racks — with zones, macros, and workflow tips.">
   <section class="content-intro">
     <div>
       <p class="eyebrow">Ableton Workflow</p>
       <h1>Racks</h1>
-      <p class="content-intro__lede">Templates, instrument racks, and workflow structures for faster session startup and cleaner sound design recall.</p>
+      <p class="content-intro__lede">A complete reference for all four rack types in Ableton Live Suite — how they work, when to use each, and the controls that make them powerful.</p>
     </div>
     <div class="content-intro__actions">
       <a href="/daw/m4l" class="button-secondary">Browse M4L Resources</a>
@@ -15,44 +15,219 @@ import MainLayout from '../../layouts/MainLayout.astro';
   </section>
   <article class="prose prose-invert">
 
-    <h2 id="instrument-racks">Instrument Racks</h2>
-    <p>An Instrument Rack holds one or more instrument chains in parallel or serial, giving each chain its own MIDI/Note filter and volume. Use Instrument Racks to:</p>
+    <style>
+      .prose.prose-invert table thead { background: linear-gradient(180deg, rgba(15,23,42,1), rgba(30,41,59,1)); }
+      .prose.prose-invert table { margin: 1rem 0 2.5rem; }
+      .rack-badge {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        padding: 0.15rem 0.5rem;
+        border-radius: 0.25rem;
+        margin-left: 0.5rem;
+        vertical-align: middle;
+      }
+      .badge-instrument { background: rgba(99,102,241,0.25); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.4); }
+      .badge-audio     { background: rgba(16,185,129,0.2);  color: #6ee7b7; border: 1px solid rgba(16,185,129,0.35); }
+      .badge-midi      { background: rgba(245,158,11,0.2);  color: #fcd34d; border: 1px solid rgba(245,158,11,0.35); }
+      .badge-drum      { background: rgba(239,68,68,0.2);   color: #fca5a5; border: 1px solid rgba(239,68,68,0.35); }
+    </style>
+
+    <!-- Table of Contents -->
+    <nav class="my-6">
+      <h3 class="text-lg font-semibold mb-4">Contents</h3>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm list-disc pl-5">
+        <li><a href="#overview" class="text-neutral-300 hover:underline">Rack Overview &amp; Signal Flow</a></li>
+        <li><a href="#creating-racks" class="text-neutral-300 hover:underline">Creating &amp; Grouping Racks</a></li>
+        <li><a href="#instrument-racks" class="text-neutral-300 hover:underline">Instrument Racks</a></li>
+        <li><a href="#audio-effect-racks" class="text-neutral-300 hover:underline">Audio Effect Racks</a></li>
+        <li><a href="#midi-effect-racks" class="text-neutral-300 hover:underline">MIDI Effect Racks</a></li>
+        <li><a href="#drum-racks" class="text-neutral-300 hover:underline">Drum Racks</a></li>
+        <li><a href="#zones" class="text-neutral-300 hover:underline">Zones — Key, Velocity &amp; Chain Select</a></li>
+        <li><a href="#macro-controls" class="text-neutral-300 hover:underline">Macro Controls</a></li>
+        <li><a href="#macro-variations" class="text-neutral-300 hover:underline">Macro Variations</a></li>
+        <li><a href="#mixing-with-racks" class="text-neutral-300 hover:underline">Mixing With Racks</a></li>
+        <li><a href="#nesting-racks" class="text-neutral-300 hover:underline">Nesting Racks</a></li>
+        <li><a href="#saving-racks" class="text-neutral-300 hover:underline">Saving Rack Presets</a></li>
+      </ul>
+    </nav>
+
+    <!-- Overview -->
+    <h2 id="overview">Rack Overview &amp; Signal Flow</h2>
+    <p>A Rack is a container that holds one or more <strong>device chains</strong> running in parallel inside a single device slot. Every chain receives the same input signal simultaneously, processes it through its own series of devices, and the outputs are mixed together to produce the Rack's final output.</p>
+    <p>There are four rack types, each restricted to specific device categories and track placements:</p>
+
+    <table class="table-auto w-full text-sm border-collapse">
+      <thead class="text-left text-white"><tr><th class="px-3 py-2">Rack Type</th><th class="px-3 py-2">Contains</th><th class="px-3 py-2">Placed On</th></tr></thead>
+      <tbody class="divide-y">
+        <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2 font-medium">Instrument Rack <span class="rack-badge badge-instrument">Instrument</span></td><td class="px-3 py-2">MIDI effects + instruments + audio effects (in that order per chain)</td><td class="px-3 py-2">MIDI tracks</td></tr>
+        <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2 font-medium">Audio Effect Rack <span class="rack-badge badge-audio">Audio</span></td><td class="px-3 py-2">Audio effects only</td><td class="px-3 py-2">Audio tracks, or downstream from an instrument on a MIDI track</td></tr>
+        <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2 font-medium">MIDI Effect Rack <span class="rack-badge badge-midi">MIDI</span></td><td class="px-3 py-2">MIDI effects only</td><td class="px-3 py-2">MIDI tracks only</td></tr>
+        <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2 font-medium">Drum Rack <span class="rack-badge badge-drum">Drum</span></td><td class="px-3 py-2">Instruments + MIDI + audio effects (same rules as Instrument Rack) + up to 6 return chains</td><td class="px-3 py-2">MIDI tracks</td></tr>
+      </tbody>
+    </table>
+
+    <p class="text-sm text-neutral-400">Drum Racks differ from the others: rather than all chains receiving the same signal, each chain responds to only its <strong>assigned MIDI note</strong>.</p>
+
+    <!-- Creating -->
+    <h2 id="creating-racks">Creating &amp; Grouping Racks</h2>
     <ul>
-      <li><strong>Layer patches:</strong> stack the Hydrasynth Explorer (via External Instrument) alongside a soft synth (e.g., Analog or Operator). The MIDI goes to both; blend with chain volumes.</li>
-      <li><strong>Split the keyboard:</strong> set separate Key Zone ranges on each chain — bass drone on the lower octaves, melodic patch on top.</li>
-      <li><strong>Velocity split:</strong> soft notes trigger a pad texture; hard hits trigger a pluck — without any additional tracks.</li>
-      <li><strong>Macro Knobs:</strong> expose up to 8 Macros to control parameters across multiple chains from a single Macro control. Map these to Knobbler knobs for hands-on control.</li>
+      <li><strong>From the Browser:</strong> drag a generic rack preset ("Audio Effect Rack", "Instrument Rack", etc.) from the Browser onto a track. Drop devices directly into the Chain List or Devices view.</li>
+      <li><strong>Group existing devices:</strong> select device title bars in the Device View, right-click → <strong>Group</strong> (or <strong>Group to Drum Rack</strong>). Repeating on an already-racked device creates a nested Rack.</li>
+      <li><strong>Ungroup:</strong> select the Rack's title bar → Edit menu or context menu → <strong>Ungroup</strong>.</li>
+      <li><strong>Navigate quickly:</strong> right-click the Device View selector to get a hierarchical list of every device in the track's chain. Click any entry to jump to it.</li>
     </ul>
 
-    <h2 id="effect-racks">Effect Racks</h2>
-    <p>An Audio Effect Rack chains effects in serial or parallel within a single device slot. Key uses:</p>
+    <!-- Instrument Racks -->
+    <h2 id="instrument-racks">Instrument Racks <span class="rack-badge badge-instrument">Instrument</span></h2>
+    <p>An Instrument Rack routes incoming MIDI to multiple instrument chains in parallel. Each chain has its own Key Zone, Velocity Zone, and Chain Select Zone, along with volume and pan sliders. This makes Instrument Racks the go-to tool for layering and splitting.</p>
+    <h3>Common uses</h3>
     <ul>
-      <li><strong>Parallel processing:</strong> dry signal runs through Chain 1 unaffected, wet signal takes a different effect chain (e.g., bitcrusher into reverb). Blend with chain volumes and the Dry/Wet macro.</li>
-      <li><strong>Mid/Side processing:</strong> use the chain filter's note zones with an M/S matrix to apply separate EQ to mid and side signals on a master bus.</li>
-      <li><strong>Macro automation:</strong> map reverb size, delay feedback, and filter cutoff across chains to a single Macro for one-knob transitional sweeps.</li>
-      <li><strong>Grouping effects for recall:</strong> save a rack preset of your finished vocal chain (EQ → Compressor → De-esser → Reverb send) so it can be dragged onto any vocal track in future sessions.</li>
+      <li><strong>Patch layering:</strong> stack an external synth (via External Instrument) alongside a software synth such as Analog or Operator. MIDI feeds both; blend via chain volume faders.</li>
+      <li><strong>Keyboard splits:</strong> set non-overlapping Key Zone ranges per chain — bass drone on C1–B2, melodic patch on C3 upward — all on a single MIDI track.</li>
+      <li><strong>Velocity splits:</strong> soft velocity (1–60) triggers a pad texture, hard velocity (61–127) triggers a pluck — no extra tracks needed.</li>
+      <li><strong>Crossfading between sounds:</strong> overlap Key or Velocity zone fade ranges so that adjacent patches blend smoothly at the boundary rather than switching hard.</li>
+      <li><strong>Macro integration:</strong> expose cutoff, reverb mix, and layer blend across all chains on a handful of Macro knobs; map those to a controller for live performance.</li>
+    </ul>
+    <h3>Signal flow rule</h3>
+    <p>Within each chain, ordering must follow: <em>MIDI effects → Instrument → Audio effects</em>. Live enforces this automatically when you drop devices.</p>
+
+    <!-- Audio Effect Racks -->
+    <h2 id="audio-effect-racks">Audio Effect Racks <span class="rack-badge badge-audio">Audio</span></h2>
+    <p>An Audio Effect Rack places multiple effect chains in parallel inside a single device slot. Each chain receives the same audio input. Unlike Instrument Racks, Audio Effect Racks have no Key or Velocity zones (those filter MIDI), but they do have Chain Select zones for switching and crossfading between chains.</p>
+    <h3>Common uses</h3>
+    <ul>
+      <li><strong>Parallel processing:</strong> Chain 1 = dry signal (no devices), Chain 2 = saturator → reverb. Blend the two with chain volumes for a parallel wet/dry mix without needing a send track.</li>
+      <li><strong>Multi-band processing:</strong> split the signal with EQ Eight (using high-pass and low-pass) into two chains, then process lows and highs independently before recombining.</li>
+      <li><strong>Preset banks via Chain Select:</strong> set each chain's Chain Select zone to an adjacent, non-overlapping value (0, 1, 2, 3…). Move the Chain Selector — mapped to a MIDI controller — to switch between fully different effect configurations instantly.</li>
+      <li><strong>Crossfading presets:</strong> overlap the Chain Select zone fade ranges of adjacent chains for a smooth morphing transition between effect states.</li>
+      <li><strong>Macro-controlled sweeps:</strong> map reverb size, delay feedback, and filter cutoff across chains to a single Macro knob for one-knob transitional sweeps during a mix or performance.</li>
+      <li><strong>Reusable processing chains:</strong> save a finished vocal chain (EQ → Compressor → De-esser → Reverb send) as a preset; drag it onto any vocal track in future sessions.</li>
     </ul>
 
-    <h2 id="drum-racks">Drum Racks</h2>
-    <p>A Drum Rack maps sounds to individual MIDI pads (C1–B5 by default), each with its own chain containing a sampler and any effects. The Push 1 pad grid maps directly to the Drum Rack's 16-pad "hot view".</p>
+    <!-- MIDI Effect Racks -->
+    <h2 id="midi-effect-racks">MIDI Effect Racks <span class="rack-badge badge-midi">MIDI</span></h2>
+    <p>A MIDI Effect Rack contains only MIDI effects and can only be placed on MIDI tracks, upstream from any instrument. It supports all three zone types — Key, Velocity, and Chain Select — so different MIDI processing can be applied to different note ranges or velocities simultaneously.</p>
+    <h3>Common uses</h3>
     <ul>
-      <li><strong>Per-pad effects:</strong> each pad has its own insert chain — apply transient shaping only to the snare, reverb only to the hi-hat, etc., without affecting other pads.</li>
-      <li><strong>Send chains:</strong> Drum Racks have separate Return chains for shared reverb or sidechain compression across all pads simultaneously.</li>
-      <li><strong>Choke groups:</strong> assign open and closed hi-hats to the same choke group so the closed hat cuts the open hat, just like a real cymbal.</li>
-      <li><strong>Slicing breaks:</strong> drag an audio loop into a Drum Rack to auto-slice it to pads — each slice triggered individually from Push 1 or Launchkey.</li>
+      <li><strong>Range-specific MIDI processing:</strong> apply an Arpeggiator only to notes above C3, while notes below pass through unaffected — both handled on the same track.</li>
+      <li><strong>Velocity-dependent effects:</strong> softly played notes trigger a slow chord via the Chord MIDI effect; hard notes pass through dry for direct triggering.</li>
+      <li><strong>Switchable MIDI transforms:</strong> use the Chain Selector to flip between no processing, an arpeggiator, and a chord stacker — all mappable to a single MIDI CC or Macro.</li>
+      <li><strong>Note filtering:</strong> narrow a chain's Key Zone to a single pad, so only that note gets pitch-shifted or quantized differently from the rest of the performance.</li>
+    </ul>
+    <p class="text-sm text-neutral-400">Note: By default, chain select zones in MIDI Effect Racks filter only MIDI notes, not other MIDI CCs. Enable <em>Chain Selector Filters MIDI Ctrl</em> in the Chain Select Ruler context menu to filter all MIDI events.</p>
+
+    <!-- Drum Racks -->
+    <h2 id="drum-racks">Drum Racks <span class="rack-badge badge-drum">Drum</span></h2>
+    <p>A Drum Rack maps sounds to individual MIDI notes across the full range (C0–G10). Each pad has its own device chain with an independent instrument plus any MIDI and audio effects, plus send levels to up to six shared Return chains. The Push pad grid maps directly to the Drum Rack's 16-pad hot view.</p>
+    <h3>Unique Drum Rack controls</h3>
+    <ul>
+      <li><strong>Receive chooser:</strong> the MIDI note that triggers this chain. Shows note names, numbers, and GM drum equivalents. Set to "All Notes" to pass whatever note it receives directly to devices.</li>
+      <li><strong>Play slider:</strong> the outgoing MIDI note sent to the chain's devices — allows remapping the pitch internally without changing the trigger note.</li>
+      <li><strong>Choke groups:</strong> assign open and closed hi-hats to the same choke group (1–16) so the closed hat cuts the open hat on trigger, mimicking a real cymbal. Any chains in the same group will silence each other.</li>
+      <li><strong>Send sliders:</strong> per-pad post-fader send levels to the Drum Rack's own Return chains — shared reverb or a sidechain compressor can be fed from individual pads at independent levels.</li>
+      <li><strong>Return chains:</strong> up to 6 audio effect return chains appear at the bottom of the chain list. Their output can route to the Rack's main output or directly to the Set's return tracks.</li>
+    </ul>
+    <h3>Pad View</h3>
+    <p>Pad View shows all 128 MIDI notes as a grid of pads. It is the fastest way to build and edit a kit:</p>
+    <ul>
+      <li>Drag any sample, preset, or instrument from the Browser onto a pad — a Simpler is created automatically and mapped to that pad's note.</li>
+      <li>Drag an audio effect onto a pad to insert it downstream in that pad's chain.</li>
+      <li>Drop a second sample onto a pad to replace the Simpler while leaving any effects intact.</li>
+      <li>Drop multiple samples at once to map them chromatically upward from the target pad. <kbd>Alt+drag</kbd> layers them all on a single pad inside a nested Instrument Rack.</li>
+      <li>Drag one pad to another to swap their note mappings. <kbd>Alt+drag</kbd> to layer both into a nested Instrument Rack.</li>
+      <li>When triggered by a supported hardware pad controller (Push, Launchkey, etc.), Pad View updates automatically as you scroll — no MIDI mapping required.</li>
+    </ul>
+    <h3>Common Drum Rack uses</h3>
+    <ul>
+      <li><strong>Per-pad effects:</strong> transient shaping only on the snare, compression only on the kick — each pad's chain is fully independent.</li>
+      <li><strong>Shared bus processing:</strong> route kick, snare, and clap sends to a single Return chain running Glue Compressor for glue, without a separate group track.</li>
+      <li><strong>Sample slicing:</strong> drag an audio loop onto a Drum Rack to auto-slice it across pads — trigger each slice individually from Push or Launchkey.</li>
+      <li><strong>Extract a chain to its own track:</strong> drag a chain from the Session View mixer to the drop area. The new track contains both the devices <em>and</em> the MIDI data for that pad. Drag from the chain list instead to take only the devices.</li>
     </ul>
 
-    <h2 id="rack-chain-selector">Rack Chain Selector &amp; Automation</h2>
-    <p>The Chain List selector lets you automate which chain plays at any point in Arrangement view — useful for live instrument "switching" without duplicating tracks. Map the Chain Selector to a Macro; automate that Macro to crossfade between acoustic-style and distorted synth layers over a song section.</p>
+    <!-- Zones -->
+    <h2 id="zones">Zones — Key, Velocity &amp; Chain Select</h2>
+    <p>Zones are data filters at the input of every chain in an Instrument, MIDI Effect, or Audio Effect Rack. They control which notes and values pass through to each chain. Toggle zone editors with the <strong>Key</strong>, <strong>Vel</strong>, and <strong>Chain</strong> buttons above the Chain List.</p>
+    <p class="text-sm text-neutral-400">Audio Effect Racks have no Key or Velocity zones (those filter MIDI only). Drum Racks have no zones at all — they use the Receive chooser instead.</p>
 
+    <table class="table-auto w-full text-sm border-collapse">
+      <thead class="text-left text-white"><tr><th class="px-3 py-2">Zone</th><th class="px-3 py-2">What it filters</th><th class="px-3 py-2">Scale</th><th class="px-3 py-2">Fade ranges</th></tr></thead>
+      <tbody class="divide-y">
+        <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2 font-medium">Key</td><td class="px-3 py-2">MIDI note number</td><td class="px-3 py-2">C-2 → G8 (full piano range)</td><td class="px-3 py-2">Attenuate note velocities at zone edges — smooth keyboard splits</td></tr>
+        <tr class="bg-neutral-800 text-neutral-100"><td class="px-3 py-2 font-medium">Velocity</td><td class="px-3 py-2">MIDI Note On velocity</td><td class="px-3 py-2">1 – 127</td><td class="px-3 py-2">Attenuate note velocities entering a chain at the zone boundary</td></tr>
+        <tr class="bg-neutral-900 text-neutral-100"><td class="px-3 py-2 font-medium">Chain Select</td><td class="px-3 py-2">Chain Selector value</td><td class="px-3 py-2">0 – 127</td><td class="px-3 py-2">Audio racks: attenuate chain output volume. MIDI racks: attenuate note velocity. Allows crossfades between chains.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Chain Select in practice</h3>
+    <ul>
+      <li><strong>Preset bank switching:</strong> give each chain a non-overlapping Chain Select zone value (0, 1, 2, 3…). Move the Chain Selector to switch exclusively to one chain. MIDI-map the selector to an encoder for hands-on control.</li>
+      <li><strong>Crossfading:</strong> extend zones so they overlap partially. The overlapping region is where both chains play simultaneously at attenuated levels — a smooth morph between two setups.</li>
+      <li><strong>Automation:</strong> automate the Chain Selector in the Arrangement to transition between entire instrument or effect configurations at defined points in a song.</li>
+    </ul>
+
+    <!-- Macro Controls -->
+    <h2 id="macro-controls">Macro Controls</h2>
+    <p>Every Rack has up to <strong>16 Macro knobs</strong> (8 shown by default; use the +/– selector buttons to adjust). Each Macro can be mapped to any number of parameters from any devices inside the Rack, with independent Min/Max ranges and the option to invert mappings.</p>
+    <h3>Mapping workflow</h3>
+    <ol>
+      <li>Click the <strong>Map</strong> button on the Rack to enter Macro Map Mode. All mappable parameters gain a colored overlay.</li>
+      <li>Click the parameter you want to map (e.g., filter cutoff on Analog).</li>
+      <li>Click the <strong>Map</strong> button beneath the target Macro knob. The mapping appears in the Mapping Browser.</li>
+      <li>Optionally set Min/Max in the Mapping Browser to limit or invert the range.</li>
+      <li>Repeat for additional parameters. Exit Map Mode by clicking <strong>Map</strong> again.</li>
+    </ol>
+    <p>Once mapped, a parameter is disabled in the device itself — the Macro has full control. External modulation via clip envelopes still works.</p>
+    <h3>Tips</h3>
+    <ul>
+      <li>Map parameters from multiple chains to one Macro for a single-knob morph across all layers simultaneously.</li>
+      <li>Invert a mapping (set Min > Max) so turning the knob up lowers one parameter while raising another — e.g., crossfade between two chains.</li>
+      <li>Press <strong>Rand</strong> in the Rack title bar to randomize all Macro values instantly — useful for sound design exploration.</li>
+      <li>Right-click a Macro → <strong>Exclude Macro from Randomization</strong> to protect volume or pan controls during randomization.</li>
+      <li>Give Macros descriptive names and custom colors via the Edit menu — especially useful when sharing presets.</li>
+    </ul>
+
+    <!-- Macro Variations -->
+    <h2 id="macro-variations">Macro Variations</h2>
+    <p>Macro Variations let you snapshot and recall different states of all Macro knobs in a Rack — useful for A/B comparisons, instant drops/builds in a performance, or capturing multiple sound design states.</p>
+    <ul>
+      <li>Open the Variations view via the Show/Hide Macro Variations selector button on the Rack.</li>
+      <li>Press <strong>New</strong> to store the current Macro state as a named variation ("Variation 1", "Variation 2", etc.).</li>
+      <li>Click the <strong>Launch</strong> button on any variation to instantly jump all Macros to that stored state.</li>
+      <li>Click the <strong>Overwrite</strong> button to update an existing variation with the current Macro positions.</li>
+      <li>Right-click a Macro → <strong>Exclude Macro From Variations</strong> to freeze one knob across all variations (e.g., keep a master volume fixed).</li>
+    </ul>
+
+    <!-- Mixing -->
+    <h2 id="mixing-with-racks">Mixing With Racks</h2>
+    <p>Any Instrument or Drum Rack with more than one chain can be expanded in the Session View mixer. Click the expand button in the track title bar to reveal individual chain faders alongside your tracks — adjust volume, pan, and routing without entering the Device View.</p>
+    <ul>
+      <li>Chain mixer controls mirror the chain list — changes in either place are reflected immediately in both.</li>
+      <li>Multi-select chains in the mixer to gang-adjust a shared parameter across all selected chains simultaneously.</li>
+      <li>Drag any chain from the mixer to a new track slot to extract it — both devices and MIDI data move with it (drag from the chain list to take only devices).</li>
+      <li>Drum Rack return chains extracted to the mixer create new Return tracks in the Set.</li>
+    </ul>
+
+    <!-- Nesting -->
     <h2 id="nesting-racks">Nesting Racks</h2>
-    <p>Racks can be nested — an Instrument Rack can contain chains that themselves contain Effect Racks. Keep nesting to two levels for clarity. Typical pattern: Instrument Rack (keyboard split) → per-chain Effect Rack (per-split processing) → top-level Macros controlling the most important parameter across both.</p>
+    <p>Racks can contain other Racks to any depth. In the Device View, nesting is shown by brackets within brackets. A practical two-level pattern:</p>
+    <ol>
+      <li><strong>Outer Instrument Rack</strong> — keyboard or velocity split into two chains.</li>
+      <li><strong>Per-chain Audio Effect Rack</strong> — independent EQ, compression, and reverb on each split.</li>
+      <li><strong>Top-level Macros</strong> — expose blend, reverb send, and filter sweep across both chains as three unified controls.</li>
+    </ol>
+    <p class="text-sm text-neutral-400">Keep nesting to two levels unless you have a clear reason to go deeper — it becomes difficult to navigate and debug beyond that.</p>
 
+    <!-- Saving -->
     <h2 id="saving-racks">Saving Rack Presets</h2>
     <ul>
-      <li>Save a finished Rack to the User Library with <kbd>Ctrl+Shift+S</kbd> (or drag to the Browser) — it appears under User Library → Instruments or User Library → Effects.</li>
-      <li>Name presets descriptively: <em>Hydrasynth Pad Layer — Macros EQ+Filter</em> is more useful than <em>Untitled Rack</em>.</li>
-      <li>Use the Save icon inside the device title bar to embed any referenced samples into the preset for portability.</li>
+      <li>Drag a Rack's title bar into the Browser (User Library → Instruments or User Library → Effects), or use <kbd>Ctrl+Shift+S</kbd> from the device title bar save icon.</li>
+      <li>Use the <strong>Save</strong> icon <em>inside</em> the device title bar (not the track save) to embed any referenced samples into the preset — ensures portability when moving the project.</li>
+      <li>Name presets descriptively: <em>Hydrasynth Pad Layer — Macro EQ+Filter</em> is more useful six months later than <em>Untitled Rack</em>.</li>
+      <li>Entire chains can also be saved as presets from the chain list — useful for reusing a single pad's device chain across different Drum Racks.</li>
     </ul>
 
   </article>

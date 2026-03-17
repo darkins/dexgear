@@ -2,7 +2,7 @@
 title: "Yamaha P-225"
 slug: "yamaha-p225"
 description: "Yamaha P-225 — 88-key digital piano with GHC graded action, CFX concert grand voice, and USB MIDI for use as a class-compliant controller in Ableton."
-url: "https://uk.yamaha.com/en/musical_instruments/pianos/p_series/p-225/"
+url: "https://uk.yamaha.com/en/musical-instruments/pianos/products/p-series/p-225/index.html"
 tags:
   - Piano
   - Yamaha
