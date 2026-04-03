@@ -1,0 +1,253 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { getEntry, render } from "astro:content";
+import VideoCard from "../../components/VideoCard.astro";
+
+const gear = await getEntry("gear", "hydrasynth");
+if (!gear) throw new Error("Gear not found");
+const { Content } = await render(gear);
+
+const videos = [
+    {
+        id: "vJSTaE9N68I",
+        title: "First Impressions",
+        description:
+            "An introductory look at the Hydrasynth Explorer out of the box.",
+    },
+    {
+        id: "sX553Y5A03I",
+        title: "Overview",
+        description:
+            "A full walkthrough of the Hydrasynth Explorer's features and layout.",
+    },
+    {
+        id: "AOuYQyGrMrM",
+        title: "Oscillator 3",
+        description:
+            "Deep dive into Oscillator 3 — noise, ring mod, and sub oscillator roles.",
+    },
+    {
+        id: "vB2-S3DeLKA",
+        title: "Oscillators 1 & 2",
+        description:
+            "Wavetable morphing, WaveList, and Wave Mutant options on Osc 1 and 2.",
+    },
+    {
+        id: "48hsAxOLU4I",
+        title: "Mutants Part 1",
+        description:
+            "Exploring the Wave Mutant modes — FM-Linear, WavStack, and Osc Sync.",
+    },
+    {
+        id: "Cy7psCNo2iM",
+        title: "Mutants Part 2",
+        description: "Pulse width mutants and Harmonic Sweep in depth.",
+    },
+    {
+        id: "AjrmkmYAHdg",
+        title: "Mutants Part 3",
+        description: "PhazDiff and advanced Wave Mutant combinations.",
+    },
+    {
+        id: "jcRcaKOi0Ck",
+        title: "The Filters",
+        description:
+            "All 16 Filter 1 models and the SEM-style Filter 2 — series and parallel routing.",
+    },
+    {
+        id: "-B1-jeFUbHM",
+        title: "Envelopes Part 1",
+        description: "DAHDSR envelope stages, looping, and BPM sync.",
+    },
+    {
+        id: "nNteFsDb8r4",
+        title: "Envelopes Part 2",
+        description:
+            "Advanced envelope techniques and modulation applications.",
+    },
+    {
+        id: "9SbQuj69V1c",
+        title: "LFOs Part 1",
+        description:
+            "LFO waveforms, BPM sync, One-Shot mode, and Step mode sequencer.",
+    },
+    {
+        id: "B81wDE6bOcw",
+        title: "LFOs Part 2",
+        description:
+            "Advanced LFO routing and tempo-synced modulation techniques.",
+    },
+    {
+        id: "fZzq88jB5U4",
+        title: "Mod Matrix Part 1",
+        description:
+            "Introduction to the 32-slot modulation matrix — sources and destinations.",
+    },
+    {
+        id: "WYLbZsuqLGo",
+        title: "Mod Matrix Part 2",
+        description:
+            "Complex modulation chains and CV/MIDI integration in the mod matrix.",
+    },
+    {
+        id: "Uf-7IZQ3F14",
+        title: "Effects Part 1",
+        description:
+            "Pitch FX, Lo-Fi, EQ, and Distortion in the internal effects chain.",
+    },
+    {
+        id: "Nr5077uVTro",
+        title: "Effects Part 2",
+        description:
+            "Modeled delays and reverbs — BPM sync and performance use.",
+    },
+    {
+        id: "MHSHGs6ZZlw",
+        title: "Voice Modes",
+        description:
+            "Mono, poly, unison, and chord voice modes for different playing styles.",
+    },
+    {
+        id: "q3srLE8nkso",
+        title: "Macro Controls",
+        description:
+            "Programming 8 Macros to control multiple destinations from a single encoder.",
+    },
+    {
+        id: "wbURDeerC_w",
+        title: "Sound Design — Aftertouch Pad",
+        description:
+            "Designing an expressive pad patch using polyphonic aftertouch.",
+    },
+    {
+        id: "mmmQq8HGDTo",
+        title: "Sound Design — Mod Wheel",
+        description:
+            "Using the mod wheel as a primary performance and sound-shaping tool.",
+    },
+    {
+        id: "-ajSRAvGG5U",
+        title: "Sound Design — Poly & Lead",
+        description: "Building polyphonic and lead sounds from scratch.",
+    },
+    {
+        id: "3P6ZboeMeuw",
+        title: "Sound Design — Sequenced Plucks",
+        description:
+            "Creating rhythmic pluck sequences using the arpeggiator and LFO step mode.",
+    },
+    {
+        id: "lvCHYocyC3E",
+        title: "Sound Design — Macro Drone",
+        description:
+            "Building an evolving drone patch controlled by Macro encoders.",
+    },
+    {
+        id: "Snix1ugSLcs",
+        title: "Sound Design — One Finger Vangelis",
+        description:
+            "Recreating lush Vangelis-style pads with a single chord voice mode.",
+    },
+    {
+        id: "F0ecV92D230",
+        title: "Sound Design — Firmware 2.0",
+        description:
+            "New sound design possibilities introduced in Hydrasynth firmware v2.0.",
+    },
+    {
+        id: "43TPftl_C1A",
+        title: "Final Overview",
+        description:
+            "A closing review of the full Hydrasynth Explorer feature set.",
+    },
+];
+---
+
+<MainLayout title={gear.data.title} description={gear.data.description}>
+    <section class="content-intro">
+        <div>
+            <p class="eyebrow">Gear Profile</p>
+            <h1>{gear.data.title}</h1>
+            <p class="content-intro__lede">{gear.data.description}</p>
+        </div>
+        <div class="content-intro__actions">
+            {
+                gear.data.url && (
+                    <a
+                        href={gear.data.url}
+                        class="button-primary"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Official Site
+                    </a>
+                )
+            }
+            <a href="/" class="button-secondary">Back to Library</a>
+        </div>
+    </section>
+
+    <div class="section-card video-section">
+        <div class="video-section__header">
+            <h2>Learn Hydrasynth Explorer</h2>
+            <p>
+                26 video tutorials covering everything from first impressions to
+                advanced sound design. Videos by <a
+                    href="https://www.youtube.com/playlist?list=PLuh4CHo4ShJdSSlBqZZ4mQJ38nXQvrveP"
+                    target="_blank"
+                    rel="noopener noreferrer">Arty Parra on YouTube</a
+                >.
+            </p>
+        </div>
+        <div class="video-grid">
+            {
+                videos.map((v) => (
+                    <VideoCard
+                        id={v.id}
+                        title={v.title}
+                        description={v.description}
+                    />
+                ))
+            }
+        </div>
+    </div>
+
+    <article class="prose mt-8">
+        <Content />
+    </article>
+</MainLayout>
+
+<style>
+    .video-section__header {
+        margin-bottom: 1.75rem;
+    }
+
+    .video-section__header h2 {
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .video-section__header p {
+        color: var(--text-soft);
+        margin: 0;
+        font-size: 0.95rem;
+    }
+
+    .video-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    @media (min-width: 640px) {
+        .video-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .video-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+</style>

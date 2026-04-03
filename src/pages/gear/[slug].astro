@@ -1,22 +1,17 @@
 ---
-import MainLayout from '../../layouts/MainLayout.astro';
-import { getCollection, getEntryBySlug } from 'astro:content';
+import MainLayout from "../../layouts/MainLayout.astro";
+import { getCollection, getEntry, render } from "astro:content";
 
 export async function getStaticPaths() {
-  const gear = await (getCollection as any)('gear') as any[];
-  return gear.map((g) => ({ params: { slug: g.slug ?? g.id } }));
+  const gear = await getCollection("gear");
+  return gear.map((g) => ({ params: { slug: g.id } }));
 }
 
 const { slug } = Astro.params;
-let gear = await (getEntryBySlug as any)('gear', slug) as any;
-if (!gear) {
-  const all = await (getCollection as any)('gear') as any[];
-  gear = all.find((g) => g.slug === slug || g.id === slug) as any;
-}
-if (!gear) throw new Error('Gear not found');
+const gear = await getEntry("gear", slug!);
+if (!gear) throw new Error("Gear not found");
 
-const rendered = typeof gear.render === 'function' ? await gear.render() : null;
-const Content = rendered?.Content;
+const { Content } = await render(gear);
 ---
 
 <MainLayout title={gear.data.title} description={gear.data.description}>
@@ -27,11 +22,22 @@ const Content = rendered?.Content;
       <p class="content-intro__lede">{gear.data.description}</p>
     </div>
     <div class="content-intro__actions">
-      {gear.data.url && <a href={gear.data.url} class="button-primary" target="_blank" rel="noopener">Official Site</a>}
+      {
+        gear.data.url && (
+          <a
+            href={gear.data.url}
+            class="button-primary"
+            target="_blank"
+            rel="noopener"
+          >
+            Official Site
+          </a>
+        )
+      }
       <a href="/" class="button-secondary">Back to Library</a>
     </div>
   </section>
   <article class="prose mt-8">
-      {Content ? <Content /> : <div set:html={gear.body} />}
-    </article>
+    <Content />
+  </article>
 </MainLayout>

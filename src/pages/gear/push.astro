@@ -1,0 +1,169 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { getEntry, render } from "astro:content";
+import VideoCard from "../../components/VideoCard.astro";
+
+const gear = await getEntry("gear", "push");
+if (!gear) throw new Error("Gear not found");
+const { Content } = await render(gear);
+
+const videos = [
+    {
+        id: "fTUcEYF4aPA",
+        title: "Getting Started",
+        description:
+            "Create an account, register Push, get Live, connect Push.",
+    },
+    {
+        id: "HM8EmM5C3Ls",
+        title: "Creating Beats",
+        description: "Create drumloops with the step sequencer and drumpads.",
+    },
+    {
+        id: "kIovU2tpNWg",
+        title: "Playing Chords and Melodies",
+        description: "Discover Note mode and scales.",
+    },
+    {
+        id: "amvzZdlU3Fg",
+        title: "Tweaking and Mixing",
+        description: "Automate parameters and refine your mix.",
+    },
+    {
+        id: "9CHyB70Hz30",
+        title: "Session Mode",
+        description:
+            "Improvise with your musical ideas using clips and scenes.",
+    },
+    {
+        id: "0rxsPCF0j-4",
+        title: "Pad Sensitivity",
+        description: "Adjust the sensitivity and velocity curve of the pads.",
+    },
+    {
+        id: "XQQNHgY4NnM",
+        title: "Workflow",
+        description: "From ideas to song parts.",
+    },
+    {
+        id: "zsNskXJHoBw",
+        title: "Step Sequencing",
+        description:
+            "Create chords and melodies with the melodic step sequencer.",
+    },
+    {
+        id: "sSRe27_fDak",
+        title: "Step Automation",
+        description:
+            "Change parameter values of Live instruments and effects per step.",
+    },
+    {
+        id: "s5aZwT53Djo",
+        title: "Slicing Audio Samples",
+        description:
+            "Slice audio samples to pads and play them melodically or as a drum kit.",
+    },
+    {
+        id: "1xxWdvotAlo",
+        title: "How to Make Beats",
+        description:
+            "Build beats from scratch using Push 1 with the step sequencer and drumpads.",
+    },
+];
+---
+
+<MainLayout title={gear.data.title} description={gear.data.description}>
+    <section class="content-intro">
+        <div>
+            <p class="eyebrow">Gear Profile</p>
+            <h1>{gear.data.title}</h1>
+            <p class="content-intro__lede">{gear.data.description}</p>
+        </div>
+        <div class="content-intro__actions">
+            {
+                gear.data.url && (
+                    <a
+                        href={gear.data.url}
+                        class="button-primary"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Official Manual
+                    </a>
+                )
+            }
+            <a href="/" class="button-secondary">Back to Library</a>
+        </div>
+    </section>
+
+    <div class="section-card video-section">
+        <div class="video-section__header">
+            <h2>Learn Push 1</h2>
+            <p>
+                11 official tutorials from Ableton covering everything from
+                first setup to making beats. Videos sourced from <a
+                    href="https://www.ableton.com/en/help/learn-push-1/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >ableton.com/en/help/learn-push-1</a
+                >.
+            </p>
+        </div>
+        <div class="video-grid">
+            {
+                videos.map((v) => (
+                    <VideoCard
+                        id={v.id}
+                        title={v.title}
+                        description={v.description}
+                    />
+                ))
+            }
+        </div>
+    </div>
+
+    <article class="prose mt-8">
+        <Content />
+    </article>
+</MainLayout>
+
+<style>
+    .video-section__header {
+        margin-bottom: 1.75rem;
+    }
+
+    .video-section__header h2 {
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .video-section__header p {
+        color: var(--text-soft);
+        margin: 0;
+        font-size: 0.95rem;
+    }
+
+    .video-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    @media (min-width: 640px) {
+        .video-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .video-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .section-divider {
+        border: none;
+        border-top: 1px solid var(--border-soft);
+        margin: 2.5rem 0;
+    }
+</style>

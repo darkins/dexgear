@@ -1,0 +1,14 @@
+import { z, defineCollection } from "astro:content";
+import { glob } from "astro/loaders";
+
+const gear = defineCollection({
+    loader: glob({ pattern: "**/*.md", base: "./src/content/gear" }),
+    schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        url: z.string().optional(),
+        tags: z.array(z.string()),
+    }),
+});
+
+export const collections = { gear };

@@ -1,140 +1,171 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 
 export let title: string | undefined;
 export let description: string | undefined;
 
-
-import { getCollection } from 'astro:content';
-const gearList = await getCollection('gear');
+import { getCollection } from "astro:content";
+const gearList = await getCollection("gear");
 const currentPath = Astro.url.pathname;
 const labelOverrides: Record<string, string> = {
-  'launch-control-xl': 'Novation',
-  'ableton': 'DAW',
-  'hydrasynth': 'Hydrasynth',
-  'block-m': 'Roli',
-  'motu-ultralite-mk3': 'Motu',
-  'launchkey-37-mk3': 'Launchkey 37',
-  'roland-vt3': 'VT-3',
-  'sm58': 'SM58',
-  'yamaha-hs7': 'HS7',
-  'yamaha-p225': 'P-225',
+  "launch-control-xl": "Novation",
+  ableton: "DAW",
+  hydrasynth: "Hydrasynth",
+  "block-m": "Roli",
+  "motu-ultralite-mk3": "Motu",
+  "launchkey-37-mk3": "Launchkey 37",
+  "roland-vt3": "VT-3",
+  sm58: "SM58",
+  "yamaha-hs7": "HS7",
+  "yamaha-p225": "P-225",
 };
 
 // Desired navigation order (left to right)
 const desiredOrder = [
-  'ableton',
-  'motu-ultralite-mk3',
-  'hydrasynth',
-  'block-m',
-  'launch-control-xl',
+  "ableton",
+  "motu-ultralite-mk3",
+  "hydrasynth",
+  "block-m",
+  "launch-control-xl",
 ];
 
-const gearBySlug = Object.fromEntries(gearList.map(g => [g.slug, g]));
+const gearBySlug = Object.fromEntries(gearList.map((g) => [g.id, g]));
 const gearNavLinks = desiredOrder
-  .map(slug => gearBySlug[slug])
+  .map((slug) => gearBySlug[slug])
   .filter(Boolean)
-  .map(g => {
+  .map((g) => {
     // Add dropdown children for the DAW (ableton) entry
-    if (g.slug === 'ableton') {
+    if (g.id === "ableton") {
       return {
-        href: '/daw/shortcuts',
-        label: labelOverrides[g.slug] ?? g.data.title,
-        active: currentPath.startsWith('/daw/') || currentPath === '/gear/knobbler' || currentPath === '/gear/push',
+        href: "/daw/shortcuts",
+        label: labelOverrides[g.id] ?? g.data.title,
+        active:
+          currentPath.startsWith("/daw/") ||
+          currentPath === "/gear/knobbler" ||
+          currentPath === "/gear/push",
         children: [
-          { href: '/daw/shortcuts', label: 'Shortcuts' },
-          { href: '/daw/m4l', label: 'M4L' },
-          { href: '/daw/racks', label: 'Racks' },
-          { href: '/gear/knobbler', label: 'Knobbler' },
-          { href: '/gear/push', label: 'Push 1' },
+          { href: "/daw/shortcuts", label: "Shortcuts" },
+          { href: "/daw/m4l", label: "M4L" },
+          { href: "/daw/racks", label: "Racks" },
+          { href: "/gear/knobbler", label: "Knobbler" },
+          { href: "/gear/push", label: "Push 1" },
         ],
       };
     }
     // Add dropdown children for Motu (surface feature pages)
-    if (g.slug === 'motu-ultralite-mk3') {
+    if (g.id === "motu-ultralite-mk3") {
       return {
-        href: '/gear/motu-ultralite-mk3',
-        label: labelOverrides[g.slug] ?? g.data.title,
-        active: currentPath.startsWith('/gear/motu-ultralite-mk3'),
+        href: "/gear/motu-ultralite-mk3",
+        label: labelOverrides[g.id] ?? g.data.title,
+        active: currentPath.startsWith("/gear/motu-ultralite-mk3"),
         children: [
-          { href: '/gear/motu-ultralite-mk3/general-settings', label: 'General Settings' },
-          { href: '/gear/motu-ultralite-mk3/cuemix-settings', label: 'Cuemix Settings' },
-          { href: '/gear/motu-ultralite-mk3/cuemix', label: 'CueMix' },
-          { href: '/gear/motu-ultralite-mk3/connectivity', label: 'Connectivity' },
-          { href: '/gear/motu-ultralite-mk3/io', label: 'I/O' },
-          { href: '/gear/motu-ultralite-mk3/console', label: 'Console' },
-          { href: '/gear/motu-ultralite-mk3/converters', label: 'Converters' },
-          { href: '/gear/motu-ultralite-mk3/monitoring', label: 'Monitoring' },
+          {
+            href: "/gear/motu-ultralite-mk3/general-settings",
+            label: "General Settings",
+          },
+          {
+            href: "/gear/motu-ultralite-mk3/cuemix-settings",
+            label: "Cuemix Settings",
+          },
+          { href: "/gear/motu-ultralite-mk3/cuemix", label: "CueMix" },
+          {
+            href: "/gear/motu-ultralite-mk3/connectivity",
+            label: "Connectivity",
+          },
+          { href: "/gear/motu-ultralite-mk3/io", label: "I/O" },
+          { href: "/gear/motu-ultralite-mk3/console", label: "Console" },
+          { href: "/gear/motu-ultralite-mk3/converters", label: "Converters" },
+          { href: "/gear/motu-ultralite-mk3/monitoring", label: "Monitoring" },
         ],
       };
     }
-    if (g.slug === 'launch-control-xl') {
+    if (g.id === "launch-control-xl") {
       return {
-        href: '/gear/launch-control-xl',
-        label: 'Novation',
-        active: currentPath === '/gear/launch-control-xl' || currentPath === '/gear/launchkey-37-mk3',
+        href: "/gear/launch-control-xl",
+        label: "Novation",
+        active:
+          currentPath === "/gear/launch-control-xl" ||
+          currentPath === "/gear/launchkey-37-mk3",
         children: [
-          { href: '/gear/launch-control-xl', label: 'Launch Control XL' },
-          { href: '/gear/launchkey-37-mk3', label: 'Launchkey 37' },
+          { href: "/gear/launch-control-xl", label: "Launch Control XL" },
+          { href: "/gear/launchkey-37-mk3", label: "Launchkey 37" },
         ],
       };
     }
     return {
-      href: `/gear/${g.slug}`,
-      label: labelOverrides[g.slug] ?? g.data.title,
-      active: currentPath === `/gear/${g.slug}`,
+      href: `/gear/${g.id}`,
+      label: labelOverrides[g.id] ?? g.data.title,
+      active: currentPath === `/gear/${g.id}`,
     };
   });
 
 const navLinks = [
   ...gearNavLinks,
   {
-    href: '/gear/yamaha-hs7',
-    label: 'Other',
-    active: ['/gear/yamaha-hs7', '/gear/sm58', '/gear/roland-vt3', '/gear/yamaha-p225'].includes(currentPath),
+    href: "/gear/yamaha-hs7",
+    label: "Other",
+    active: [
+      "/gear/yamaha-hs7",
+      "/gear/sm58",
+      "/gear/roland-vt3",
+      "/gear/yamaha-p225",
+    ].includes(currentPath),
     children: [
-      { href: '/gear/yamaha-hs7', label: 'HS7' },
-      { href: '/gear/sm58', label: 'SM58' },
-      { href: '/gear/roland-vt3', label: 'VT-3' },
-      { href: '/gear/yamaha-p225', label: 'P-225' },
+      { href: "/gear/yamaha-hs7", label: "HS7" },
+      { href: "/gear/sm58", label: "SM58" },
+      { href: "/gear/roland-vt3", label: "VT-3" },
+      { href: "/gear/yamaha-p225", label: "P-225" },
     ],
   },
   {
-    href: '/workflow/signal-chain',
-    label: 'Workflow',
-    active: currentPath.startsWith('/workflow/'),
+    href: "/workflow/signal-chain",
+    label: "Workflow",
+    active: currentPath.startsWith("/workflow/"),
     children: [
-      { href: '/workflow/signal-chain', label: 'Signal Chain' },
-      { href: '/workflow/session-template', label: 'Session Template' },
+      { href: "/workflow/signal-chain", label: "Signal Chain" },
+      { href: "/workflow/session-template", label: "Session Template" },
     ],
   },
 ];
 
-const metaDescription = description ?? 'Dex-Gear: Guides, tips, and resources for music gear including Ableton, MOTU, Knobbler, Hydrasynth, Push, Block M, and Launch Control XL.';
-
+const metaDescription =
+  description ??
+  "Dex-Gear: Guides, tips, and resources for music gear including Ableton, MOTU, Knobbler, Hydrasynth, Push, Block M, and Launch Control XL.";
 ---
 
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title ? `${title} | Dex-Gear` : 'Dex-Gear'}</title>
+    <title>{title ? `${title} | Dex-Gear` : "Dex-Gear"}</title>
     <meta name="description" content={metaDescription} />
-    <meta property="og:title" content={title ? `${title} | Dex-Gear` : 'Dex-Gear'} />
+    <meta
+      property="og:title"
+      content={title ? `${title} | Dex-Gear` : "Dex-Gear"}
+    />
     <meta property="og:description" content={metaDescription} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://dexgear.example.com/" />
     <meta property="og:image" content="/og-image.svg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title ? `${title} | Dex-Gear` : 'Dex-Gear'} />
+    <meta
+      name="twitter:title"
+      content={title ? `${title} | Dex-Gear` : "Dex-Gear"}
+    />
     <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content="/og-image.svg" />
     <link rel="canonical" href="https://dexgear.example.com/" />
     <script is:inline>
       (function () {
-        var saved = localStorage.getItem('theme');
-        var preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', saved !== null ? saved : preferred);
+        var saved = localStorage.getItem("theme");
+        var preferred = window.matchMedia("(prefers-color-scheme: dark)")
+          .matches
+          ? "dark"
+          : "light";
+        document.documentElement.setAttribute(
+          "data-theme",
+          saved !== null ? saved : preferred,
+        );
       })();
     </script>
   </head>
@@ -156,90 +187,225 @@ const metaDescription = description ?? 'Dex-Gear: Guides, tips, and resources fo
 
         <nav aria-label="Main navigation" class="site-nav hidden md:block">
           <ul>
-            {navLinks.map(link => (
-              link.children ? (
-                <li class="nav-dropdown">
-                  <a href={link.href} class:list={["site-nav__link", link.active && "site-nav__link--active"]} aria-label={link.label}>
-                    <span>{link.label}</span>
-                    <svg class="site-nav__icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"></path></svg>
-                  </a>
-                  <div class="nav-dropdown__menu">
-                    <ul>
-                      {link.children.map(child => (
-                        <li><a href={child.href}>{child.label}</a></li>
-                      ))}
-                    </ul>
-                  </div>
-                </li>
-              ) : (
-                <li><a href={link.href} class:list={["site-nav__link", link.active && "site-nav__link--active"]} aria-label={link.label}>{link.label}</a></li>
+            {
+              navLinks.map((link) =>
+                link.children ? (
+                  <li class="nav-dropdown">
+                    <a
+                      href={link.href}
+                      class:list={[
+                        "site-nav__link",
+                        link.active && "site-nav__link--active",
+                      ]}
+                      aria-label={link.label}
+                    >
+                      <span>{link.label}</span>
+                      <svg
+                        class="site-nav__icon"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </a>
+                    <div class="nav-dropdown__menu">
+                      <ul>
+                        {link.children.map((child) => (
+                          <li>
+                            <a href={child.href}>{child.label}</a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </li>
+                ) : (
+                  <li>
+                    <a
+                      href={link.href}
+                      class:list={[
+                        "site-nav__link",
+                        link.active && "site-nav__link--active",
+                      ]}
+                      aria-label={link.label}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ),
               )
-            ))}
+            }
           </ul>
         </nav>
 
         <div class="site-header__actions">
-          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            aria-label="Toggle dark mode"
+          >
             <!-- Moon: shown in light mode -->
-            <svg class="theme-toggle__moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg
+              class="theme-toggle__moon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              ><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+              ></path></svg
+            >
             <!-- Sun: shown in dark mode -->
-            <svg class="theme-toggle__sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg
+              class="theme-toggle__sun"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              ><circle cx="12" cy="12" r="5"></circle><line
+                x1="12"
+                y1="1"
+                x2="12"
+                y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line
+                x1="4.22"
+                y1="4.22"
+                x2="5.64"
+                y2="5.64"></line><line
+                x1="18.36"
+                y1="18.36"
+                x2="19.78"
+                y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"
+              ></line><line x1="21" y1="12" x2="23" y2="12"></line><line
+                x1="4.22"
+                y1="19.78"
+                x2="5.64"
+                y2="18.36"></line><line
+                x1="18.36"
+                y1="5.64"
+                x2="19.78"
+                y2="4.22"></line></svg
+            >
           </button>
-          <button id="menu-btn" aria-label="Toggle navigation" aria-expanded="false" class="site-menu-button md:hidden">
-            <svg id="icon-open" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            <svg id="icon-close" class="w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          <button
+            id="menu-btn"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            class="site-menu-button md:hidden"
+          >
+            <svg
+              id="icon-open"
+              class="w-6 h-6"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"></path></svg
+            >
+            <svg
+              id="icon-close"
+              class="w-6 h-6 hidden"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"></path></svg
+            >
           </button>
         </div>
       </div>
 
       <div id="mobile-menu" class="mobile-menu hidden md:hidden">
         <ul>
-          {navLinks.map(link => (
-            link.children ? (
-              <li>
-                <a href={link.href} class:list={["mobile-menu__parent", link.active && "mobile-menu__parent--active"]}>{link.label}</a>
-                <div class="mobile-menu__children">
-                  {link.children.map(child => (
-                    <a href={child.href}>{child.label}</a>
-                  ))}
-                </div>
-              </li>
-            ) : (
-              <li><a href={link.href} class:list={["mobile-menu__link", link.active && "mobile-menu__parent--active"]} aria-label={link.label}>{link.label}</a></li>
+          {
+            navLinks.map((link) =>
+              link.children ? (
+                <li>
+                  <a
+                    href={link.href}
+                    class:list={[
+                      "mobile-menu__parent",
+                      link.active && "mobile-menu__parent--active",
+                    ]}
+                  >
+                    {link.label}
+                  </a>
+                  <div class="mobile-menu__children">
+                    {link.children.map((child) => (
+                      <a href={child.href}>{child.label}</a>
+                    ))}
+                  </div>
+                </li>
+              ) : (
+                <li>
+                  <a
+                    href={link.href}
+                    class:list={[
+                      "mobile-menu__link",
+                      link.active && "mobile-menu__parent--active",
+                    ]}
+                    aria-label={link.label}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ),
             )
-          ))}
+          }
         </ul>
       </div>
     </header>
     <script type="module">
-      document.addEventListener('DOMContentLoaded', () => {
-        const btn = document.getElementById('menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        const openIcon = document.getElementById('icon-open');
-        const closeIcon = document.getElementById('icon-close');
+      document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.getElementById("menu-btn");
+        const menu = document.getElementById("mobile-menu");
+        const openIcon = document.getElementById("icon-open");
+        const closeIcon = document.getElementById("icon-close");
         if (!btn || !menu) return;
-        btn.addEventListener('click', () => {
-          const isHidden = menu.classList.contains('hidden');
+        btn.addEventListener("click", () => {
+          const isHidden = menu.classList.contains("hidden");
           if (isHidden) {
-            menu.classList.remove('hidden');
-            btn.setAttribute('aria-expanded', 'true');
-            openIcon.classList.add('hidden');
-            closeIcon.classList.remove('hidden');
+            menu.classList.remove("hidden");
+            btn.setAttribute("aria-expanded", "true");
+            openIcon.classList.add("hidden");
+            closeIcon.classList.remove("hidden");
           } else {
-            menu.classList.add('hidden');
-            btn.setAttribute('aria-expanded', 'false');
-            openIcon.classList.remove('hidden');
-            closeIcon.classList.add('hidden');
+            menu.classList.add("hidden");
+            btn.setAttribute("aria-expanded", "false");
+            openIcon.classList.remove("hidden");
+            closeIcon.classList.add("hidden");
           }
         });
 
-        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggle = document.getElementById("theme-toggle");
         if (themeToggle) {
-          themeToggle.addEventListener('click', () => {
-            const current = document.documentElement.getAttribute('data-theme');
-            const next = current === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
+          themeToggle.addEventListener("click", () => {
+            const current = document.documentElement.getAttribute("data-theme");
+            const next = current === "dark" ? "light" : "dark";
+            document.documentElement.setAttribute("data-theme", next);
+            localStorage.setItem("theme", next);
           });
         }
       });
@@ -249,7 +415,10 @@ const metaDescription = description ?? 'Dex-Gear: Guides, tips, and resources fo
     </main>
     <footer class="site-footer">
       <div class="site-footer__inner">
-        <p>Built for fast lookups, cleaner routing decisions, and practical studio recall.</p>
+        <p>
+          Built for fast lookups, cleaner routing decisions, and practical
+          studio recall.
+        </p>
         <div class="site-footer__chips" aria-hidden="true">
           <span></span>
           <span></span>
