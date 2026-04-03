@@ -1,3 +1,6 @@
 .astro
 .github
+.vscode
+dist
+pdf 
 node_modules
