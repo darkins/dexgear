@@ -1,5 +1,6 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
+import GearIntro from "../../components/GearIntro.astro";
 import { getEntry, render } from "astro:content";
 import VideoCard from "../../components/VideoCard.astro";
 
@@ -8,162 +9,1616 @@ if (!gear) throw new Error("Gear not found");
 const { Content } = await render(gear);
 
 const videos = [
-    {
-        id: "fTUcEYF4aPA",
-        title: "Getting Started",
-        description:
-            "Create an account, register Push, get Live, connect Push.",
-    },
-    {
-        id: "HM8EmM5C3Ls",
-        title: "Creating Beats",
-        description: "Create drumloops with the step sequencer and drumpads.",
-    },
-    {
-        id: "kIovU2tpNWg",
-        title: "Playing Chords and Melodies",
-        description: "Discover Note mode and scales.",
-    },
-    {
-        id: "amvzZdlU3Fg",
-        title: "Tweaking and Mixing",
-        description: "Automate parameters and refine your mix.",
-    },
-    {
-        id: "9CHyB70Hz30",
-        title: "Session Mode",
-        description:
-            "Improvise with your musical ideas using clips and scenes.",
-    },
-    {
-        id: "0rxsPCF0j-4",
-        title: "Pad Sensitivity",
-        description: "Adjust the sensitivity and velocity curve of the pads.",
-    },
-    {
-        id: "XQQNHgY4NnM",
-        title: "Workflow",
-        description: "From ideas to song parts.",
-    },
-    {
-        id: "zsNskXJHoBw",
-        title: "Step Sequencing",
-        description:
-            "Create chords and melodies with the melodic step sequencer.",
-    },
-    {
-        id: "sSRe27_fDak",
-        title: "Step Automation",
-        description:
-            "Change parameter values of Live instruments and effects per step.",
-    },
-    {
-        id: "s5aZwT53Djo",
-        title: "Slicing Audio Samples",
-        description:
-            "Slice audio samples to pads and play them melodically or as a drum kit.",
-    },
-    {
-        id: "1xxWdvotAlo",
-        title: "How to Make Beats",
-        description:
-            "Build beats from scratch using Push 1 with the step sequencer and drumpads.",
-    },
+  {
+    id: "fTUcEYF4aPA",
+    title: "Getting Started",
+    description: "Create an account, register Push, get Live, connect Push.",
+  },
+  {
+    id: "HM8EmM5C3Ls",
+    title: "Creating Beats",
+    description: "Create drumloops with the step sequencer and drumpads.",
+  },
+  {
+    id: "kIovU2tpNWg",
+    title: "Playing Chords and Melodies",
+    description: "Discover Note mode and scales.",
+  },
+  {
+    id: "amvzZdlU3Fg",
+    title: "Tweaking and Mixing",
+    description: "Automate parameters and refine your mix.",
+  },
+  {
+    id: "9CHyB70Hz30",
+    title: "Session Mode",
+    description: "Improvise with your musical ideas using clips and scenes.",
+  },
+  {
+    id: "0rxsPCF0j-4",
+    title: "Pad Sensitivity",
+    description: "Adjust the sensitivity and velocity curve of the pads.",
+  },
+  {
+    id: "XQQNHgY4NnM",
+    title: "Workflow",
+    description: "From ideas to song parts.",
+  },
+  {
+    id: "zsNskXJHoBw",
+    title: "Step Sequencing",
+    description: "Create chords and melodies with the melodic step sequencer.",
+  },
+  {
+    id: "sSRe27_fDak",
+    title: "Step Automation",
+    description:
+      "Change parameter values of Live instruments and effects per step.",
+  },
+  {
+    id: "s5aZwT53Djo",
+    title: "Slicing Audio Samples",
+    description:
+      "Slice audio samples to pads and play them melodically or as a drum kit.",
+  },
+  {
+    id: "1xxWdvotAlo",
+    title: "How to Make Beats",
+    description:
+      "Build beats from scratch using Push 1 with the step sequencer and drumpads.",
+  },
 ];
 ---
 
 <MainLayout title={gear.data.title} description={gear.data.description}>
-    <section class="content-intro">
-        <div>
-            <p class="eyebrow">Gear Profile</p>
-            <h1>{gear.data.title}</h1>
-            <p class="content-intro__lede">{gear.data.description}</p>
-        </div>
-        <div class="content-intro__actions">
-            {
-                gear.data.url && (
-                    <a
-                        href={gear.data.url}
-                        class="button-primary"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Official Manual
-                    </a>
-                )
-            }
-            <a href="/" class="button-secondary">Back to Library</a>
-        </div>
-    </section>
+  <GearIntro
+    title={gear.data.title}
+    description={gear.data.description}
+    url={gear.data.url}
+    ctaLabel="Official Manual"
+  />
 
-    <div class="section-card video-section">
-        <div class="video-section__header">
-            <h2>Learn Push 1</h2>
-            <p>
-                11 official tutorials from Ableton covering everything from
-                first setup to making beats. Videos sourced from <a
-                    href="https://www.ableton.com/en/help/learn-push-1/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >ableton.com/en/help/learn-push-1</a
-                >.
-            </p>
-        </div>
-        <div class="video-grid">
-            {
-                videos.map((v) => (
-                    <VideoCard
-                        id={v.id}
-                        title={v.title}
-                        description={v.description}
-                    />
-                ))
-            }
-        </div>
+  <div class="section-card video-section">
+    <div class="video-section__header">
+      <h2>Learn Push 1</h2>
+      <p>
+        11 official tutorials from Ableton covering everything from first setup
+        to making beats. Videos sourced from <a
+          href="https://www.ableton.com/en/help/learn-push-1/"
+          target="_blank"
+          rel="noopener noreferrer">ableton.com/en/help/learn-push-1</a
+        >.
+      </p>
     </div>
+    <div class="video-grid">
+      {
+        videos.map((v) => (
+          <VideoCard id={v.id} title={v.title} description={v.description} />
+        ))
+      }
+    </div>
+  </div>
 
-    <article class="prose mt-8">
-        <Content />
-    </article>
+  <article class="prose mt-8">
+    <Content />
+  </article>
+
+  <div class="section-card using-push-section">
+    <h2>Using Push 1</h2>
+    <p>
+      Ableton Push 1 is an instrument for song creation that provides hands-on
+      control of melody and harmony, beats, sounds, and song structure. In the
+      studio, Push 1 allows you to quickly create clips that populate Live's
+      Session View as you work entirely from the hardware. On stage, Push 1
+      serves as a powerful instrument for clip launching.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushOverview.png"
+        alt="Overview of Push 1's Controls"
+        loading="lazy"
+      />
+      <figcaption>Overview of Push 1's Controls</figcaption>
+    </figure>
+    <p>
+      Much of Push 1's behavior depends on which mode it is in, as well as on
+      which type of track is selected.
+    </p>
+
+    <h3 id="setup">Setup</h3>
+    <p>
+      Setting up the Push 1 hardware is mostly automatic. As long as Live is
+      running, Push 1 will be automatically detected as soon as it is connected
+      to a USB port on your computer. After connection, Push 1 can be used
+      immediately. It is not necessary to install drivers and Push 1 does not
+      need to be manually configured in Live's Settings.
+    </p>
+
+    <h3 id="browsing-and-loading-sounds">Browsing and Loading Sounds</h3>
+    <p>
+      You can browse and load sounds directly from Push 1, without needing to
+      use Live's browser. This is done in Push 1's Browse Mode.
+    </p>
+    <p>Press Push 1's <kbd>Browse</kbd> button.</p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushBrowseButton.png"
+        alt="The Browse Button"
+        loading="lazy"
+      />
+      <figcaption>The Browse Button</figcaption>
+    </figure>
+    <p>
+      In Browse Mode, the display shows all of your available sounds and
+      effects, as well as locations from the Places section of Live's browser.
+      The display is divided into columns. The far left column shows either the
+      specific type of device being browsed or the Places label. Each column to
+      the right shows the next subfolder (if any exist). Use the <kbd>In</kbd> and
+      <kbd>Out</kbd> buttons to shift the display to the right or left, allowing you
+      to browse deeper levels of subfolders or view a larger number of presets on
+      the display.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushInOutButtons.png"
+        alt="In and Out Buttons"
+        loading="lazy"
+      />
+      <figcaption>In and Out Buttons</figcaption>
+    </figure>
+    <p>
+      Navigate up via the Selection Control button (the first row below the
+      display) in each column. Navigate down one folder via the State Control
+      button for each level (the second row below the display). Samples and
+      presets from official Packs or Live's Core Library will preview when
+      selected in the browser. To load a device preset, press the green button
+      on the right. To load the default preset of the selected device, press the
+      green button on the left.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushBrowseLoadButtons.png"
+        alt="Loading Devices or Device Presets in Browse Mode"
+        loading="lazy"
+      />
+      <figcaption>Loading Devices or Device Presets in Browse Mode</figcaption>
+    </figure>
+    <p>
+      You can scroll quickly through folders and subfolders via the encoders.
+      Holding <kbd>Shift</kbd> while pressing the up or down buttons will move by
+      a whole page.
+    </p>
+    <p>
+      After pressing a device or preset load button, the button will turn amber.
+      This indicates that the currently selected entry is loaded; if you
+      navigate to a different entry, the button will turn green again. Pressing
+      an amber load button will load the next entry in the list, allowing you to
+      quickly try out presets or devices.
+    </p>
+    <p>
+      What you see when in Browse Mode depends on the device that was last
+      selected. If you were working with an instrument, Browse Mode will show
+      you replacement instruments. If you were working with an effect, you will
+      see effects. When starting with an empty MIDI track, the display shows all
+      of your available sounds, instruments, drum kits, effects, and Max for
+      Live devices, as well as VST and Audio Units plug-ins.
+    </p>
+
+    <h3 id="playing-and-programming-beats">Playing and Programming Beats</h3>
+    <p>To create beats using Push 1, first make sure Note Mode is enabled.</p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushNoteModeButton.png"
+        alt="The Note Mode Button"
+        loading="lazy"
+      />
+      <figcaption>The Note Mode Button</figcaption>
+    </figure>
+    <p>
+      Then use Browse Mode to load one of the Drum Rack presets from Live's
+      library.
+    </p>
+    <p>
+      When working with a MIDI track containing a Drum Rack, Push 1's 8x8 pad
+      grid can be configured in a few different ways, depending on the state of
+      the <kbd>Note</kbd> button. Pressing this button cycles between three different
+      modes.
+    </p>
+
+    <h4 id="loop-selector">Loop Selector</h4>
+    <p>
+      When the Loop Selector layout is enabled, the pads are divided into three
+      sections, allowing you to simultaneously play, step sequence and adjust
+      the length of your clip.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushDrumLayout.png"
+        alt="The Pad Grid When Working With Drums"
+        loading="lazy"
+      />
+      <figcaption>The Pad Grid When Working With Drums</figcaption>
+    </figure>
+    <p>
+      The 16 Drum Rack pads are laid out, like Live's Drum Rack, in the classic
+      4x4 arrangement, allowing for real-time playing. The Drum Rack pad colors
+      indicate the following:
+    </p>
+    <ul>
+      <li><strong>Bright yellow</strong> — this pad contains a sound.</li>
+      <li><strong>Dull yellow</strong> — this pad is empty.</li>
+      <li><strong>Green</strong> — this pad is currently-playing.</li>
+      <li><strong>Light Blue</strong> — this pad is selected.</li>
+      <li><strong>Dark blue</strong> — this pad is soloed.</li>
+      <li><strong>Orange</strong> — this pad is muted.</li>
+    </ul>
+    <p>
+      When working with Drum Racks that contain a larger number of pads, use
+      Push 1's touch strip or the <kbd>Octave Up</kbd> and <kbd>Octave Down</kbd
+      > keys to move up/down by 16 pads. Hold <kbd>Shift</kbd> while using the touch
+      strip or Octave keys to move by single rows.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushOctaveUpDown.png"
+        alt="Octave Up/Down Buttons"
+        loading="lazy"
+      />
+      <figcaption>Octave Up/Down Buttons</figcaption>
+    </figure>
+    <p>
+      Holding the <kbd>Note</kbd> button gives you momentary access to the 16 Velocities
+      layout. You can also lock the alternate layout in place by holding <kbd
+        >Shift</kbd
+      > and pressing the <kbd>Note</kbd> button. To unlock the 16 Velocities layout,
+      press the <kbd>Note</kbd> button again.
+    </p>
+
+    <h4 id="16-velocities-mode">16 Velocities Mode</h4>
+    <p>
+      Press the <kbd>Layout</kbd> button to switch to the 16 Velocities layout. In
+      this mode, the bottom right 16 pads represent 16 different velocities for the
+      selected Drum Rack pad. Tap one of the velocity pads to enter steps at that
+      velocity.
+    </p>
+    <p>
+      Holding the <kbd>Note</kbd> button gives you momentary access to the loop length
+      controls. You can also lock the loop length controls in place by holding <kbd
+        >Shift</kbd
+      > and pressing the <kbd>Note</kbd> button. To unlock the loop length pads, press
+      the <kbd>Note</kbd> button again.
+    </p>
+
+    <h4 id="64-pad-mode">64-Pad Mode</h4>
+    <p>
+      In addition to the Loop Selector and 16 Velocities layouts, you can also
+      use the entire 8x8 pad grid for real-time drum playing. This is useful
+      when working with very large drum kits, such as those created by slicing.
+      To toggle to 64-pad mode, press the <kbd>Note Mode</kbd> button a second time.
+      Pressing <kbd>Note</kbd> again will then toggle back to the Loop Selector layout,
+      allowing you to quickly get back to step sequencing. The pad colors in 64-pad
+      mode are the same as those used in the three-section layout.
+    </p>
+    <p>
+      When moving back and forth between the three layouts, the 16 pads
+      available for step sequencing will not change automatically. You may still
+      need to use the touch strip or Octave keys in order to see the specific 16
+      pads you want.
+    </p>
+    <p>
+      Holding the <kbd>Note</kbd> button gives you momentary access to the loop length
+      controls. You can also lock the loop length controls in place by holding <kbd
+        >Shift</kbd
+      > and pressing the <kbd>Note</kbd> button. To unlock the loop length pads, press
+      the <kbd>Note</kbd> button again.
+    </p>
+
+    <h4 id="loading-individual-drums">Loading Individual Drums</h4>
+    <p>
+      Browse Mode can also be used to load or replace individual pads within a
+      loaded Drum Rack. To switch between browsing Drum Racks and single pads,
+      press the <kbd>Device</kbd> button to show the devices on the track.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushDeviceButton.png"
+        alt="Device Button"
+        loading="lazy"
+      />
+      <figcaption>Device Button</figcaption>
+    </figure>
+    <p>
+      By default, the Drum Rack is selected, as indicated by the arrow in the
+      display. To select an individual pad instead, tap that pad, then press the
+      selection button below the pad's name.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushDrumPadSelection.png"
+        alt="Selecting an Individual Pad in a Drum Rack"
+        loading="lazy"
+      />
+      <figcaption>Selecting an Individual Pad in a Drum Rack</figcaption>
+    </figure>
+    <p>
+      Now, entering Browse Mode again will allow you to load or replace the
+      sound of only the selected pad. Once in Browse Mode, tapping other pads
+      will select them for browsing, allowing you to quickly load or replace
+      multiple sounds within the loaded Drum Rack.
+    </p>
+    <p>
+      <strong>Additional Pad Options:</strong> To copy a pad to a different location
+      in your Drum Rack, hold the <kbd>Duplicate</kbd> button and press the pad you'd
+      like to copy. While continuing to hold <kbd>Duplicate</kbd>, press the pad
+      where you'd like to paste the copied pad. Note that this will replace the
+      destination pad's devices (and thus its sound) but will not replace any
+      existing notes already recorded for that pad.
+    </p>
+
+    <h4 id="step-sequencing-beats">Step Sequencing Beats</h4>
+    <p>
+      Tapping a pad also enables it for step sequencing. To select a pad without
+      playing it, press and hold the <kbd>Select</kbd> button while tapping a pad.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushSelectButton.png"
+        alt="Select Button"
+        loading="lazy"
+      />
+      <figcaption>Select Button</figcaption>
+    </figure>
+    <p>
+      To record notes with the step sequencer, tap the pads in the step
+      sequencer controls to place notes in the clip where you want them. The
+      clip will begin playing as soon as you tap a step. By default, each step
+      sequencer pad corresponds to a 16th note, but you can change the step size
+      via the buttons in the <kbd>Scene/Grid</kbd> section.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushSceneGridButtons.png"
+        alt="Scene/Grid Buttons"
+        loading="lazy"
+      />
+      <figcaption>Scene/Grid Buttons</figcaption>
+    </figure>
+    <p>
+      As the clip plays, the currently playing step is indicated by the moving
+      green pad in the step sequencer section. When Record is enabled, the
+      moving pad will be red. Tapping a step that already has a note will delete
+      that note. Press and hold the <kbd>Mute</kbd> button while tapping a step to
+      deactivate it without deleting it. Press and hold <kbd>Solo</kbd> button while
+      tapping a pad to solo that sound.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushMuteSoloButtons.png"
+        alt="Mute and Solo Buttons"
+        loading="lazy"
+      />
+      <figcaption>Mute and Solo Buttons</figcaption>
+    </figure>
+    <p>The pad colors in the step sequencer section indicate the following:</p>
+    <ul>
+      <li><strong>Unlit</strong> — this step doesn't contain a note.</li>
+      <li>
+        <strong>Blue</strong> — this step contains a note. Darker blues indicate higher
+        velocities.
+      </li>
+      <li>
+        <strong>Dull yellow</strong> — this step contains a note, but the note is
+        muted.
+      </li>
+      <li>
+        <strong>Light Red</strong> — the right two columns of pads will turn red if
+        triplets are selected as the step size. In this case, these pads are not active;
+        only the first six pads in each row of steps can be used.
+      </li>
+    </ul>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushTripletSteps.png"
+        alt="When Triplets are Selected, the Red Steps are Unavailable"
+        loading="lazy"
+      />
+      <figcaption>
+        When Triplets are Selected, the Red Steps are Unavailable
+      </figcaption>
+    </figure>
+    <p>
+      To delete all notes for a pad, press and hold <kbd>Delete</kbd> while tapping
+      the pad. Note that this will only delete notes that are within the current loop.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushDeleteButton.png"
+        alt="Delete Button"
+        loading="lazy"
+      />
+      <figcaption>Delete Button</figcaption>
+    </figure>
+
+    <h4 id="real-time-recording">Real-time Recording</h4>
+    <p>
+      Drum patterns can also be recorded in real-time by playing the Drum Rack
+      pads. Follow these steps to record in real-time:
+    </p>
+    <ol>
+      <li>
+        If you want to record with a click track, press the <kbd>Metronome</kbd> button
+        to enable Live's built-in click.
+        <figure>
+          <img
+            src="https://ableton-production.imgix.net/live-manual/12/PushMetronomeButton.png"
+            alt="Metronome Button"
+            loading="lazy"
+          />
+          <figcaption>Metronome Button</figcaption>
+        </figure>
+      </li>
+      <li>
+        Press the <kbd>Record</kbd> button to begin recording.
+        <figure>
+          <img
+            src="https://ableton-production.imgix.net/live-manual/12/PushRecordButton.png"
+            alt="Record Button"
+            loading="lazy"
+          />
+          <figcaption>Record Button</figcaption>
+        </figure>
+      </li>
+      <li>
+        Now any Drum Rack pads you play will be recorded to the clip. Pressing <kbd
+          >Record</kbd
+        > again will stop recording but will continue playing back the clip. Pressing
+        <kbd>Record</kbd> a third time will enable overdub mode, allowing you to record
+        into the clip while it plays back. Subsequent presses continue to toggle between
+        playback and overdub.
+      </li>
+    </ol>
+    <p>
+      Pressing <kbd>New</kbd> stops playback of the currently selected clip and prepares
+      Live to record a new clip on the currently selected track. This allows you to
+      practice before recording a new idea. By default, pressing <kbd>New</kbd> also
+      duplicates all clips that are playing on other tracks to a new scene and continues
+      playing them back seamlessly. This behavior can be changed by changing the Workflow
+      mode in Push 1's User Preferences.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushNewButtton.png"
+        alt="New Button"
+        loading="lazy"
+      />
+      <figcaption>New Button</figcaption>
+    </figure>
+
+    <h4 id="fixed-length-recording">Fixed Length Recording</h4>
+    <p>
+      Press the <kbd>Fixed Length</kbd> button to set the size of new clips to a predetermined
+      length.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushFixedLengthButton.png"
+        alt="Fixed Length Button"
+        loading="lazy"
+      />
+      <figcaption>Fixed Length Button</figcaption>
+    </figure>
+    <p>Press and hold <kbd>Fixed Length</kbd> to set the recording length.</p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushSettingFixedLength.png"
+        alt="Fixed Length Recording Options"
+        loading="lazy"
+      />
+      <figcaption>Fixed Length Recording Options</figcaption>
+    </figure>
+    <p>
+      When <kbd>Fixed Length</kbd> is disabled, new clips will continue to record
+      until you press the <kbd>Record</kbd>, <kbd>New</kbd> or <kbd
+        >Play/Stop</kbd
+      > buttons. Enabling <kbd>Fixed Length</kbd> while recording will switch recording
+      off and loop the last few bars of the clip, depending on the Fixed Length setting.
+    </p>
+
+    <h3 id="additional-recording-options">Additional Recording Options</h3>
+
+    <h4 id="recording-with-repeat">Recording with Repeat</h4>
+    <p>
+      With Push 1's <kbd>Repeat</kbd> button enabled, you can hold down a pad to play
+      or record a stream of continuous, rhythmically-even notes. This is useful for
+      recording steady hi-hat patterns, for example. Varying your finger pressure
+      on the pad will change the volume of the repeated notes.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushRepeatButton.png"
+        alt="Repeat Button"
+        loading="lazy"
+      />
+      <figcaption>Repeat Button</figcaption>
+    </figure>
+    <p>
+      The repeat rate is set with the <kbd>Scene/Grid</kbd> buttons. Note that Push
+      1 "remembers" the <kbd>Repeat</kbd> button's state and setting for each track.
+    </p>
+    <p>
+      If you press and release <kbd>Repeat</kbd> quickly, the button will stay on.
+      If you press and hold, the button will turn off when released, allowing for
+      momentary control of repeated notes.
+    </p>
+    <p>
+      Turn up the Swing knob to apply swing to the repeated notes. When you
+      touch the knob, the display will show the amount of swing.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushSwingKnob.jpg"
+        alt="Swing Knob"
+        loading="lazy"
+      />
+      <figcaption>Swing Knob</figcaption>
+    </figure>
+
+    <h4 id="quantizing">Quantizing</h4>
+    <p>
+      Pressing Push 1's <kbd>Quantize</kbd> button will snap notes to the grid in
+      the selected clip.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushQuantizeButton.png"
+        alt="Quantize Button"
+        loading="lazy"
+      />
+      <figcaption>Quantize Button</figcaption>
+    </figure>
+    <p>
+      Press and hold <kbd>Quantize</kbd> to change the quantization options:
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushQuantizeOptions.png"
+        alt="Quantization Options"
+        loading="lazy"
+      />
+      <figcaption>Quantization Options</figcaption>
+    </figure>
+    <ul>
+      <li>
+        <strong>Swing Amount</strong> determines the amount of swing that will be
+        applied to the quantized notes.
+      </li>
+      <li>
+        <strong>Quantize To</strong> sets the nearest note value to which notes will
+        be quantized.
+      </li>
+      <li>
+        <strong>Quantize Amount</strong> determines the amount that notes can be moved
+        from their original positions.
+      </li>
+      <li>
+        <strong>Record Quantize</strong> automatically quantizes notes while recording.
+      </li>
+    </ul>
+    <p>
+      When working with drums, press and hold <kbd>Quantize</kbd> and press a Drum
+      Rack pad to quantize only that drum's notes in the current clip.
+    </p>
+
+    <h3 id="playing-melodies-and-harmonies">Playing Melodies and Harmonies</h3>
+    <p>
+      After working on a beat, you'll want to create a new track so that you can
+      work on a bassline, harmony parts, etc. Press the <kbd>Add Track</kbd> button
+      to add a new MIDI track to your Live Set.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushAddTrackButton.png"
+        alt="Add Track Button"
+        loading="lazy"
+      />
+      <figcaption>Add Track Button</figcaption>
+    </figure>
+    <p>
+      Press and hold the <kbd>Add Track</kbd> button to select between Audio, MIDI
+      and Return tracks.
+    </p>
+    <p>
+      Adding a track puts Push 1 into Browse mode, so you can immediately load
+      an instrument. After loading your instrument, make sure <kbd
+        >Note Mode</kbd
+      > is enabled.
+    </p>
+    <p>
+      When working with a MIDI track containing an instrument, Push 1's 8x8 pad
+      grid automatically configures itself to play notes. By default, every note
+      on the grid is in the key of C major. The bottom left pad plays C1. Moving
+      upward, each pad is a fourth higher. Moving to the right, each pad is the
+      next note in the C major scale.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushCMajorScale.png"
+        alt="C Major Scale"
+        loading="lazy"
+      />
+      <figcaption>C Major Scale</figcaption>
+    </figure>
+    <p>The pad colors help you to stay oriented as you play:</p>
+    <ul>
+      <li>
+        <strong>Blue</strong> — this note is the root note of the key (e.g., C).
+      </li>
+      <li>
+        <strong>White</strong> — this note is in the scale, but is not the root.
+      </li>
+      <li><strong>Green</strong> — the currently-playing note.</li>
+      <li><strong>Red</strong> — the currently-playing note when recording.</li>
+    </ul>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushCMajorTriad.png"
+        alt="C Major Chord"
+        loading="lazy"
+      />
+      <figcaption>C Major Chord</figcaption>
+    </figure>
+    <p>
+      Holding the <kbd>Note</kbd> button gives you momentary access to the loop length
+      controls, which appear in the top row of pads. You can lock the loop length
+      controls in place by holding <kbd>Shift</kbd> and pressing the <kbd
+        >Note</kbd
+      > button.
+    </p>
+
+    <h4 id="playing-in-other-keys">Playing in Other Keys</h4>
+    <p>
+      Press Push 1's <kbd>Scales</kbd> button to change the selected key and/or scale.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushScalesButton.png"
+        alt="Scales Button"
+        loading="lazy"
+      />
+      <figcaption>Scales Button</figcaption>
+    </figure>
+    <p>
+      Using the display and the Selection and State Control buttons, you can
+      change the key played by the pad grid.
+    </p>
+    <p>
+      By default, the pads and scale selection options indicate major scales.
+      You can change to a variety of other scale types using the first encoder,
+      or the two buttons below the display on the far left.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushScalesSelection.png"
+        alt="Key and Scale Selection"
+        loading="lazy"
+      />
+      <figcaption>Key and Scale Selection</figcaption>
+    </figure>
+    <p>
+      In addition to changing the key, you can also change the layout of the
+      grid:
+    </p>
+    <ul>
+      <li>
+        <strong>Fixed Y/N:</strong> When Fixed Mode is on, the notes on the pad grid
+        remain in the same positions when you change keys; the bottom-left pad will
+        always play C, except in keys that don't contain a C, in which case the bottom-left
+        pad will play the nearest note in the key. When Fixed is off, the notes on
+        the pad grid shift so that the bottom-left pad always plays the root of the
+        selected key.
+      </li>
+      <li>
+        <strong>In Key/Chromatic:</strong> With In Key selected, the pad grid is effectively
+        "folded" so that only notes within the key are available. In Chromatic Mode,
+        the pad grid contains all notes. Notes that are in the key are lit, while
+        notes that are not in the key are unlit.
+      </li>
+    </ul>
+    <p>
+      Holding the <kbd>Shift</kbd> button while in Scales mode allows you to access
+      additional note layout options.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushNoteLayouts.png"
+        alt="Additional Note Layout Options"
+        loading="lazy"
+      />
+      <figcaption>Additional Note Layout Options</figcaption>
+    </figure>
+    <p>
+      The "4th" and "3rd" options refer to the note interval that the grid is
+      based on, while the ^ and &gt; symbols refer to the rotation of the grid.
+      The "Sequent" options lay out all notes in order and are useful if you
+      need a very large range of notes.
+    </p>
+    <p>
+      The last settings chosen in the Scale options (key, scale type, In
+      Key/Chromatic, and Fixed Y/N) are saved with the Set.
+    </p>
+
+    <h3 id="step-sequencing-melodies-and-harmonies">
+      Step Sequencing Melodies and Harmonies
+    </h3>
+    <p>
+      In addition to playing and recording in real time, you can also step
+      sequence your melodies and harmonies. To toggle to the Melodic Sequencer,
+      press the <kbd>Note Mode</kbd> button a second time.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushMSSLayout.png"
+        alt="The Pad Grid When Step Sequencing Pitches"
+        loading="lazy"
+      />
+      <figcaption>The Pad Grid When Step Sequencing Pitches</figcaption>
+    </figure>
+    <p>
+      With In Key selected, each row corresponds to one of the available pitches
+      in the currently selected scale. With Chromatic selected, notes that are
+      in the key are lit, while notes that are not in the key are unlit. The
+      light blue row (which is the bottom row by default) indicates the root of
+      the selected key. Each column of pads represents a step in the resolution
+      set by the <kbd>Scene/Grid</kbd> buttons.
+    </p>
+    <p>
+      As with the real-time playing layout, pressing the <kbd>Octave Up</kbd> and
+      <kbd>Down</kbd> button shifts the range of available notes. You can also use
+      the touch strip to change the range. Hold the <kbd>Shift</kbd> key while adjusting
+      the touch strip or pressing the Octave buttons to fine tune the pitch range.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushDisplayNoteRange.png"
+        alt="The Display Shows the Range of Available Notes"
+        loading="lazy"
+      />
+      <figcaption>The Display Shows the Range of Available Notes</figcaption>
+    </figure>
+    <p>
+      Pressing <kbd>Note</kbd> again will toggle to the Melodic Sequencer + 32 Notes
+      layout.
+    </p>
+    <p>
+      In addition to adding and removing notes, you can also adjust the velocity
+      and micro-timing of the notes.
+    </p>
+
+    <h4 id="adjusting-the-loop-length">Adjusting the Loop Length</h4>
+    <p>
+      The loop length controls allow you to set the length of the clip's loop
+      and determine which part of it you can see and edit in the melodic and
+      drum step sequencers. Each loop length pad corresponds to a page of steps.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushLoopControls.png"
+        alt="Each Loop Length Pad Corresponds to One Page"
+        loading="lazy"
+      />
+      <figcaption>Each Loop Length Pad Corresponds to One Page</figcaption>
+    </figure>
+    <p>
+      To change the loop length, hold one pad and then tap another pad or, to
+      set the loop length to exactly one page, quickly double-tap the
+      corresponding pad.
+    </p>
+    <p>
+      Note that the page you see is not necessarily the page you hear. To edit a
+      single page of a longer loop while still allowing the loop to play for the
+      full length, single-tap the pad that corresponds to that page. This will
+      "lock" the view to that page without changing the loop length.
+    </p>
+    <p>The pad colors in the loop length section indicate the following:</p>
+    <ul>
+      <li><strong>Unlit</strong> — this page is outside of the loop.</li>
+      <li>
+        <strong>White</strong> — this page is within the loop, but is not currently
+        visible in the step sequencer section.
+      </li>
+      <li>
+        <strong>Dull yellow</strong> — this page is visible in the step sequencer
+        section, but is not currently playing.
+      </li>
+      <li><strong>Green</strong> — this is the currently playing page.</li>
+    </ul>
+    <p>
+      To duplicate the contents of a sequencer page, hold <kbd>Duplicate</kbd>,
+      press the loop length pad for the page you want to duplicate, and press
+      the loop length pad for the destination page. To remove notes first, hold <kbd
+        >Delete</kbd
+      > and tap the loop length pad for that page.
+    </p>
+
+    <h3 id="melodic-sequencer-32-notes">Melodic Sequencer + 32 Notes</h3>
+    <p>
+      The Melodic Sequencer + 32 Notes layout combines both step sequencing and
+      real-time playing capabilities. Providing access to multiple octaves and
+      steps on a single page, this layout is ideal for figuring out chords and
+      harmonies to sequence and well suited to longer phrases.
+    </p>
+
+    <h4 id="32-notes">32 Notes</h4>
+    <p>
+      The bottom half of the pad grid lets you play notes in real-time, and
+      select them for step sequencing. Each pad corresponds to one of the
+      available pitches in the currently selected scale. Pressing a pad will
+      select and play the note. Selected notes are represented by a lighter
+      version of the track's color.
+    </p>
+    <p>
+      To select a pad without triggering it, press and hold the <kbd>Select</kbd
+      > button while tapping a pad.
+    </p>
+    <p>The pad colors indicate the following:</p>
+    <ul>
+      <li><strong>Blue</strong> — this note is the root note of the scale.</li>
+      <li><strong>Blue-Green</strong> — this pad is selected.</li>
+      <li><strong>Green</strong> — this pad is currently playing.</li>
+      <li>
+        <strong>White</strong> — this note is in the scale, but is not the root.
+      </li>
+    </ul>
+    <p>
+      Pressing the <kbd>Octave Up</kbd> or <kbd>Down</kbd> button shifts the range
+      of available notes. Hold the <kbd>Shift</kbd> key while pressing the Octave
+      buttons to shift by one note in the scale.
+    </p>
+
+    <h4 id="sequencer">Sequencer</h4>
+    <p>
+      Tapping a step in the top half of the pad grid adds all selected notes to
+      that step. Steps containing notes are displayed in a blue color.
+    </p>
+    <p>
+      Holding a step lets you view notes contained within the step. Tapping any
+      of these selected notes will remove it from the step. Holding multiple
+      steps will add selected notes to all those steps.
+    </p>
+    <p>
+      While holding <kbd>Duplicate</kbd>, you can press a step to copy the notes
+      in that step and then press another step to paste them to a new location.
+    </p>
+    <p>The pad colors in the step sequencer indicate the following:</p>
+    <ul>
+      <li><strong>Blue</strong> — this step contains a note.</li>
+      <li><strong>Green</strong> — this step is currently playing.</li>
+      <li><strong>White</strong> — this step is selected.</li>
+      <li>
+        <strong>Dull Yellow</strong> — this step contains a note, but the note is
+        muted.
+      </li>
+      <li><strong>Gray</strong> — this pad is empty.</li>
+      <li>
+        <strong>Light Red</strong> — these pads are not active when triplets are selected
+        as the step size.
+      </li>
+    </ul>
+
+    <h3 id="navigating-in-note-mode">Navigating in Note Mode</h3>
+    <p>The Arrow Keys allow you to move between tracks.</p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushArrowKeys.png"
+        alt="Arrow Keys"
+        loading="lazy"
+      />
+      <figcaption>Arrow Keys</figcaption>
+    </figure>
+    <p>
+      The Left/Right Arrows move between tracks. Note that selecting a MIDI
+      track on Push 1 automatically arms it, so it can be played immediately. In
+      Live, track Arm buttons will appear pink to indicate that they have been
+      armed via selection.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/ArmButtonPink.png"
+        alt="Pink Track Arm Button"
+        loading="lazy"
+      />
+      <figcaption>Pink Track Arm Button</figcaption>
+    </figure>
+    <p>
+      The specific behavior of the Up/Down Arrows is determined by the Workflow
+      mode set in Push 1's User Preferences. In both modes, the Up/Down Arrows
+      move up or down by a single scene. In Scene Workflow, the selected scene
+      is triggered. In Clip Workflow, only the selected track's clip is
+      triggered.
+    </p>
+    <p>
+      Navigating with the Up/Down Arrows in Note Mode always begins playback
+      immediately, and a triggered clip will take over the play position from
+      whatever clip was played in that track before.
+    </p>
+
+    <h3 id="controlling-instruments-and-effects">
+      Controlling Live's Instruments and Effects
+    </h3>
+    <p>
+      Pressing the <kbd>Device</kbd> button puts Push 1 in Device Mode, which allows
+      Push 1's encoders to control parameters in Live's devices.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushDeviceButton.png"
+        alt="Device Button"
+        loading="lazy"
+      />
+      <figcaption>Device Button</figcaption>
+    </figure>
+    <p>
+      In Device Mode, the Selection Control buttons select devices in the
+      currently selected track, while the State Control buttons turn the
+      selected device on or off. The currently selected device is marked with an
+      arrow in the display.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushDeviceMode.png"
+        alt="Device Mode Settings"
+        loading="lazy"
+      />
+      <figcaption>Device Mode Settings</figcaption>
+    </figure>
+    <p>
+      The <kbd>In</kbd> and <kbd>Out</kbd> buttons allow you to navigate to additional
+      devices and parameters, including additional banks of parameters and additional
+      device chains within Racks that contain more than one chain.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushInOutButtons.png"
+        alt="In and Out Buttons"
+        loading="lazy"
+      />
+      <figcaption>In and Out Buttons</figcaption>
+    </figure>
+
+    <h3 id="mixing-with-push-1">Mixing with Push 1</h3>
+    <p>
+      To control volumes, pans, or sends with the encoders for up to eight
+      tracks simultaneously, press the corresponding button on Push 1. Hold <kbd
+        >Shift</kbd
+      > while adjusting the encoders for fine-tune control.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushVolumePanSendButtons.png"
+        alt="Volume and Pan & Send Buttons"
+        loading="lazy"
+      />
+      <figcaption>Volume and Pan &amp; Send Buttons</figcaption>
+    </figure>
+    <ul>
+      <li>
+        In <strong>Volume Mode</strong>, the encoders control track volume.
+      </li>
+      <li>
+        Pressing the <strong><kbd>Pan &amp; Send</kbd></strong> button repeatedly
+        will cycle between controlling pans and however many sends are available in
+        your Live Set.
+      </li>
+      <li>
+        In <strong>Track Mode</strong>, the encoders control track volume, pan
+        and the first six sends of the selected track.
+      </li>
+    </ul>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushTrackButton.png"
+        alt="Track Button"
+        loading="lazy"
+      />
+      <figcaption>Track Button</figcaption>
+    </figure>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushTrackModeSelection.png"
+        alt="Selecting Tracks in Track Mode"
+        loading="lazy"
+      />
+      <figcaption>Selecting Tracks in Track Mode</figcaption>
+    </figure>
+    <p>
+      Press the <kbd>Master</kbd> button to select the Main track. Press and hold
+      a Group Track's Selection Control button to unfold or fold the track.
+    </p>
+
+    <h3 id="recording-automation">Recording Automation</h3>
+    <p>
+      Changes that you make to device and mixer parameters can be recorded to
+      your clips as automation, so that the sound will change over time as the
+      clip plays. To record automation, press Push 1's <kbd>Automation</kbd> button.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushAutomationButton.png"
+        alt="Automation Button"
+        loading="lazy"
+      />
+      <figcaption>Automation Button</figcaption>
+    </figure>
+    <p>
+      This toggles Live's Session Automation Arm button, allowing you to record
+      changes you make to Push 1's encoders as part of the clip. When you're
+      done recording parameter changes, press the <kbd>Automation</kbd> button again
+      to turn it off.
+    </p>
+    <p>
+      To delete the changes you've recorded for a particular parameter, press
+      and hold the <kbd>Delete</kbd> button and touch the corresponding encoder. If
+      automation hasn't been recorded for a parameter, holding <kbd>Delete</kbd> and
+      touching an encoder will reset the corresponding parameter to its default value.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushDisplayAutomatedParameter.png"
+        alt="Automated and/or Overridden Parameters are Indicated in the Display"
+        loading="lazy"
+      />
+      <figcaption>
+        Automated and/or Overridden Parameters are Indicated in the Display
+      </figcaption>
+    </figure>
+    <p>
+      To reenable all automation that you have manually overridden, press and
+      hold <kbd>Shift</kbd> and press the <kbd>Automation</kbd> button.
+    </p>
+
+    <h3 id="step-sequencing-automation">Step Sequencing Automation</h3>
+    <p>
+      In both the drum and melodic step sequencers, it's possible to automate
+      parameters for the selected step.
+    </p>
+
+    <h4 id="note-specific-parameters">Note-Specific Parameters</h4>
+    <p>
+      When working in any sequencing layout in Clip Mode, you can adjust note
+      settings for each step. To access these settings, simply press and hold a
+      step.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushHeldStepDisplay.png"
+        alt="Hold a Step to Adjust Note and Automation Parameters"
+        loading="lazy"
+      />
+      <figcaption>
+        Hold a Step to Adjust Note and Automation Parameters
+      </figcaption>
+    </figure>
+    <p>You can then adjust the corresponding encoders in order to:</p>
+    <ul>
+      <li>Nudge notes backwards or forwards in time.</li>
+      <li>Adjust the coarse Length of the selected notes.</li>
+      <li>Fine-tune the length adjustment of the selected notes.</li>
+      <li>Change the Velocity of the selected notes.</li>
+    </ul>
+    <p>
+      You can also adjust these note-specific parameters for multiple steps at
+      the same time. To do this, press and hold all of the pads you'd like to
+      adjust, and then tweak the encoders.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushMultipleNoteParameters.png"
+        alt="With Multiple Steps Selected, the Display Shows the Range of Parameter Values"
+        loading="lazy"
+      />
+      <figcaption>
+        With Multiple Steps Selected, the Display Shows the Range of Parameter
+        Values
+      </figcaption>
+    </figure>
+    <p>
+      You can also create notes with your desired Nudge, Length, and Velocity
+      values by holding an empty step and then tweaking any of these encoders.
+    </p>
+    <p>
+      When working with drums, you can adjust nudge, length, and velocity for
+      every note played by a particular pad by pressing and holding the <kbd
+        >Select</kbd
+      > button, pressing the pad, and then adjusting the encoders.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushDrumPadEditing.png"
+        alt="Hold Select and Press a Drum Pad to Tweak All Notes Played by that Pad"
+        loading="lazy"
+      />
+      <figcaption>
+        Hold <kbd>Select</kbd> and Press a Drum Pad to Tweak All Notes Played by that
+        Pad
+      </figcaption>
+    </figure>
+    <p>
+      In both the drum and melodic step sequencers, you can copy a step
+      (including all of its note-specific parameters) and paste it to another
+      step. To do this, hold <kbd>Duplicate</kbd> and tap the step you'd like to copy,
+      then tap the destination step and release <kbd>Duplicate</kbd>.
+    </p>
+
+    <h4 id="per-step-automation">Per-Step Automation</h4>
+    <p>
+      When in Device Mode or Volume Mode, hold one or more steps in order to
+      create and edit device or mixer automation for only the selected step(s).
+      While holding a step and tweaking an encoder, the corresponding
+      parameter's automation value will be adjusted specifically for the time
+      represented by that step. Note that per-step automation can be created for
+      any step, even if that step doesn't contain notes.
+    </p>
+
+    <h3 id="controlling-session-view">Controlling Live's Session View</h3>
+    <p>
+      Press Push 1's <kbd>Session</kbd> button to switch from Note Mode to Session
+      Mode. You can press and hold the <kbd>Session</kbd> button to temporarily toggle
+      Session Mode.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushSessionButton.png"
+        alt="Session Button"
+        loading="lazy"
+      />
+      <figcaption>Session Button</figcaption>
+    </figure>
+    <p>
+      In Session Mode, the 8x8 pad grid will launch clips and the Scene/Grid
+      Buttons will launch scenes. Pressing a pad triggers the clip in the
+      corresponding location in Live's Session View. If the track is selected,
+      pressing the button records a new clip.
+    </p>
+    <p>The pads light up in different colors so you know what's going on:</p>
+    <ul>
+      <li>
+        The color of all non-playing clips in your Live Set is reflected on the
+        pads.
+      </li>
+      <li>Playing clips pulse green to white.</li>
+      <li>Recording clips pulse red to white.</li>
+    </ul>
+    <p>
+      You can stop all music in a track by enabling Stop Mode and pressing that
+      track's State Control button.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushStopClips.png"
+        alt="Stopping Clip Playback"
+        loading="lazy"
+      />
+      <figcaption>Stopping Clip Playback</figcaption>
+    </figure>
+    <p>
+      To stop all clips, press and hold <kbd>Shift</kbd>, and then press <kbd
+        >Stop</kbd
+      >.
+    </p>
+    <p>
+      The directional arrows and <kbd>Shift</kbd> button increase the scope of the
+      eight-by-eight grid. Pressing <kbd>Up</kbd> or <kbd>Down</kbd> moves you up
+      or down one scene at a time. Hold the <kbd>Shift</kbd> button while hitting
+      <kbd>Up</kbd> or <kbd>Down</kbd> to move eight scenes up or down. The <kbd
+        >Left</kbd
+      > and <kbd>Right</kbd> arrow keys move you left or right one track at a time.
+      Hold <kbd>Shift</kbd> while hitting <kbd>Left</kbd> or <kbd>Right</kbd> to move
+      eight tracks at a time.
+    </p>
+
+    <h4 id="session-overview">Session Overview</h4>
+    <p>
+      Push 1's Session Overview lets you navigate through large Live Sets
+      quickly without looking at your computer screen. Hold down the <kbd
+        >Shift</kbd
+      > button and the pad grid zooms out to reveal an overview of your Session View.
+      In the Session Overview, each pad represents an eight-scene-by-eight-track block
+      of clips, giving you a matrix of 64 scenes by 64 tracks.
+    </p>
+    <p>Color coding in the Session Overview:</p>
+    <ul>
+      <li>
+        <strong>Amber:</strong> indicates the currently selected block of clips.
+      </li>
+      <li>
+        <strong>Green:</strong> there are clips playing in that block of clips.
+      </li>
+      <li><strong>Red:</strong> there are no clips playing in that range.</li>
+      <li>
+        <strong>No color:</strong> there are no tracks or scenes in that range.
+      </li>
+    </ul>
+
+    <h3 id="setting-user-preferences">Setting User Preferences</h3>
+    <p>
+      Press and hold the <kbd>User</kbd> button to adjust the sensitivity of Push
+      1's velocity response, aftertouch, and other settings.
+    </p>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushUserButton.png"
+        alt="User Button"
+        loading="lazy"
+      />
+      <figcaption>User Button</figcaption>
+    </figure>
+    <figure>
+      <img
+        src="https://ableton-production.imgix.net/live-manual/12/PushUserSettings.png"
+        alt="User Settings"
+        loading="lazy"
+      />
+      <figcaption>User Settings</figcaption>
+    </figure>
+    <ul>
+      <li>
+        <strong>Pad Threshold</strong> sets the softest playing force that will trigger
+        notes. More force is required at higher settings.
+      </li>
+      <li>
+        <strong>Velocity Curve</strong> determines how sensitive the pads are when
+        hit with various amounts of force, ranging from Linear to various logarithmic
+        curves. Higher Log values provide more dynamic range when playing softly.
+      </li>
+      <li>
+        <strong>Workflow</strong> determines how Push 1 behaves when the <kbd
+          >Duplicate</kbd
+        >, <kbd>New</kbd>, or Up/Down arrow buttons are pressed.
+      </li>
+      <li>
+        <strong>Aftertouch Threshold</strong> sets the lowest incoming aftertouch
+        value (from 0–127) that Push will register. Input values below this level
+        will be ignored, while input values above this level will be scaled across
+        the entire aftertouch range.
+      </li>
+    </ul>
+    <p>
+      <strong>Scene Workflow</strong> (default): <kbd>Duplicate</kbd> creates a new
+      scene containing all of the currently playing clips. <kbd>New</kbd> is identical
+      to <kbd>Duplicate</kbd>, except that it does not duplicate the currently
+      selected clip. The Up/Down Arrows move up or down by a single scene with
+      seamless playback.
+    </p>
+    <p>
+      <strong>Clip Workflow:</strong>
+      <kbd>Duplicate</kbd> creates a copy of the currently selected clip in the next
+      clip slot. <kbd>New</kbd> prepares an empty clip slot on the currently selected
+      track. The Up/Down Arrows move up or down by a single scene; only the selected
+      track's clip is triggered.
+    </p>
+
+    <h3 id="push-1-control-reference">Push 1 Control Reference</h3>
+
+    <h4>Focus/Navigation Section</h4>
+    <ul>
+      <li>
+        <strong><kbd>Note Mode</kbd></strong> — When selected, the Pad Section changes
+        its functionality based on the type of track selected: instrument tracks play
+        notes and toggle between real-time playing and melodic step sequencing; Drum
+        Rack tracks divide the pad section for playing, loop length, and step sequencing.
+      </li>
+      <li>
+        <strong><kbd>Session Mode</kbd></strong> — When selected, the Pad Section
+        launches clips in Live's Session View.
+      </li>
+      <li>
+        <strong><kbd>Shift</kbd></strong> — Press and hold while pressing other buttons
+        to access additional functionality.
+      </li>
+      <li>
+        <strong>Arrow Keys</strong> — Move through your Live Set (in Session Mode)
+        and between tracks or scenes/clips (in Note Mode).
+      </li>
+      <li>
+        <strong><kbd>Select</kbd></strong> — In Session Mode, hold and press a clip
+        to select it without launching. In Note Mode, hold and press a Drum Rack pad
+        to select its notes without triggering the pad.
+      </li>
+    </ul>
+
+    <h4>Add Section</h4>
+    <ul>
+      <li>
+        <strong><kbd>Add Effect</kbd></strong> — Opens Browse Mode to add a new device
+        to the right of the currently selected device. Hold <kbd>Shift</kbd> while
+        pressing <kbd>Add Effect</kbd> to add to the left. To add a MIDI Effect, first
+        select the instrument, then hold <kbd>Shift</kbd> while pressing <kbd
+          >Add Effect</kbd
+        >.
+      </li>
+      <li>
+        <strong><kbd>Add Track</kbd></strong> — Creates a new MIDI track to the right
+        of the currently selected track. Press and hold to select a different type
+        of track (Audio, MIDI, or Return).
+      </li>
+    </ul>
+
+    <h4>Note Section</h4>
+    <ul>
+      <li>
+        <strong><kbd>Scales</kbd></strong> — When Note Mode is on and an instrument
+        track is selected, allows you to select which scale will be played on the
+        pads.
+      </li>
+      <li>
+        <strong><kbd>User</kbd></strong> — All of Push 1's built-in functionality
+        can be disabled via User Mode, allowing Push 1 to be reprogrammed for alternate
+        functions.
+      </li>
+      <li>
+        <strong><kbd>Repeat</kbd></strong> — When enabled, holding down a pad will
+        retrigger the note. The <kbd>Scene/Grid</kbd> buttons change the rhythmic
+        value of the repeated note.
+      </li>
+      <li>
+        <strong><kbd>Accent</kbd></strong> — When enabled, all incoming notes are
+        played at full velocity. Press and hold <kbd>Accent</kbd> to temporarily enable
+        it.
+      </li>
+      <li>
+        <strong><kbd>Octave Up</kbd>/<kbd>Down</kbd></strong> — Shift the pads up
+        or down by octave (instruments), up/down by 16 pads (Drum Racks), or up/down
+        by eight scenes (Session Mode).
+      </li>
+    </ul>
+
+    <h4>Transport Section</h4>
+    <ul>
+      <li>
+        <strong><kbd>Fixed Length</kbd></strong> — When enabled, all newly created
+        clips will be a fixed number of bars. Press and hold, then use the buttons
+        beneath the display to specify the length.
+      </li>
+      <li>
+        <strong><kbd>Automation</kbd></strong> — Toggles Live's Automation Record
+        button. Hold <kbd>Shift</kbd> and press to reenable overridden automation.
+        Hold <kbd>Delete</kbd> and press to delete all automation in a clip.
+      </li>
+      <li>
+        <strong><kbd>Duplicate</kbd></strong> — In Scene Workflow, creates a new scene
+        containing all currently playing clips. In Clip Workflow, creates a copy of
+        the currently selected clip.
+      </li>
+      <li>
+        <strong><kbd>New</kbd></strong> — Stops the selected clip and prepares Live
+        to record new material. On armed MIDI tracks, holding <kbd>Record</kbd> while
+        pressing <kbd>New</kbd> triggers Capture MIDI.
+      </li>
+      <li>
+        <strong><kbd>Record</kbd></strong> — Begin recording. Pressing again stops
+        recording but continues playback. A third press enables overdub mode.
+      </li>
+      <li>
+        <strong><kbd>Play/Stop</kbd></strong> — Toggles the play button in Live's
+        Control Bar. Hold <kbd>Shift</kbd> while pressing to return Live's transport
+        to 1.1.1 without starting playback.
+      </li>
+    </ul>
+
+    <h4>Tempo Section</h4>
+    <ul>
+      <li>
+        <strong><kbd>Tap Tempo</kbd></strong> — Press once every beat to set the tempo
+        of the Live Set to your tapping.
+      </li>
+      <li>
+        <strong><kbd>Metronome</kbd></strong> — Toggles Live's metronome on or off.
+      </li>
+      <li>
+        The left encoder adjusts Live's tempo in increments of one BPM. Holding <kbd
+          >Shift</kbd
+        > adjusts in increments of .1 BPM.
+      </li>
+      <li>
+        The right encoder sets the amount of swing applied when Quantizing.
+      </li>
+    </ul>
+
+    <h4>Edit Section</h4>
+    <ul>
+      <li>
+        <strong><kbd>Undo</kbd></strong> — Undoes the last action. Press and hold
+        <kbd>Shift</kbd> while pressing <kbd>Undo</kbd> to Redo.
+      </li>
+      <li>
+        <strong><kbd>Delete</kbd></strong> — In Note Mode, deletes the selected clip.
+        Hold <kbd>Delete</kbd> and press a clip, device, or track to delete. Hold
+        <kbd>Delete</kbd> and touch an encoder to delete automation.
+      </li>
+      <li>
+        <strong><kbd>Quantize</kbd></strong> — Press and release to quantize selected
+        notes. Hold and press a drum pad to quantize that pad's notes. Press and hold
+        to access quantization settings.
+      </li>
+      <li>
+        <strong><kbd>Double</kbd></strong> — Doubles the material within the loop,
+        as well as the length of the loop.
+      </li>
+    </ul>
+
+    <h4>Touch Strip</h4>
+    <p>
+      When an instrument track is selected, the touch strip adjusts pitch bend
+      or modulation wheel amount when playing in real-time, or the available
+      range of notes when step sequencing. When a Drum Rack track is selected,
+      the touch strip selects the Drum Rack bank.
+    </p>
+    <p>
+      Pitch bend is selected by default. To change the functionality of the
+      touch strip, hold <kbd>Select</kbd> and tap the strip. This toggles between
+      pitch bend and mod wheel functionality.
+    </p>
+
+    <h4>Using Footswitches with Push 1</h4>
+    <p>
+      Two ports on the back of Push 1 allow you to connect momentary
+      footswitches. Footswitch 1 acts as a sustain pedal. Footswitch 2 gives you
+      hands-free control of Push 1's recording functionality — a single tap
+      toggles the <kbd>Record</kbd> button, while quickly double-tapping is the same
+      as pressing the <kbd>New</kbd> button.
+    </p>
+    <p>
+      Note that certain footswitches may behave "backwards." Footswitch polarity
+      can usually be corrected by connecting the footswitch to the port while
+      depressing it, but we recommend using footswitches with a physical
+      polarity switch.
+    </p>
+
+    <p class="manual-source">
+      Content sourced from the <a
+        href="https://www.ableton.com/en/manual/using-push-1/"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Ableton Live 12 Reference Manual, Chapter 34</a
+      >.
+    </p>
+  </div>
 </MainLayout>
 
 <style>
-    .video-section__header {
-        margin-bottom: 1.75rem;
-    }
+  .video-section__header {
+    margin-bottom: 1.75rem;
+  }
 
-    .video-section__header h2 {
-        font-size: 1.6rem;
-        margin-bottom: 0.5rem;
-    }
+  .video-section__header h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
 
-    .video-section__header p {
-        color: var(--text-soft);
-        margin: 0;
-        font-size: 0.95rem;
-    }
+  .video-section__header p {
+    color: var(--text-soft);
+    margin: 0;
+    font-size: 0.95rem;
+  }
 
+  .video-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
     .video-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
+      grid-template-columns: repeat(2, 1fr);
     }
+  }
 
-    @media (min-width: 640px) {
-        .video-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
+  @media (min-width: 1024px) {
+    .video-grid {
+      grid-template-columns: repeat(3, 1fr);
     }
+  }
 
-    @media (min-width: 1024px) {
-        .video-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border-soft);
+    margin: 2.5rem 0;
+  }
 
-    .section-divider {
-        border: none;
-        border-top: 1px solid var(--border-soft);
-        margin: 2.5rem 0;
-    }
+  .using-push-section {
+    margin-top: 2rem;
+  }
+
+  .using-push-section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .using-push-section h3 {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 0.6rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  .using-push-section h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1.25rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.8rem;
+  }
+
+  .using-push-section p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-base);
+    margin-bottom: 0.75rem;
+  }
+
+  .using-push-section ul,
+  .using-push-section ol {
+    padding-left: 1.4rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .using-push-section li {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-base);
+    margin-bottom: 0.25rem;
+  }
+
+  .using-push-section .manual-source {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-soft);
+    font-size: 0.85rem;
+    color: var(--text-muted, var(--text-soft));
+    font-style: italic;
+  }
+
+  .using-push-section .manual-source a {
+    color: var(--accent, inherit);
+    text-decoration: underline;
+  }
+
+  .using-push-section kbd {
+    display: inline-block;
+    padding: 0.1em 0.45em;
+    font-size: 0.82em;
+    font-family: inherit;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--text-strong);
+    background: var(--surface-muted);
+    border: 1px solid var(--border-strong);
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+    white-space: nowrap;
+  }
+
+  .using-push-section figure {
+    margin: 1.25rem 0;
+    text-align: center;
+  }
+
+  .using-push-section figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border-soft);
+    background: var(--surface-muted);
+  }
+
+  .using-push-section figcaption {
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--text-soft);
+    font-style: italic;
+  }
 </style>

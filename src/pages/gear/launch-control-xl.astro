@@ -1,0 +1,163 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import GearIntro from "../../components/GearIntro.astro";
+import { getEntry, render } from "astro:content";
+import VideoCard from "../../components/VideoCard.astro";
+
+const gear = await getEntry("gear", "launch-control-xl");
+if (!gear) throw new Error("Gear not found");
+const { Content } = await render(gear);
+
+const videos = [
+  {
+    id: "IRY0JfhVc68",
+    title: "Novation Launch Control XL Exclusive Demo",
+    description: "",
+  },
+  {
+    id: "e9R9scNWw7A",
+    title: "How I use my Launch Control XL (FREE TEMPLATE)",
+    description: "",
+  },
+  {
+    id: "JX4R71RSyT0",
+    title: "Novation Launch Control XL Video Review",
+    description: "",
+  },
+  {
+    id: "Ccn4BIboMAI",
+    title:
+      "Multi-Track Recording with Ableton Live & the Novation Launch Control XL",
+    description: "",
+  },
+  {
+    id: "tRvW0xYZdKs",
+    title: "Novation Launch Control XL Control Surface Demo - Sweetwater Sound",
+    description: "",
+  },
+  {
+    id: "yKQw86RI-QA",
+    title: "Launch Control XL Overview",
+    description: "",
+  },
+];
+---
+
+<MainLayout title={gear.data.title} description={gear.data.description}>
+  <GearIntro
+    title={gear.data.title}
+    description={gear.data.description}
+    url={gear.data.url}
+  />
+
+  <div class="section-card video-section">
+    <div class="video-section__header">
+      <h2>Learn Launch Control XL</h2>
+      <p>Video tutorials covering the Launch Control XL Mk2.</p>
+    </div>
+    <div class="video-grid">
+      {
+        videos.map((v) => (
+          <VideoCard id={v.id} title={v.title} description={v.description} />
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="section-card hardware-section">
+    <div class="hardware-section__header">
+      <h2>Hardware Overview</h2>
+      <p>
+        Top view of the Launch Control XL Mk2 showing all controls at a glance.
+      </p>
+    </div>
+    <figure class="hardware-section__figure">
+      <img
+        src="/assets/novation/launch-control-xl/overhead.png"
+        alt="Novation Launch Control XL Mk2 — overhead view showing faders, knobs, pads, and navigation buttons"
+        class="hardware-section__img"
+        loading="lazy"
+      />
+      <figcaption>
+        Faders (bottom row) · Send A &amp; B knobs (two knob rows) · 24 RGB pads
+        — Mute / Solo / Arm (3×8 grid, right) · Track-select &amp; scene-launch
+        buttons (far right column)
+      </figcaption>
+    </figure>
+  </div>
+
+  <article class="prose mt-8">
+    <Content />
+  </article>
+</MainLayout>
+
+<style>
+  /* Hardware section */
+  .hardware-section__header {
+    margin-bottom: 1.5rem;
+  }
+
+  .hardware-section__header h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hardware-section__header p {
+    color: var(--text-soft);
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .hardware-section__figure {
+    margin: 0;
+  }
+
+  .hardware-section__img {
+    width: 100%;
+    border-radius: 1rem;
+    object-fit: contain;
+    background: #0e1012;
+  }
+
+  .hardware-section__figure figcaption {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* Video section */
+  .video-section__header {
+    margin-bottom: 1.75rem;
+  }
+
+  .video-section__header h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .video-section__header p {
+    color: var(--text-soft);
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .video-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .video-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

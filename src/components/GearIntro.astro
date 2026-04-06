@@ -1,0 +1,40 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  url?: string;
+  eyebrow?: string;
+  ctaLabel?: string;
+}
+
+const {
+  title,
+  description,
+  url,
+  eyebrow = "Gear Profile",
+  ctaLabel = "Official Site",
+} = Astro.props;
+---
+
+<section class="content-intro">
+  <div>
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{title}</h1>
+    <p class="content-intro__lede">{description}</p>
+  </div>
+  <div class="content-intro__actions">
+    {
+      url && (
+        <a
+          href={url}
+          class="button-primary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {ctaLabel}
+        </a>
+      )
+    }
+    <a href="/" class="button-secondary">Back to Library</a>
+  </div>
+</section>

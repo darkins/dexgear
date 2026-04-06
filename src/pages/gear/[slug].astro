@@ -1,5 +1,6 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
+import GearIntro from "../../components/GearIntro.astro";
 import { getCollection, getEntry, render } from "astro:content";
 
 export async function getStaticPaths() {
@@ -15,28 +16,11 @@ const { Content } = await render(gear);
 ---
 
 <MainLayout title={gear.data.title} description={gear.data.description}>
-  <section class="content-intro">
-    <div>
-      <p class="eyebrow">Gear Profile</p>
-      <h1>{gear.data.title}</h1>
-      <p class="content-intro__lede">{gear.data.description}</p>
-    </div>
-    <div class="content-intro__actions">
-      {
-        gear.data.url && (
-          <a
-            href={gear.data.url}
-            class="button-primary"
-            target="_blank"
-            rel="noopener"
-          >
-            Official Site
-          </a>
-        )
-      }
-      <a href="/" class="button-secondary">Back to Library</a>
-    </div>
-  </section>
+  <GearIntro
+    title={gear.data.title}
+    description={gear.data.description}
+    url={gear.data.url}
+  />
   <article class="prose mt-8">
     <Content />
   </article>

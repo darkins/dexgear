@@ -1,0 +1,1010 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import GearIntro from "../../components/GearIntro.astro";
+import { getEntry, render } from "astro:content";
+import VideoCard from "../../components/VideoCard.astro";
+
+const gear = await getEntry("gear", "knobbler");
+if (!gear) throw new Error("Gear not found");
+const { Content } = await render(gear);
+
+const videos = [
+  {
+    id: "PY_IKedjfz8",
+    title: "Knobbler for iPad in 60 Seconds",
+    description:
+      "A quick one-minute overview of Knobbler as an Ableton Live control surface.",
+  },
+  {
+    id: "IXMD_2z16_A",
+    title: "Knobbler for iPad — Setup",
+    description:
+      "Step-by-step setup guide: install the Max for Live device, connect your tablet, and get going.",
+  },
+  {
+    id: "Be4O1vaxjxU",
+    title: "Knobbler Feature Walkthrough",
+    description:
+      "In-depth tour of Knobbler's pages, mapping workflow, navigation, channel strip, and toolbar.",
+  },
+  {
+    id: "m3h8QtVeWb8",
+    title: "Knobbler Installation & Feature Walkthrough — 2026",
+    description:
+      "Updated 15-minute guide covering installation, setup, and all major features of the current release.",
+  },
+  {
+    id: "jklwE2JWsjQ",
+    title: "Ableton Live Workflow Magic with Knobbler, Racks, and Variations",
+    description:
+      "See how Knobbler pairs with Racks and Variations for a powerful, hands-on Ableton Live workflow.",
+  },
+];
+---
+
+<MainLayout title={gear.data.title} description={gear.data.description}>
+  <GearIntro
+    title={gear.data.title}
+    description={gear.data.description}
+    url={gear.data.url}
+  />
+
+  <div class="section-card video-section">
+    <div class="video-section__header">
+      <h2>Learn Knobbler</h2>
+      <p>
+        Official videos from <a
+          href="https://www.youtube.com/@zsteinkamp"
+          target="_blank"
+          rel="noopener noreferrer">Zack Steinkamp</a
+        >, the creator of Knobbler, covering setup and all major features.
+      </p>
+    </div>
+    <div class="video-grid">
+      {
+        videos.map((v) => (
+          <VideoCard id={v.id} title={v.title} description={v.description} />
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="section-card knobbler-features-section">
+    <h2>Features</h2>
+    <p>
+      Content and images sourced from <a
+        href="https://plugins.steinkamp.us/m4l-Knobbler4/features"
+        target="_blank"
+        rel="noopener noreferrer">plugins.steinkamp.us/m4l-Knobbler4/features</a
+      >.
+    </p>
+
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/features-hero.jpg"
+        alt="Knobbler in action on an iPad"
+        loading="lazy"
+      />
+    </figure>
+
+    <h3 id="knobbler-knobs">Knobbler Knobs</h3>
+    <p>
+      Knobbler's knobs are very high-resolution (500 steps) and operate at a
+      latency that is lower than MIDI. The full multitouch capabilities of your
+      device are at your fingertips.
+    </p>
+
+    <h4>Knob States</h4>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/knob-states.png"
+        alt="Knob state indicator dots"
+        loading="lazy"
+      />
+      <figcaption>Knob state indicators</figcaption>
+    </figure>
+    <p>
+      Knobbler knobs indicate their state with a dot in the upper left corner,
+      similar to how it is presented in Ableton Live.
+    </p>
+    <ul>
+      <li>
+        <strong>Green Dot</strong> — The parameter is controlled by another device,
+        or is mapped to a macro knob. The slider will also be greyed out.
+      </li>
+      <li>
+        <strong>Red Dot</strong> — Automation has been recorded for this parameter.
+      </li>
+      <li>
+        <strong>Grey Dot</strong> — Automation has been overridden for this parameter
+        (automation was recorded, but the parameter was changed manually). Tap the
+        Re-Enable Automation button in the toolbar to re-enable it.
+      </li>
+    </ul>
+
+    <h3 id="knobbler-pages">Knobbler Pages</h3>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-with-none.png"
+        alt="Knobbler page with unmapped sliders"
+        loading="lazy"
+      />
+      <figcaption>Knobbler page — sliders ready to be mapped</figcaption>
+    </figure>
+    <p>
+      This was Knobbler's first feature: a page of sliders that you can map to
+      whatever you like. There are two ways to map a Knobbler slider.
+    </p>
+
+    <h4>Mapping 1: Selected Param</h4>
+    <p>
+      Click a parameter on the computer screen, which highlights that parameter
+      by highlighting its corners.
+    </p>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/parameter-selected.png"
+        alt="A selected parameter highlighted in Ableton Live"
+        loading="lazy"
+      />
+      <figcaption>Selected parameter highlighted in Live</figcaption>
+    </figure>
+    <p>
+      Then tap any unassigned Knobbler slider, and the mapping is done. No modes
+      to enter or exit, and the control remains available to be controlled with
+      the mouse or modulated by another device in the set.
+    </p>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-knobbler-map.png"
+        alt="Tapping an unmapped Knobbler slider to assign it"
+        loading="lazy"
+      />
+      <figcaption>Tap any unassigned slider to map it</figcaption>
+    </figure>
+
+    <h4>Mapping 2: Direct from Bluhand</h4>
+    <p>
+      On the Bluhand page, tap a parameter name. The parameter's slider will get
+      a green outline.
+    </p>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-bluhand-kmap.png"
+        alt="Tapping a parameter name on the Bluhand page"
+        loading="lazy"
+      />
+      <figcaption>Tap a parameter name on the Bluhand page</figcaption>
+    </figure>
+    <p>
+      Then go to a Knobbler page. All of the sliders will be highlighted in
+      green. Tap any of them (even one that is already mapped) and it will be
+      replaced.
+    </p>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-bluhand-kmap-knobbler.png"
+        alt="All Knobbler sliders highlighted green for mapping"
+        loading="lazy"
+      />
+      <figcaption>All sliders highlighted — tap one to map</figcaption>
+    </figure>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-bluhand-kmap-after.png"
+        alt="Knobbler slider successfully mapped"
+        loading="lazy"
+      />
+      <figcaption>Mapping complete</figcaption>
+    </figure>
+    <p>
+      Knobbler mappings are saved with the Live Set, making recall instant and
+      enabling you to work on many songs at once.
+    </p>
+
+    <h4>Unmapping</h4>
+    <p>
+      To unmap a Knobbler slider, tap the Unmap button in the Toolbar. All
+      sliders will get a red outline. Tap the slider(s) you wish to unmap, then
+      tap the Unmap button again to exit unmapping mode.
+    </p>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-knobbler-unmap.png"
+        alt="Knobbler sliders in unmapping mode with red outlines"
+        loading="lazy"
+      />
+      <figcaption>Unmapping mode — sliders shown with red outlines</figcaption>
+    </figure>
+
+    <h4>Default Value</h4>
+    <p>
+      All sliders in Knobbler respond to a double-tap by resetting the parameter
+      to its default value. Double-tap to default.
+    </p>
+
+    <h4>Fine Control</h4>
+    <p>
+      Use two fingers on any slider for 10× precision. This works on all sliders
+      throughout the app — Knobbler pages, Bluhand, Channel Strip, Multi-Track
+      Mixer, and Current Parameter.
+    </p>
+
+    <h4>X-Y Pads</h4>
+    <p>
+      Two adjacent Knobbler sliders can be linked into an X-Y pad, giving you
+      two-dimensional control over a pair of parameters with a single finger.
+    </p>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/link_mode_xy_start.jpg"
+        alt="Link button in the toolbar"
+        loading="lazy"
+      />
+      <figcaption>Tap the Link button to enter link mode</figcaption>
+    </figure>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/link_mode_xy_link.jpg"
+        alt="Tapping between two adjacent sliders to link them"
+        loading="lazy"
+      />
+      <figcaption>Tap between two adjacent sliders</figcaption>
+    </figure>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/link_mode_xy_end.jpg"
+        alt="Completed X-Y pad"
+        loading="lazy"
+      />
+      <figcaption>
+        X-Y pad created — left slider = X axis, right = Y axis
+      </figcaption>
+    </figure>
+    <p>
+      To split an X-Y pad back into two individual sliders, tap the Link button
+      in the toolbar, then tap the X-Y pad you want to split. X-Y pad
+      assignments are saved per page and persist with your Live Set.
+    </p>
+
+    <h4>Select Track</h4>
+    <p>
+      If you tap the track name under the Knobbler slider, that will select that
+      track in Live, which will update the channel strip on the left side of the
+      screen. This is a convenient way to access the mixer controls for a
+      parameter you have mapped.
+    </p>
+
+    <h3 id="bluhand-page">Bluhand Page</h3>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-bluhand-pink.png"
+        alt="The Bluhand page showing device parameters"
+        loading="lazy"
+      />
+      <figcaption>Bluhand page — parameter-focused device view</figcaption>
+    </figure>
+    <p>
+      Bluhand gives you a parameter-focused view of the currently selected
+      device. Parameter banks are shown above the sliders. In the case of racks,
+      Variations controls are shown. The device can be toggled off and on with
+      the orange button next to the device title.
+    </p>
+    <blockquote>
+      Make sure you do not turn off the Knobbler device! Otherwise you will have
+      to turn it back on using the mouse. :)
+    </blockquote>
+
+    <h4>Default Value</h4>
+    <p>
+      All sliders in Knobbler respond to a double-tap by resetting the parameter
+      to its default value. Double-tap to default.
+    </p>
+
+    <h4>Variations Support</h4>
+    <p>
+      When a Rack is selected, the space normally used for Parameter Banks
+      changes to show Variations controls.
+    </p>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/variations.png"
+        alt="Variations controls for a Rack"
+        loading="lazy"
+      />
+      <figcaption>
+        Variations controls replace parameter banks for Racks
+      </figcaption>
+    </figure>
+    <p>
+      Stored variations are shown with the numbered buttons; the selected
+      variation is shown with a brighter button. Tap the Camera icon to store a
+      new variation. Tap the Dice icon to randomize the Rack's Macro controls.
+    </p>
+
+    <h4>Fast Mapping to Knobbler</h4>
+    <p>
+      Tap a parameter name on a Bluhand slider to enter Knobbler mapping mode.
+      The slider above that parameter name will get a bright green border. Then
+      if you visit the Knobbler 1 or Knobbler 2 page, every slider there will
+      have the same green border. Tap one of those sliders to map that parameter
+      to that Knobbler fader. Fast!
+    </p>
+
+    <h3 id="device-shortcuts">Device Shortcuts</h3>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-shortcuts.png"
+        alt="Eight shortcut buttons near the top of the screen"
+        loading="lazy"
+      />
+      <figcaption>Eight shortcut buttons for instant device access</figcaption>
+    </figure>
+    <p>
+      Toward the top of the Knobbler and Bluhand pages, there are eight buttons
+      that you can use to instantly jump to the most important devices in your
+      Live Set.
+    </p>
+
+    <h4>Mapping</h4>
+    <p>
+      With the device you would like to map shown in the Bluhand page, tap an
+      unassigned shortcut button. You're done!
+    </p>
+
+    <h4>Unmapping</h4>
+    <p>
+      Tap the Unmap button in the toolbar to enter Unmapping mode. All shortcut
+      buttons will be given a red border.
+    </p>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-shortcuts-unmap.png"
+        alt="Shortcut buttons in unmapping mode with red outlines"
+        loading="lazy"
+      />
+      <figcaption>Tap any button with a red border to unmap it</figcaption>
+    </figure>
+    <p>
+      Tap any of the buttons to unmap them. Tap the Unmap button again to exit
+      Unmapping mode.
+    </p>
+
+    <h4>Using the Shortcut Buttons</h4>
+    <p>
+      Regardless of whether you are on a Bluhand or Knobbler page, tapping a
+      shortcut button will take you to the Bluhand page with that device
+      selected.
+    </p>
+
+    <h3 id="current-parameter">Current Parameter</h3>
+    <p>
+      The current parameter display shows information about whichever parameter
+      is currently selected in Live. When you click a parameter in Ableton, the
+      app automatically updates to show the parameter name, device name, track
+      name, track color, current value, and the min/max range.
+    </p>
+    <p>
+      The current parameter display is always visible on the Navigation page,
+      giving you constant feedback as you work.
+    </p>
+
+    <h4>Lock</h4>
+    <p>
+      You can lock the display to a specific parameter so it stays visible even
+      as you click around in Live. Unlock to resume following the selected
+      parameter.
+    </p>
+
+    <h4>Control</h4>
+    <p>
+      The current parameter can be adjusted directly from the app via a slider.
+      Double-tap to reset to the default value.
+    </p>
+
+    <h3 id="external-hardware">External Hardware</h3>
+    <p>
+      You can use Knobbler with external hardware in conjunction with a device
+      like the <code>CC Control</code> device that comes with Live 12. Note that as
+      of Live 12.1, <code>CC Control</code> has a defective API implementation and
+      does not work properly with Knobbler. Until that device is fixed, you can use
+      the free <a
+        href="https://plugins.steinkamp.us/m4l-MIDI-CC-Bridge"
+        target="_blank"
+        rel="noopener noreferrer">MIDI CC Bridge</a
+      > device instead.
+    </p>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-MIDI-CC-Bridge/images/device-menu.png"
+        alt="MIDI CC Bridge Max for Live device"
+        loading="lazy"
+      />
+      <figcaption>
+        MIDI CC Bridge — free workaround for Live 12 CC Control issues
+      </figcaption>
+    </figure>
+
+    <h3 id="navigation">Navigation</h3>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-with-nav.png"
+        alt="Navigation panel open on the right side of the screen"
+        loading="lazy"
+      />
+      <figcaption>
+        Navigation panel — move through your Live Set at speed
+      </figcaption>
+    </figure>
+    <p>Move around your Live Set with more speed and ease than ever before!</p>
+    <p>
+      Tap a track to open it. Tap a device to select it and show its parameters
+      in the Bluhand page. Tracks have a highlight on their left edge, devices
+      are highlighted on the right.
+    </p>
+    <p>
+      Group tracks and racks are indicated with a list icon. Tap a Rack to show
+      its chains. Tap a chain to see devices inside that chain.
+    </p>
+    <p>
+      Sometimes track colors or names may get out of sync. Tap the Refresh
+      button in the Toolbar to fix this.
+    </p>
+
+    <h3 id="channel-strip">Channel Strip</h3>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-with-mixer.png"
+        alt="Channel strip mixer panel open on the left side"
+        loading="lazy"
+      />
+      <figcaption>
+        Channel strip — full mixer control for the selected track
+      </figcaption>
+    </figure>
+    <p>
+      Take full control over the mixer controls for the currently selected
+      track. Tap the button to show the Channel Strip, or swipe it in from the
+      left side.
+    </p>
+
+    <h4>Sends</h4>
+    <p>
+      Each send track in your set is represented, including its color. If there
+      is not enough space to display all of the sends, you can swipe up and down
+      to scroll between them. Slide left and right to increase or decrease the
+      amount sent.
+    </p>
+
+    <h4>Volume</h4>
+    <p>
+      This is the mixer volume for the track. Its color will be the same as the
+      selected track color.
+    </p>
+
+    <h4>Pan</h4>
+    <p>Slide left and right to control the pan position.</p>
+
+    <h4>Mute</h4>
+    <p>Toggle whether the track is muted.</p>
+
+    <h4>Solo</h4>
+    <p>
+      Toggles the track's solo state. Respects the user preference around
+      exclusive solo.
+    </p>
+
+    <h4>Record Arm</h4>
+    <p>
+      Tap to toggle this track's record arm state. Respects the user preference
+      around exclusive arm.
+    </p>
+
+    <h4>Toggle Record Enable</h4>
+    <p>
+      A long press on the Record Arm button will disable input entirely. This is
+      useful if you are in Arrangement view and you want to record automation
+      over existing MIDI clips without changing the clips. Otherwise, the MIDI
+      clips are all merged into a single clip. Tap the record arm button again
+      to re-enable inputs and arm the track for recording.
+    </p>
+
+    <h4>Crossfader Controls</h4>
+    <p>
+      On tracks and return tracks, an <kbd>A</kbd> or <kbd>B</kbd> button are shown,
+      which allows you to assign that track to one side of the crossfader or another.
+      If you select the Main track, the <kbd>A</kbd>/<kbd>B</kbd> buttons are replaced
+      with a crossfader slider.
+    </p>
+
+    <h4>Default Value</h4>
+    <p>
+      All sliders in Knobbler respond to a double-tap by resetting the parameter
+      to its default value. Double-tap to default.
+    </p>
+
+    <h3 id="session-view-clips">Session View Clips</h3>
+    <p>
+      A full session view clip grid right on your device. Launch, record,
+      rename, and color clips and scenes without touching your mouse. Real-time
+      playback state, group track folding, scene management, and more.
+    </p>
+
+    <h3 id="multi-track-mixer">Multi-Track Mixer</h3>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/mixer-ipad.png"
+        alt="Full-screen multi-track mixer"
+        loading="lazy"
+      />
+      <figcaption>
+        Multi-Track Mixer — horizontally scrollable full-screen view
+      </figcaption>
+    </figure>
+    <p>
+      The multi-track mixer provides a full-screen, horizontally scrollable view
+      of all tracks in your Live Set. It gives you hands-on control of volume,
+      pan, mute, solo, record arm, sends, and crossfader assignments across
+      multiple tracks at once. Only the tracks visible on screen are actively
+      monitored, so it stays responsive even with large sets.
+    </p>
+
+    <h4>Volume and Pan</h4>
+    <p>
+      Each strip has a volume fader and pan control. Double-tap to reset either
+      to its default value. Volume automation state is shown with a colored
+      indicator, matching the same automation dot colors used on Knobbler knobs
+      (green for controlled, red for recorded automation, grey for overridden).
+      Tap the volume value to open a dedicated pan and send control window.
+    </p>
+
+    <h4>Mute, Solo, and Record Arm</h4>
+    <p>
+      Toggle mute, solo, and record arm per strip. Record arm respects the
+      exclusive arm preference. Disabling input is also supported for recording
+      automation over existing MIDI clips.
+    </p>
+
+    <h4>Sends</h4>
+    <p>
+      Send levels for up to 12 return tracks are available per strip. Send
+      colors match their corresponding return track colors.
+    </p>
+
+    <h4>Crossfader</h4>
+    <p>Assign tracks to crossfader side A or B directly from the mixer.</p>
+
+    <h4>Meters</h4>
+    <p>
+      Output level meters are shown for all visible strips, displaying left
+      channel, right channel, and combined output levels in real time. Toggle
+      their display with the Meters button in the toolbar.
+    </p>
+
+    <h3 id="toolbar">Toolbar</h3>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-toolbar.png"
+        alt="Knobbler toolbar"
+        loading="lazy"
+      />
+      <figcaption>
+        Knobbler's toolbar, echoing Ableton Live's with additional controls
+      </figcaption>
+    </figure>
+    <p>
+      Knobbler's toolbar echoes a lot of the items in Ableton Live's toolbar,
+      with some Knobbler-specific additions.
+    </p>
+
+    <h4>Show / Hide Channel Strip Mixer</h4>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-toolbar-mixer.png"
+        alt="Channel strip toggle button"
+        loading="lazy"
+      />
+    </figure>
+    <p>
+      Toggle the appearance of the channel strip on the left edge of the screen.
+      You can also swipe sideways from the edge to show and hide it.
+    </p>
+
+    <h4>Refresh Display</h4>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-toolbar-refresh.png"
+        alt="Refresh button"
+        loading="lazy"
+      />
+    </figure>
+    <p>Requests an update of all data from the computer.</p>
+
+    <h4>Unmapping Mode</h4>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-toolbar-unmap.png"
+        alt="Unmapping mode button"
+        loading="lazy"
+      />
+    </figure>
+    <p>
+      This button toggles Unmapping mode on and off. When Unmapping mode is
+      engaged, Knobbler sliders and Shortcut buttons have a red border. Tap the
+      slider or button to unmap it.
+    </p>
+
+    <h4>Tempo Section</h4>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-toolbar-tempo.png"
+        alt="Tempo section of the toolbar"
+        loading="lazy"
+      />
+    </figure>
+    <p>Tap tempo, tempo display and editing, and metronome control.</p>
+
+    <h4>Transport Controls</h4>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-toolbar-transport.png"
+        alt="Transport controls — play, stop, record"
+        loading="lazy"
+      />
+    </figure>
+    <p>
+      Play, stop, and record. Pressing <kbd>Stop</kbd> a second time will send the
+      playhead to the beginning of the song. Pressing a third time will silence anything
+      that is playing. The record button respects the "Start Transport With Record"
+      preference.
+    </p>
+
+    <h4>Overdub MIDI</h4>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-toolbar-overdub-midi.png"
+        alt="Overdub MIDI button"
+        loading="lazy"
+      />
+    </figure>
+    <p>
+      When enabled, recorded MIDI data is merged with existing MIDI clips. When
+      disabled, recorded MIDI data will replace existing clips.
+    </p>
+
+    <h4>Re-Enable Automation</h4>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-toolbar-reenable.png"
+        alt="Re-Enable Automation button"
+        loading="lazy"
+      />
+    </figure>
+    <p>
+      If automation is recorded for a parameter, but that parameter is manually
+      adjusted, the automation will be disabled and shown in grey. Click this
+      button to re-enable the automation everywhere that it is disabled.
+    </p>
+
+    <h4>Capture MIDI</h4>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-toolbar-capture-midi.png"
+        alt="Capture MIDI button"
+        loading="lazy"
+      />
+    </figure>
+    <p>
+      Click this button to capture all MIDI data recorded since changing tracks.
+      This is a great way to be noodling into some inspiration and not have to
+      stop and record — which usually loses some of that zesty mojo.
+    </p>
+
+    <h4>Session Automation Overdub</h4>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-toolbar-session-automation-overdub.png"
+        alt="Session Automation Overdub button"
+        loading="lazy"
+      />
+    </figure>
+    <p>
+      When enabled, any automation moves made while session clips are playing
+      are recorded into the clip. This is an awesome way to build layers of
+      evolution into your sounds.
+    </p>
+
+    <h4>Loop</h4>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-toolbar-loop.png"
+        alt="Loop toggle button"
+        loading="lazy"
+      />
+    </figure>
+    <p>Toggle whether the Arrangement view transport loop is enabled.</p>
+
+    <h4>Previous / Next Locator</h4>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-toolbar-locators.png"
+        alt="Previous and Next Locator buttons"
+        loading="lazy"
+      />
+    </figure>
+    <p>
+      These buttons allow you to navigate to locators in your Live Set. The
+      beginning of the song and the loop ending point are default locators.
+    </p>
+
+    <h4>Show / Hide Navigation</h4>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/ipad-toolbar-nav.png"
+        alt="Toggle Navigation button"
+        loading="lazy"
+      />
+    </figure>
+    <p>
+      Toggles the display of the Navigation widget on the right side of the
+      screen. You can also swipe in from the side to show it, and swipe from its
+      left edge to hide it.
+    </p>
+
+    <h3 id="setup-page">Setup Page</h3>
+    <p>The Setup page has three sections: Connection, Settings, and Debug.</p>
+
+    <h4>Connection</h4>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/setup-discovery.png"
+        alt="Setup page showing device discovery"
+        loading="lazy"
+      />
+      <figcaption>
+        Knobbler advertises itself on your local network for auto-discovery
+      </figcaption>
+    </figure>
+    <p>
+      Knobbler advertises itself on your local network. Under "Found These
+      Knobblers", tap the entry for your computer and the Host, Device Port, and
+      App Port fields will be filled in automatically. Tap <kbd>Refresh</kbd> to rescan
+      the network. You can also enter the host or IP and port numbers manually if
+      you prefer.
+    </p>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/setup-connected.png"
+        alt="Setup page showing a successful connection"
+        loading="lazy"
+      />
+      <figcaption>Green banner confirms a successful connection</figcaption>
+    </figure>
+    <p>
+      Once connected, you'll see a green "Connection Successful!" banner with
+      the device version number. Tap <kbd>Test</kbd> to verify the connection, or
+      <kbd>Clear</kbd> to reset the fields and start over.
+    </p>
+
+    <h4>Settings</h4>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/setup-settings.png"
+        alt="Setup settings tab"
+        loading="lazy"
+      />
+      <figcaption>Settings tab with display and behavior options</figcaption>
+    </figure>
+    <ul>
+      <li>
+        <strong>Track Overview</strong> — show the colored track overview bar in the
+        mixer
+      </li>
+      <li>
+        <strong>Crossfader (A/B)</strong> — show crossfader assignment buttons on
+        mixer strips
+      </li>
+      <li>
+        <strong>Auto-Collapse Chains</strong> — automatically collapse rack chains
+        when navigating away
+      </li>
+      <li>
+        <strong>Level Meters</strong> — show real-time level meters on mixer strips
+      </li>
+      <li>
+        <strong>Haptic Feedback</strong> — enable haptic feedback on supported devices
+      </li>
+    </ul>
+
+    <h4>Debug</h4>
+    <figure>
+      <img
+        src="https://plugins.steinkamp.us/cache/m4l-Knobbler4/docs/images/setup-debug.png"
+        alt="Setup debug tab"
+        loading="lazy"
+      />
+      <figcaption>Debug tab with OSC log for troubleshooting</figcaption>
+    </figure>
+    <p>
+      The Debug tab shows app version info, build number, server details, and
+      subscription status. The OSC Log displays incoming and outgoing messages
+      in real time — useful for troubleshooting connection issues.
+    </p>
+
+    <h4>Version Checks</h4>
+    <p>
+      If the Knobbler device that the app is communicating with is too old, a
+      warning message will be shown. This message also includes a link to
+      download the latest Knobbler device.
+    </p>
+
+    <h3 id="multi-device-support">Multi-Device Support</h3>
+    <p>
+      You can use multiple phones and tablets simultaneously with multiple
+      Knobbler instances. Add as many instances of the Knobbler device as you
+      have devices, and ensure each instance has a unique "Device Port" setting.
+      Each device operates independently — use one for faders, another for the
+      mixer, a phone for clips, or whatever combination suits your workflow.
+    </p>
+
+    <p class="manual-source">
+      Content sourced from <a
+        href="https://plugins.steinkamp.us/m4l-Knobbler4/features"
+        target="_blank"
+        rel="noopener noreferrer">plugins.steinkamp.us/m4l-Knobbler4/features</a
+      > by <a
+        href="https://steinkamp.us/"
+        target="_blank"
+        rel="noopener noreferrer">Zack Steinkamp</a
+      >.
+    </p>
+  </div>
+</MainLayout>
+
+<style>
+  .video-section__header {
+    margin-bottom: 1.75rem;
+  }
+
+  .video-section__header h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .video-section__header p {
+    color: var(--text-soft);
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .video-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .video-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .knobbler-features-section {
+    margin-top: 2rem;
+  }
+
+  .knobbler-features-section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .knobbler-features-section h3 {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 0.6rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  .knobbler-features-section h4 {
+    font-weight: 600;
+    margin-top: 1.25rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.8rem;
+  }
+
+  .knobbler-features-section p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-base);
+    margin-bottom: 0.75rem;
+  }
+
+  .knobbler-features-section blockquote {
+    border-left: 3px solid var(--border-strong);
+    padding-left: 1rem;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--text-soft);
+  }
+
+  .knobbler-features-section ul,
+  .knobbler-features-section ol {
+    padding-left: 1.4rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .knobbler-features-section li {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-base);
+    margin-bottom: 0.25rem;
+  }
+
+  .knobbler-features-section code {
+    font-size: 0.85em;
+    background: var(--surface-muted);
+    border: 1px solid var(--border-soft);
+    border-radius: 4px;
+    padding: 0.1em 0.4em;
+  }
+
+  .knobbler-features-section kbd {
+    display: inline-block;
+    padding: 0.1em 0.45em;
+    font-size: 0.82em;
+    font-family: inherit;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--text-strong);
+    background: var(--surface-muted);
+    border: 1px solid var(--border-strong);
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+    white-space: nowrap;
+  }
+
+  .knobbler-features-section figure {
+    margin: 1.25rem 0;
+    text-align: center;
+  }
+
+  .knobbler-features-section figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border-soft);
+    background: var(--surface-muted);
+  }
+
+  .knobbler-features-section figcaption {
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--text-soft);
+    font-style: italic;
+  }
+
+  .knobbler-features-section .manual-source {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-soft);
+    font-size: 0.85rem;
+    color: var(--text-muted, var(--text-soft));
+    font-style: italic;
+  }
+
+  .knobbler-features-section .manual-source a {
+    color: var(--accent, inherit);
+    text-decoration: underline;
+  }
+</style>

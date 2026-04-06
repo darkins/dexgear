@@ -1,0 +1,151 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import GearIntro from "../../components/GearIntro.astro";
+import { getEntry, render } from "astro:content";
+import VideoCard from "../../components/VideoCard.astro";
+
+const gear = await getEntry("gear", "launchkey-37-mk3");
+if (!gear) throw new Error("Gear not found");
+const { Content } = await render(gear);
+
+const videos = [
+  {
+    id: "DJjB_mWpfak",
+    title: "Controlling Ableton Live with Launchkey [MK3] — In Depth",
+    description:
+      "An in-depth look at how the Launchkey Mk3 integrates with Ableton Live — clip launching, device control, and more.",
+  },
+  {
+    id: "d0Yrnrm8wcw",
+    title: "Making Music with Launchkey [MK3] in Ableton Live",
+    description:
+      "A practical walkthrough of making music in Ableton Live using the Launchkey Mk3 as the primary controller.",
+  },
+  {
+    id: "71aAc_UGQEk",
+    title: "Using Launchkey [MK3] Arpeggiator — In Depth",
+    description:
+      "An in-depth guide to the Launchkey Mk3's built-in arpeggiator — modes, rates, and performance applications.",
+  },
+  {
+    id: "95jvdNwZf7Q",
+    title: "Using Launchkey [MK3] Chord Modes — In Depth",
+    description:
+      "An in-depth look at the Launchkey Mk3's chord modes — how to use them for performance and song creation.",
+  },
+  {
+    id: "e1oIjQDE5Vg",
+    title: "Using Launchkey [MK3] Scale Mode — In Depth",
+    description:
+      "An in-depth guide to the Launchkey Mk3's Scale Mode — locking to a key and scale for confident performance.",
+  },
+];
+---
+
+<MainLayout title={gear.data.title} description={gear.data.description}>
+  <GearIntro
+    title={gear.data.title}
+    description={gear.data.description}
+    url={gear.data.url}
+  />
+
+  <div class="section-card video-section">
+    <div class="video-section__header">
+      <h2>Learn Launchkey 37 Mk3</h2>
+      <p>Video tutorials covering the Launchkey 37 Mk3.</p>
+    </div>
+    <div class="video-grid">
+      {
+        videos.map((v) => (
+          <VideoCard id={v.id} title={v.title} description={v.description} />
+        ))
+      }
+    </div>
+  </div>
+
+  <article class="prose mt-8">
+    <Content />
+  </article>
+
+  <div class="section-card downloads-section mt-8">
+    <div class="downloads-section__header">
+      <h2>Launchkey 37 Mk3 Downloads</h2>
+      <p>Firmware updates, presets, and software from Novation.</p>
+    </div>
+    <div class="downloads-links">
+      <div class="downloads-group">
+        <h3>Novation Components</h3>
+        <a
+          href="https://id.focusritegroup.com/en/software/novation-components"
+          class="button-primary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Novation Components &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+</MainLayout>
+
+<style>
+  .video-section__header {
+    margin-bottom: 1.75rem;
+  }
+
+  .video-section__header h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .video-section__header p {
+    color: var(--text-soft);
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .video-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .video-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .downloads-section__header {
+    margin-bottom: 1.25rem;
+  }
+
+  .downloads-section__header h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .downloads-section__header p {
+    color: var(--text-soft);
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .downloads-links {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .downloads-group h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+</style>
