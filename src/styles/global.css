@@ -247,7 +247,7 @@ pre {
 .site-brand__mark {
 	width: 2.75rem;
 	height: 2.75rem;
-	border-radius: 1rem;
+	border-radius: 50%;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
