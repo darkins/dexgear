@@ -1,0 +1,696 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+---
+
+<MainLayout
+    title="Guitar Tones"
+    description="Step-by-step Ableton Live device chains for achieving classic guitar tones — shoegaze walls of sound and Cocteau Twins-style dream pop."
+>
+    <section class="content-intro">
+        <div>
+            <p class="eyebrow">Studio Workflow</p>
+            <h1>Guitar Tones</h1>
+            <p class="content-intro__lede">
+                Repeatable Ableton Live device chains for specific guitar tones
+                — shoegaze walls of sound, Cocteau Twins ethereal dream pop, and
+                more. Set up once, save as a rack, and recall instantly on any
+                project.
+            </p>
+        </div>
+        <div class="content-intro__actions">
+            <a href="/workflow/signal-chain" class="button-secondary"
+                >Signal Chain</a
+            >
+        </div>
+    </section>
+
+    <article class="prose prose-invert">
+        <h2>Shoegaze</h2>
+        <p>
+            Shoegaze (My Bloody Valentine, Slowdive, Ride) is defined by a
+            wall-of-guitar texture: extreme reverb, chorus-driven pitch smear,
+            and high-gain amp distortion buried in the mix. The two setups below
+            cover a real electric guitar through the MOTU and a fully
+            MIDI-driven alternative using the Teletone Audio Voyager Guitar
+            plugin.
+        </p>
+
+        <hr />
+
+        <h3>Section A — Real Guitar (electric guitar through MOTU)</h3>
+
+        <h4>Step 1 — Hardware signal chain</h4>
+        <ul>
+            <li>Guitar → MOTU UltraLite Mk3 Input 1 or 2 (front combo jack)</li>
+            <li>
+                Enable <strong>Hi-Z / Instrument mode</strong> on that input in CueMix
+                FX
+            </li>
+            <li>
+                Gain staging target: peak <strong>−12 to −6 dBFS</strong> while playing
+                hard
+            </li>
+            <li>
+                Ableton audio track: <em>Audio From</em> → <code>Ext. In 1</code
+                > (Mono)
+            </li>
+        </ul>
+
+        <h4>Step 2 — Ableton audio track setup</h4>
+        <ul>
+            <li>Track name: <code>Guitar – Shoegaze</code></li>
+            <li>
+                Monitor: <strong>In</strong> (or <strong>Auto</strong> when armed)
+            </li>
+            <li>
+                No clip gain adjustments needed if gain-staged correctly at the
+                MOTU
+            </li>
+        </ul>
+
+        <h4>Step 3 — Device chain</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Device</th>
+                    <th>Key parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>Tuner</strong></td>
+                    <td>Always first; mute output while tuning</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>Amp</strong></td>
+                    <td
+                        >Model: <code>Heavy</code>; Drive: 65–75; Bass: 45; Mid:
+                        30; Treble: 55; Presence: 40; Volume: 80; Blend: 100%</td
+                    >
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>Cabinet</strong></td>
+                    <td
+                        >Cabinet: <code>4×12 T75</code>; Microphone: <code
+                            >SM57 Off Axis</code
+                        >; Distance: 0.5 m; Mix: 100%</td
+                    >
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>EQ Eight</strong></td>
+                    <td
+                        >High-pass at 80 Hz (steep); +2 dB shelf at 8 kHz;
+                        narrow notch cut around 3 kHz</td
+                    >
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>Chorus-Ensemble</strong></td>
+                    <td
+                        >Mode: <code>Classic</code>; Rate: 0.4 Hz; Depth: 70%;
+                        Delay: 1.5 ms; Feedback: 20%; Polarity: +/−; Dry/Wet:
+                        60%</td
+                    >
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><strong>Compressor</strong></td>
+                    <td
+                        >Threshold: −18 dBFS; Ratio: 2:1; Attack: 20 ms;
+                        Release: 200 ms; Makeup: +3 dB; Knee: Soft</td
+                    >
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><strong>Reverb</strong></td>
+                    <td
+                        >Decay: 6–8 s; Pre-delay: 20 ms; Diffuse: 80%; Size:
+                        100%; Reflect: 70%; Flat: 50%; Dry/Wet: 60–70%</td
+                    >
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td><strong>Ping Pong Delay</strong></td>
+                    <td
+                        >Time: 1/8 note (synced); Feedback: 40%; Filter: LP 8
+                        kHz / HP 200 Hz; Dry/Wet: 35%</td
+                    >
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Step 4 — Shimmer return track</h4>
+        <ul>
+            <li>
+                Add a dedicated Return track named <code>Return — Shimmer</code>
+            </li>
+            <li>
+                Insert <strong>Convolution Reverb Pro</strong> (or stock Reverb with
+                Freeze enabled) — Decay &gt; 10 s, Diffuse: 100%
+            </li>
+            <li>
+                Send the Guitar track to this return at <strong>−6 dB</strong>;
+                blend to taste
+            </li>
+        </ul>
+
+        <hr />
+
+        <h3>
+            Section B — Teletone Audio Voyager Guitar (no real guitar required)
+        </h3>
+        <p>
+            Use this setup to compose shoegaze parts without a physical guitar.
+            Voyager Guitar provides modelled electric guitar articulations
+            driven by MIDI from any controller — Launchkey 37, P-225, or Push 1.
+        </p>
+
+        <h4>Step 1 — Track setup</h4>
+        <ul>
+            <li>Create a new <strong>MIDI track</strong> in Ableton</li>
+            <li>Track name: <code>Voyager – Shoegaze</code></li>
+            <li>
+                Load <strong>Teletone Audio Voyager Guitar</strong> as the instrument
+            </li>
+            <li>MIDI input: Launchkey 37 Mk3, P-225, or Push 1</li>
+        </ul>
+
+        <h4>Step 2 — Voyager Guitar plugin settings</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pickup</td>
+                    <td>Neck (or Neck+Bridge blend)</td>
+                    <td
+                        >Warmer, less bite — shoegaze avoids trebly bridge tones</td
+                    >
+                </tr>
+                <tr>
+                    <td>Tone knob</td>
+                    <td>40–50%</td>
+                    <td>Roll off top end slightly</td>
+                </tr>
+                <tr>
+                    <td>Playing style</td>
+                    <td>Strummed / Sustained</td>
+                    <td
+                        >Held chords with slow attack; avoid fast percussive
+                        picking</td
+                    >
+                </tr>
+                <tr>
+                    <td>Articulation</td>
+                    <td>Power Chord or Single Note Sustained</td>
+                    <td>Move between both for texture vs melody</td>
+                </tr>
+                <tr>
+                    <td>Vibrato</td>
+                    <td>Off or &lt;15% depth</td>
+                    <td
+                        >Pitch fluctuation comes from chorus/tremolo, not
+                        vibrato</td
+                    >
+                </tr>
+                <tr>
+                    <td>Capo / Tuning</td>
+                    <td>Drop D or E♭ standard (−1 semitone)</td>
+                    <td>Shoegaze commonly uses detuned/dropped tunings</td>
+                </tr>
+                <tr>
+                    <td>Noise / ambience</td>
+                    <td>On, −18 dB</td>
+                    <td>Adds organic room noise</td>
+                </tr>
+                <tr>
+                    <td>Velocity response</td>
+                    <td>Linear or slightly compressed</td>
+                    <td>Even dynamics let reverb and chorus wash uniformly</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Step 3 — Device chain after Voyager Guitar</h4>
+        <p>
+            Apply the same chain as Section A (skip the Tuner — not needed for
+            MIDI):
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Device</th>
+                    <th>Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>Amp</strong></td>
+                    <td
+                        >Model: <code>Heavy</code>; Drive: 65–75 — same as
+                        Section A</td
+                    >
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>Cabinet</strong></td>
+                    <td><code>4×12 T75</code>; SM57 Off Axis; 0.5 m</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>EQ Eight</strong></td>
+                    <td>HP at 80 Hz; +2 dB shelf at 8 kHz; 3 kHz notch cut</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>Chorus-Ensemble</strong></td>
+                    <td>Same settings as Section A</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>Compressor</strong></td>
+                    <td>Same settings as Section A</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><strong>Reverb</strong></td>
+                    <td>Decay: 6–8 s; Dry/Wet: 65%</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><strong>Ping Pong Delay</strong></td>
+                    <td>1/8 synced; Feedback: 40%; Dry/Wet: 35%</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            Add the same <code>Return — Shimmer</code> track from Section A and send
+            <code>Voyager – Shoegaze</code> to it at −6 dB.
+        </p>
+
+        <h4>Step 4 — MIDI tips for shoegaze feel</h4>
+        <ul>
+            <li>
+                Use <strong>long MIDI note lengths</strong> (whole notes and tied
+                notes) — shoegaze relies on sustained chords washing into each other
+            </li>
+            <li>
+                Apply gentle <strong>pitch bend automation</strong> in Arrangement
+                View to simulate tremolo arm movements
+            </li>
+            <li>
+                For a thicker wall sound, duplicate the track, detune one
+                instance <strong>−12 cents</strong> and the other <strong
+                    >+12 cents</strong
+                > using Voyager's tuning control, then blend both
+            </li>
+        </ul>
+
+        <hr />
+        <hr />
+
+        <h2>Dream Pop — Cocteau Twins</h2>
+        <p>
+            Robin Guthrie's guitar work on records like <em
+                >Heaven or Las Vegas</em
+            > and <em>Treasure</em> achieves an almost unidentifiable ethereal shimmer
+            — clean or barely-broken-up amp tones swimming in chorus, flange, and
+            long reverb tails, with volume swells that erase the pick attack entirely.
+            The result is tonal texture rather than defined guitar playing.
+        </p>
+
+        <hr />
+
+        <h3>Section A — Real Guitar (electric guitar through MOTU)</h3>
+
+        <h4>Step 1 — Hardware signal chain</h4>
+        <ul>
+            <li>Guitar → MOTU UltraLite Mk3 Input 1 or 2 (front combo jack)</li>
+            <li>
+                Enable <strong>Hi-Z / Instrument mode</strong> on that input in CueMix
+                FX
+            </li>
+            <li>
+                Gain staging target: peak <strong>−18 to −12 dBFS</strong> — keep
+                the signal clean and headroom-rich
+            </li>
+            <li>
+                Ableton audio track: <em>Audio From</em> → <code>Ext. In 1</code
+                > (Mono)
+            </li>
+        </ul>
+
+        <h4>Step 2 — Ableton audio track setup</h4>
+        <ul>
+            <li>Track name: <code>Guitar – Dream Pop</code></li>
+            <li>
+                Monitor: <strong>In</strong> (or <strong>Auto</strong> when armed)
+            </li>
+            <li>
+                Use a volume pedal or MIDI CC automation on the track's volume
+                to create swell attacks — the pick transient should never be
+                heard cleanly
+            </li>
+        </ul>
+
+        <h4>Step 3 — Device chain</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Device</th>
+                    <th>Key parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>Tuner</strong></td>
+                    <td>Always first; mute output while tuning</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>Amp</strong></td>
+                    <td
+                        >Model: <code>Clean</code>; Drive: 15–25; Bass: 55; Mid:
+                        50; Treble: 60; Presence: 35; Volume: 75; Blend: 100%</td
+                    >
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>Cabinet</strong></td>
+                    <td
+                        >Cabinet: <code>1×12 British</code>; Microphone: <code
+                            >SM57 On Axis</code
+                        >; Distance: 1.0 m; Mix: 100%</td
+                    >
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>EQ Eight</strong></td>
+                    <td
+                        >High-pass at 60 Hz; +3 dB bell at 2.5 kHz (Q 0.5) for
+                        glass shimmer; cut narrow notch at 1 kHz to remove honk;
+                        gentle +1.5 dB shelf at 10 kHz for air</td
+                    >
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>Flanger</strong> (Ableton Flanger)</td>
+                    <td
+                        >Rate: 0.25 Hz; Depth: 50%; Feedback: −30% (negative
+                        gives hollow sweep); Dry/Wet: 40%; Envelope: off</td
+                    >
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><strong>Chorus-Ensemble</strong></td>
+                    <td
+                        >Mode: <code>Ensemble</code>; Rate: 0.6 Hz; Depth: 55%;
+                        Delay: 2.5 ms; Feedback: 15%; Dry/Wet: 55%</td
+                    >
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><strong>Auto Pan</strong></td>
+                    <td
+                        >Rate: 0.3 Hz; Amount: 30%; Phase: 180°; Waveform: Sine
+                        — adds gentle stereo movement without hard panning</td
+                    >
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td><strong>Reverb</strong></td>
+                    <td
+                        >Decay: 8–12 s; Pre-delay: 35 ms; Diffuse: 100%; Size:
+                        100%; Reflect: 80%; Flat: 60%; Dry/Wet: 70–80%</td
+                    >
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td><strong>Simple Delay</strong></td>
+                    <td
+                        >L: 3/16 note (synced); R: 1/4 note (synced); Feedback:
+                        35%; Dry/Wet: 30% — offset L/R times create an
+                        asymmetric echo wash</td
+                    >
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Step 4 — Shimmer return track</h4>
+        <ul>
+            <li>Add a Return track named <code>Return — Celestial</code></li>
+            <li>
+                Insert <strong>Reverb</strong> with Freeze enabled — Decay: 20 s,
+                Diffuse: 100%, Dry/Wet: 100%
+            </li>
+            <li>
+                Follow with a <strong>Pitch</strong> device (Ableton) shifted <strong
+                    >+12 semitones</strong
+                > (one octave up) — this replicates the shimmering pitched-reverb
+                effect central to Guthrie's sound
+            </li>
+            <li>
+                Send the Guitar track to this return at <strong>−9 dB</strong>;
+                blend subtly so the octave layer sits beneath the main signal
+            </li>
+        </ul>
+
+        <h4>Step 5 — Volume swell technique</h4>
+        <ul>
+            <li>
+                Assign the Guitar track's <strong>volume</strong> to a MIDI CC (e.g.,
+                expression pedal on CC11 or a Launchkey 37 mod wheel)
+            </li>
+            <li>
+                Strike the note/chord with volume at zero; fade in slowly over
+                1–2 seconds — this removes the pick transient and produces the
+                signature swell
+            </li>
+            <li>
+                Alternatively, draw <strong>volume automation</strong> directly in
+                Arrangement View using curved ramps on each chord hit
+            </li>
+        </ul>
+
+        <hr />
+
+        <h3>
+            Section B — Teletone Audio Voyager Guitar (no real guitar required)
+        </h3>
+        <p>
+            Voyager Guitar's sustain and legato articulations make it ideal for
+            dream pop — the plugin's modelled resonance behaves naturally under
+            heavy reverb and chorus processing.
+        </p>
+
+        <h4>Step 1 — Track setup</h4>
+        <ul>
+            <li>Create a new <strong>MIDI track</strong> in Ableton</li>
+            <li>Track name: <code>Voyager – Dream Pop</code></li>
+            <li>
+                Load <strong>Teletone Audio Voyager Guitar</strong> as the instrument
+            </li>
+            <li>MIDI input: Launchkey 37 Mk3, P-225, or Push 1</li>
+        </ul>
+
+        <h4>Step 2 — Voyager Guitar plugin settings</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pickup</td>
+                    <td>Neck</td>
+                    <td
+                        >Full, warm, round — bridge pickup would be too sharp
+                        and cut through the reverb unpleasantly</td
+                    >
+                </tr>
+                <tr>
+                    <td>Tone knob</td>
+                    <td>55–65%</td>
+                    <td
+                        >Leave more top end than shoegaze — the chorus and
+                        flange shape the brightness, not the tone roll-off</td
+                    >
+                </tr>
+                <tr>
+                    <td>Playing style</td>
+                    <td>Fingerpicked / Sustained</td>
+                    <td
+                        >Fingerpicked arpeggios and sustains are Cocteau Twins'
+                        signature; avoid hard strumming</td
+                    >
+                </tr>
+                <tr>
+                    <td>Articulation</td>
+                    <td>Single Note Sustained or Arpeggio</td>
+                    <td
+                        >Arpeggio mode works especially well — individual notes
+                        wash together in the reverb tail</td
+                    >
+                </tr>
+                <tr>
+                    <td>Vibrato</td>
+                    <td>Off</td>
+                    <td
+                        >Flanger and chorus provide all pitch modulation needed</td
+                    >
+                </tr>
+                <tr>
+                    <td>Capo / Tuning</td>
+                    <td>Standard (or capo 2–4)</td>
+                    <td
+                        >Guthrie often used capo to shift voicings up the neck
+                        for a brighter, thinner string tension feel</td
+                    >
+                </tr>
+                <tr>
+                    <td>Noise / ambience</td>
+                    <td>On, −24 dB</td>
+                    <td
+                        >Very subtle — just enough to humanise the tone without
+                        dominating</td
+                    >
+                </tr>
+                <tr>
+                    <td>Velocity response</td>
+                    <td>Compressed (low sensitivity)</td>
+                    <td
+                        >Near-uniform velocity so the reverb swell dominates
+                        rather than picking dynamics</td
+                    >
+                </tr>
+                <tr>
+                    <td>Release / note length</td>
+                    <td>Very long (let notes ring)</td>
+                    <td
+                        >In the MIDI clip, use tied whole notes or set Note
+                        Length M4L device to extend all notes to max</td
+                    >
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Step 3 — Device chain after Voyager Guitar</h4>
+        <p>Apply the same chain as Section A (skip the Tuner):</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Device</th>
+                    <th>Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>Amp</strong></td>
+                    <td
+                        >Model: <code>Clean</code>; Drive: 15–25 — same as
+                        Section A</td
+                    >
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>Cabinet</strong></td>
+                    <td><code>1×12 British</code>; SM57 On Axis; 1.0 m</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>EQ Eight</strong></td>
+                    <td
+                        >HP at 60 Hz; +3 dB bell at 2.5 kHz; 1 kHz notch; +1.5
+                        dB shelf at 10 kHz</td
+                    >
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>Flanger</strong></td>
+                    <td
+                        >Rate: 0.25 Hz; Depth: 50%; Feedback: −30%; Dry/Wet: 40%</td
+                    >
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>Chorus-Ensemble</strong></td>
+                    <td
+                        >Mode: <code>Ensemble</code>; Rate: 0.6 Hz; Depth: 55%;
+                        Dry/Wet: 55%</td
+                    >
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><strong>Auto Pan</strong></td>
+                    <td
+                        >Rate: 0.3 Hz; Amount: 30%; Phase: 180°; Waveform: Sine</td
+                    >
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><strong>Reverb</strong></td>
+                    <td
+                        >Decay: 8–12 s; Pre-delay: 35 ms; Diffuse: 100%;
+                        Dry/Wet: 75%</td
+                    >
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td><strong>Simple Delay</strong></td>
+                    <td
+                        >L: 3/16 note; R: 1/4 note; Feedback: 35%; Dry/Wet: 30%</td
+                    >
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            Add the same <code>Return — Celestial</code> track from Section A (Reverb
+            Freeze + Pitch +12 st) and send <code>Voyager – Dream Pop</code> to it
+            at −9 dB.
+        </p>
+
+        <h4>Step 4 — MIDI tips for dream pop feel</h4>
+        <ul>
+            <li>
+                Write <strong>arpeggiated chord patterns</strong> using whole or half
+                notes per note — avoid tight 16th-note runs; the texture should breathe
+            </li>
+            <li>
+                Use the <strong>Velocity MIDI effect</strong> before Voyager Guitar:
+                set Out Lo and Out Hi both to around 60–70 to flatten all velocities
+                and remove any dynamic punch
+            </li>
+            <li>
+                Automate the <strong>Reverb Dry/Wet</strong> — push it to 90% on sustained
+                phrases, pull back to 60% briefly at phrase starts to let the attack
+                ghost through
+            </li>
+            <li>
+                Layer a second Voyager track an octave higher (<strong
+                    >+12 semitones</strong
+                > transpose in the MIDI clip), volume at −8 dB, with only the Chorus-Ensemble
+                and Reverb from the chain — creates the floating harmonic overtone
+                Guthrie layers into dense passages
+            </li>
+        </ul>
+    </article>
+</MainLayout>

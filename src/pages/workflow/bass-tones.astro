@@ -1,0 +1,549 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+---
+
+<MainLayout
+    title="Bass Tones"
+    description="Step-by-step Ableton Live device chains for achieving gothic / post-punk bass tones — deep sub presence, mid-scooped distortion, and relentless percussive attack."
+>
+    <section class="content-intro">
+        <div>
+            <p class="eyebrow">Studio Workflow</p>
+            <h1>Bass Tones</h1>
+            <p class="content-intro__lede">
+                Repeatable Ableton Live device chains for gothic / post-punk
+                bass — deep sub presence, mid-scooped distortion, chorus-widened
+                low-mids, and a relentless percussive attack. Set up once, save
+                as a rack, and recall instantly on any project.
+            </p>
+        </div>
+        <div class="content-intro__actions">
+            <a href="/workflow/signal-chain" class="button-secondary"
+                >Signal Chain</a
+            >
+        </div>
+    </section>
+
+    <article class="prose prose-invert">
+        <h2>Gothic / Post-Punk</h2>
+        <p>
+            The gothic / post-punk bass sound (The Cure, Cocteau Twins, Siouxsie
+            and the Banshees) is defined by deep sub presence, mid-scooped
+            distortion, chorus-widened low-mids, and a driving percussive
+            attack. The two setups below cover a real bass guitar through the
+            MOTU and a fully MIDI-driven synthetic bass using Ableton's built-in
+            Analog instrument.
+        </p>
+
+        <hr />
+
+        <h3>Section A — Real Bass Guitar (through MOTU UltraLite Mk3)</h3>
+
+        <h4>Step 1 — Hardware signal chain</h4>
+        <ul>
+            <li>
+                Bass guitar → MOTU UltraLite Mk3 <strong>Input 1 or 2</strong>
+                (front combo jack)
+            </li>
+            <li>
+                Enable <strong>Hi-Z / Instrument mode</strong> on that input in CueMix
+                FX
+            </li>
+            <li>
+                Gain staging target: peak <strong>−12 to −6 dBFS</strong> while playing
+                hard
+            </li>
+            <li>
+                Ableton audio track: <em>Audio From</em> → <code>Ext. In 1</code
+                >
+                (Mono)
+            </li>
+        </ul>
+
+        <h4>Step 2 — Ableton audio track setup</h4>
+        <ul>
+            <li>Track name: <code>Bass – Gothic</code></li>
+            <li>
+                Monitor: <strong>In</strong> (or <strong>Auto</strong> when armed)
+            </li>
+            <li>
+                No clip gain adjustments needed if gain-staged correctly at the
+                MOTU
+            </li>
+        </ul>
+
+        <h4>Step 3 — Device chain</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Device</th>
+                    <th>Key parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>Tuner</strong></td>
+                    <td>Always first; mute output while tuning</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>EQ Eight</strong> (pre-amp)</td>
+                    <td>
+                        High-pass at 40 Hz (steep, remove sub-rumble); boost +3
+                        dB at 80–100 Hz (fundamental punch); cut −4 dB narrow
+                        notch at 400–500 Hz (remove boxiness)
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>Amp</strong></td>
+                    <td>
+                        Model: <code>Bass</code>; Drive: 55–65; Bass: 65; Mid:
+                        35; Treble: 50; Presence: 45; Volume: 80; Blend: 100%
+                        wet
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>Cabinet</strong></td>
+                    <td>
+                        Cabinet: <code>1×15</code>; Microphone: <code
+                            >Dynamic 421 Off Axis</code
+                        >; Distance: 0.4 m; Mix: 100%
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>Chorus-Ensemble</strong></td>
+                    <td>
+                        Mode: <code>Classic</code>; Rate: 0.3 Hz; Depth: 55%;
+                        Delay: 2.0 ms; Feedback: 15%; Dry/Wet: 40% — widens the
+                        bass mid-presence without muddying the low end
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><strong>Compressor</strong></td>
+                    <td>
+                        Threshold: −20 dBFS; Ratio: 3:1; Attack: 10 ms; Release:
+                        150 ms; Makeup: +4 dB; Knee: Soft — tighten attack
+                        transients while preserving note sustain
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><strong>EQ Eight</strong> (post-comp)</td>
+                    <td>
+                        Boost +2 dB shelf at 60 Hz (restore sub-bass body after
+                        compression); cut −2 dB at 2–3 kHz (keep it dark)
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td><strong>Reverb</strong></td>
+                    <td>
+                        Decay: 1.5–2.5 s; Pre-delay: 10 ms; Diffuse: 60%; Size:
+                        70%; Dry/Wet: 20–25% — subtle room depth, not a wash
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Step 4 — Send / Return setup</h4>
+        <ul>
+            <li>
+                Add a dedicated Return track: <code>Return — Bass Space</code>
+            </li>
+            <li>
+                Insert <strong>Reverb</strong> with Decay 3–4 s, Diffuse 70%, Size
+                80%, Dry/Wet 100% (wet-only return)
+            </li>
+            <li>
+                Send the Bass track to this return at <strong>−12 dB</strong>;
+                blend to taste for genre-appropriate depth
+            </li>
+            <li>
+                Keep the send subtle — gothic bass is present and grounded, not
+                floating in reverb
+            </li>
+        </ul>
+
+        <hr />
+
+        <h3>Section B — MIDI Bass (no real instrument required)</h3>
+        <p>
+            Use this setup to compose gothic bass lines without a physical bass
+            guitar. Ableton's <strong>Analog</strong> instrument models the characteristic
+            dark, slightly overdriven synth-bass tone used across many post-punk records.
+        </p>
+
+        <h4>Step 1 — Track setup</h4>
+        <ul>
+            <li>Create a new <strong>MIDI track</strong> in Ableton</li>
+            <li>Track name: <code>Bass – Gothic (Synth)</code></li>
+            <li>
+                Load <strong>Analog</strong> as the instrument
+            </li>
+            <li>
+                MIDI input: any keyboard controller (Launchkey 37, P-225, or
+                Push 1 in Note Mode)
+            </li>
+        </ul>
+
+        <h4>Step 2 — Analog instrument settings</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>OSC 1</td>
+                    <td>Sawtooth, Octave −1</td>
+                    <td
+                        >Foundation tone; detuned slightly flat (−5 ct) for
+                        weight</td
+                    >
+                </tr>
+                <tr>
+                    <td>OSC 2</td>
+                    <td>Square wave, Octave −1, −10 ct detune</td>
+                    <td>Adds meat; detuning creates slight movement</td>
+                </tr>
+                <tr>
+                    <td>Filter type</td>
+                    <td>Low-pass 24 dB</td>
+                    <td>Steep cutoff for dark character</td>
+                </tr>
+                <tr>
+                    <td>Cutoff</td>
+                    <td>300–450 Hz</td>
+                    <td>Dark and mid-scooped; high harmonics roll off</td>
+                </tr>
+                <tr>
+                    <td>Resonance</td>
+                    <td>20–30%</td>
+                    <td>Slight emphasis without whistling</td>
+                </tr>
+                <tr>
+                    <td>Filter Env (Attack)</td>
+                    <td>5 ms</td>
+                    <td>Nearly instant — percussive pluck</td>
+                </tr>
+                <tr>
+                    <td>Filter Env (Decay)</td>
+                    <td>120 ms</td>
+                    <td>Short decay gives the signature "thwack"</td>
+                </tr>
+                <tr>
+                    <td>Filter Env (Amount)</td>
+                    <td>+25%</td>
+                    <td>Briefly opens filter on each hit, then closes</td>
+                </tr>
+                <tr>
+                    <td>Amp Env (Attack)</td>
+                    <td>8 ms</td>
+                    <td>Slight softening of initial transient</td>
+                </tr>
+                <tr>
+                    <td>Amp Env (Decay)</td>
+                    <td>300 ms</td>
+                    <td>Sustains for driving eighth-note patterns</td>
+                </tr>
+                <tr>
+                    <td>Amp Env (Sustain)</td>
+                    <td>70%</td>
+                    <td>Hold level for tied / held notes</td>
+                </tr>
+                <tr>
+                    <td>LFO (optional)</td>
+                    <td>Sine, 0.5 Hz, routed to Cutoff at +10%</td>
+                    <td>Very slow filter movement for extended passages</td>
+                </tr>
+                <tr>
+                    <td>Glide</td>
+                    <td>20–40 ms</td>
+                    <td
+                        >Connects notes — characteristic post-punk bass slides</td
+                    >
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Step 3 — Device chain after Analog</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Device</th>
+                    <th>Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>Saturator</strong></td>
+                    <td>
+                        Drive: 30–40%; Shape: <code>Soft Sine</code>; Dry/Wet:
+                        70% — adds harmonic grit without harsh clipping
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>EQ Eight</strong></td>
+                    <td>
+                        HP at 40 Hz; boost +3 dB at 80 Hz; cut −3 dB at 400 Hz;
+                        cut −2 dB at 2.5 kHz
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>Chorus-Ensemble</strong></td>
+                    <td
+                        >Same as Section A — Rate 0.3 Hz, Depth 55%, Dry/Wet 40%</td
+                    >
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>Compressor</strong></td>
+                    <td>
+                        Threshold: −18 dBFS; Ratio: 3:1; Attack: 8 ms; Release:
+                        120 ms; Makeup: +3 dB
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>Reverb</strong></td>
+                    <td>Decay 1.5 s; Pre-delay 8 ms; Dry/Wet 20%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Step 4 — MIDI tips for gothic / post-punk feel</h4>
+        <ul>
+            <li>
+                Use <strong>driving eighth-note patterns</strong> locked tight to
+                the kick drum — this defines the propulsive post-punk rhythmic feel
+            </li>
+            <li>
+                Play primarily in the <strong>E1–A2</strong> range; drop to
+                <strong>B0 or low E0</strong> for climactic sections
+            </li>
+            <li>
+                Use <strong>staccato notes</strong> (50–60% note length) to let each
+                attack punch through; avoid legato unless sliding
+            </li>
+            <li>
+                Apply <strong>Velocity automation</strong> to build intensity across
+                8- or 16-bar sections — start around 85, build to 110–120
+            </li>
+            <li>
+                Double the bass line with a second instance detuned
+                <strong>+12 cents</strong> and blended at −6 dB for sub-width without
+                muddiness
+            </li>
+        </ul>
+
+        <hr />
+
+        <h3>
+            Section C — Teletone Retrograde Bass (no real instrument required)
+        </h3>
+        <p>
+            Use this setup to compose gothic bass lines with sampled bass guitar
+            articulations. <strong>Teletone Audio Retrograde Bass</strong> provides
+            modelled electric bass fingering and picking styles driven by MIDI from
+            any controller — Launchkey 37, P-225, or Push 1 in Note Mode. It gives
+            the organic attack and string dynamics of a real bass without the hardware,
+            making it the closest MIDI alternative to Section A.
+        </p>
+
+        <h4>Step 1 — Track setup</h4>
+        <ul>
+            <li>Create a new <strong>MIDI track</strong> in Ableton</li>
+            <li>Track name: <code>Retrograde – Gothic</code></li>
+            <li>
+                Load <strong>Teletone Audio Retrograde Bass</strong> as the instrument
+            </li>
+            <li>MIDI input: Launchkey 37 Mk3, P-225, or Push 1</li>
+        </ul>
+
+        <h4>Step 2 — Retrograde Bass plugin settings</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pickup</td>
+                    <td>Neck (or Neck+Bridge blend, neck-heavy)</td>
+                    <td
+                        >Warmer, darker fundamental — avoid bridge-only for this
+                        genre</td
+                    >
+                </tr>
+                <tr>
+                    <td>Playing style</td>
+                    <td>Fingered</td>
+                    <td
+                        >Rounder attack than pick; the slight pluck softness
+                        suits post-punk</td
+                    >
+                </tr>
+                <tr>
+                    <td>Tone knob</td>
+                    <td>35–45%</td>
+                    <td>Roll off top end — keep it dark and mid-forward</td>
+                </tr>
+                <tr>
+                    <td>Volume / Output</td>
+                    <td>70–75%</td>
+                    <td>Leave headroom for the downstream amp and compressor</td
+                    >
+                </tr>
+                <tr>
+                    <td>Noise / ambience</td>
+                    <td>On, −20 dB</td>
+                    <td
+                        >Adds organic string noise; keep it subtle so it sits
+                        under the distortion</td
+                    >
+                </tr>
+                <tr>
+                    <td>Velocity response</td>
+                    <td>Linear</td>
+                    <td
+                        >Consistent attack across the driving eighth-note
+                        pattern</td
+                    >
+                </tr>
+                <tr>
+                    <td>Articulation</td>
+                    <td>Standard / legato slides for transitions</td>
+                    <td
+                        >Use MIDI note overlap to trigger slides between root
+                        notes</td
+                    >
+                </tr>
+                <tr>
+                    <td>Tuning</td>
+                    <td>Standard or Drop D</td>
+                    <td
+                        >Drop D extends the low range to D1 for heavier passages</td
+                    >
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Step 3 — Device chain after Retrograde Bass</h4>
+        <p>
+            Apply the same processing as Section A (skip the Tuner — not needed
+            for MIDI):
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Device</th>
+                    <th>Parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>EQ Eight</strong> (pre-amp)</td>
+                    <td
+                        >HP at 40 Hz; boost +3 dB at 80–100 Hz; cut −4 dB narrow
+                        notch at 400–500 Hz</td
+                    >
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>Amp</strong></td>
+                    <td
+                        >Model: <code>Bass</code>; Drive: 55–65; Bass: 65; Mid:
+                        35; Treble: 50; Presence: 45; Volume: 80; Blend: 100%
+                        wet</td
+                    >
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>Cabinet</strong></td>
+                    <td
+                        ><code>1×15</code>; Dynamic 421 Off Axis; Distance: 0.4
+                        m; Mix: 100%</td
+                    >
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>Chorus-Ensemble</strong></td>
+                    <td
+                        >Same as Section A — Mode: Classic; Rate: 0.3 Hz; Depth:
+                        55%; Dry/Wet: 40%</td
+                    >
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>Compressor</strong></td>
+                    <td
+                        >Threshold: −20 dBFS; Ratio: 3:1; Attack: 10 ms;
+                        Release: 150 ms; Makeup: +4 dB; Knee: Soft</td
+                    >
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><strong>EQ Eight</strong> (post-comp)</td>
+                    <td>Boost +2 dB shelf at 60 Hz; cut −2 dB at 2–3 kHz</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><strong>Reverb</strong></td>
+                    <td
+                        >Decay: 1.5–2.5 s; Pre-delay: 10 ms; Diffuse: 60%; Size:
+                        70%; Dry/Wet: 20–25%</td
+                    >
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            Add the same <code>Return — Bass Space</code> return track from Section
+            A and send <code>Retrograde – Gothic</code> to it at −12 dB.
+        </p>
+
+        <h4>Step 4 — MIDI tips for Retrograde Bass</h4>
+        <ul>
+            <li>
+                Use <strong>overlapping MIDI notes</strong> (legato input) on step
+                changes to trigger Retrograde's slide articulation — this replicates
+                the gliding position shifts common in post-punk bass playing
+            </li>
+            <li>
+                Keep notes in the <strong>E1–A2</strong> range for the main groove;
+                Retrograde's fingered samples are most natural in this register
+            </li>
+            <li>
+                Set note lengths to <strong>55–65%</strong> of the grid division for
+                staccato attack; increase to 90% on held root notes under chord changes
+            </li>
+            <li>
+                Use <strong>Velocity between 80 and 105</strong> — avoid very low
+                or very high velocities to keep the sampled dynamics feeling even
+                across the groove
+            </li>
+            <li>
+                For a thicker sound, duplicate the track, transpose the copy
+                <strong>−12 semitones</strong> (one octave down) and blend it at −9
+                dB beneath the main track to reinforce sub fundamentals
+            </li>
+        </ul>
+    </article>
+</MainLayout>
