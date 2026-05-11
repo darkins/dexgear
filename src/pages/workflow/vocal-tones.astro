@@ -1,0 +1,409 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+---
+
+<MainLayout
+    title="Vocal Tones"
+    description="Step-by-step Ableton Live device chains for three distinct vocal processing setups — Damon Albarn, Kevin Parker, and Thom Yorke — using stock Ableton Live Suite devices."
+>
+    <section class="content-intro">
+        <div>
+            <p class="eyebrow">Studio Workflow</p>
+            <h1>Vocal Tones</h1>
+            <p class="content-intro__lede">
+                Repeatable Ableton Live device chains for three distinct vocal
+                aesthetics — lo-fi British indie (Albarn), swirling psychedelic
+                pop (Parker), and clean atmospheric art-rock (Yorke). All built
+                with stock Ableton Live Suite devices through the SM58 → MOTU
+                UltraLite Mk3 signal path.
+            </p>
+        </div>
+        <div class="content-intro__actions">
+            <a href="/workflow/signal-chain" class="button-secondary"
+                >Signal Chain</a
+            >
+        </div>
+    </section>
+
+    <article class="prose prose-invert">
+        <h2>Section A — Damon Albarn (Blur / Gorillaz)</h2>
+        <p>
+            Warm, close-mic'd, conversational — intimate British vocals with
+            cassette-tape saturation, short room reverb, and transparent
+            compression.
+        </p>
+
+        <h3>Step 1 — Hardware signal chain</h3>
+        <ul>
+            <li>
+                SM58 → MOTU UltraLite Mk3 <strong>Input 1</strong> (front XLR/TRS
+                combo jack)
+            </li>
+            <li>
+                Ensure <strong>phantom power (+48V) is OFF</strong> — the SM58 is
+                dynamic and does not need it
+            </li>
+            <li>
+                Start gain at <strong>55–65%</strong> of the input knob; adjust until
+                peaks sit around <strong>−12 to −8 dBFS</strong> in CueMix FX
+            </li>
+            <li>
+                Ableton audio track: <em>Audio From</em> →
+                <code>Ext. In 1</code> (Mono)
+            </li>
+        </ul>
+
+        <h3>Step 2 — Ableton audio track setup</h3>
+        <ul>
+            <li>Track name: <code>Vocal – Albarn</code></li>
+            <li>
+                Monitor: <strong>In</strong> (or <strong>Auto</strong> when armed)
+            </li>
+            <li>
+                Apply MOTU's <strong>hardware hi-pass EQ</strong> in CueMix FX at
+                80 Hz to remove proximity effect and rumble before the signal hits
+                Ableton
+            </li>
+        </ul>
+
+        <h3>Step 3 — Device chain</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Device</th>
+                    <th>Key parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>EQ Eight</strong> (pre-amp)</td>
+                    <td>
+                        High-pass at 100 Hz (steep); cut −2 dB narrow notch at
+                        350–450 Hz (remove boxiness); gentle shelf +1.5 dB at
+                        3.5 kHz (presence)
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>Saturator</strong></td>
+                    <td>
+                        Mode: <code>Tube</code>; Drive: 25–30%; Dry/Wet: 40–50%
+                        — adds cassette-tape warmth and harmonic density
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>Compressor</strong></td>
+                    <td>
+                        Threshold: −18 dBFS; Ratio: 3:1; Attack: 8 ms; Release:
+                        100 ms; Makeup: +3 dB; Knee: soft — transparent glue
+                        compression
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>EQ Eight</strong> (post-comp)</td>
+                    <td>
+                        Pull back −1.5 dB at 400 Hz if boxiness persists; soft
+                        high-shelf roll-off above 12 kHz for lo-fi ceiling
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>Reverb</strong></td>
+                    <td>
+                        Decay: 1.0–1.5 s; Pre-delay: 10 ms; Diffuse: 50%; Size:
+                        50%; Dry/Wet: 20–25% — short room, not a wash
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><strong>Vinyl Distortion</strong> (optional)</td>
+                    <td>
+                        Tracing Mode; Stab: 15%; Pinch: 10%; Dry/Wet: 20% —
+                        engage for Gorillaz lo-fi texture; bypass for clean Blur
+                        recordings
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Step 4 — Send / Return setup</h3>
+        <ul>
+            <li>
+                Add a dedicated Return track:
+                <code>Return — Albarn Room</code>
+            </li>
+            <li>
+                Insert <strong>Reverb</strong> with Decay 0.8 s, Diffuse 40%, Size
+                40%, Dry/Wet 100% (wet-only)
+            </li>
+            <li>
+                Send the Vocal track at <strong>−15 dB</strong> — very subtle, just
+                enough to place the voice in a room without obvious processing
+            </li>
+        </ul>
+
+        <hr />
+
+        <h2>Section B — Kevin Parker (Tame Impala)</h2>
+        <p>
+            Swirling, pitch-processed, psychedelic — dense layers of chorus,
+            phaser, tremolo, and long reverb that bury the voice in texture.
+        </p>
+
+        <h3>Step 1 — Hardware signal chain</h3>
+        <ul>
+            <li>
+                SM58 → MOTU UltraLite Mk3 <strong>Input 1</strong> (same as above;
+                gain at 50–60%)
+            </li>
+            <li>
+                <strong>Optional VT-3 parallel layer:</strong> SM58 → Roland VT-3
+                (Harmony or Robot mode) → MOTU Inputs 3/4 (line level) → Ableton Audio
+                Track 2. Record both simultaneously for a pitch-shifted parallel layer
+                to blend into the main chain.
+            </li>
+            <li>
+                Ableton audio track (main): <em>Audio From</em> →
+                <code>Ext. In 1</code> (Mono)
+            </li>
+        </ul>
+
+        <h3>Step 2 — Ableton audio track setup</h3>
+        <ul>
+            <li>Track name: <code>Vocal – Parker</code></li>
+            <li>
+                Monitor: <strong>In</strong> (or <strong>Auto</strong> when armed)
+            </li>
+            <li>
+                If using the VT-3 parallel track, name it
+                <code>Vocal – Parker (VT3)</code> and route from
+                <code>Ext. In 3/4</code> (Stereo)
+            </li>
+        </ul>
+
+        <h3>Step 3 — Device chain</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Device</th>
+                    <th>Key parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>EQ Eight</strong></td>
+                    <td>
+                        High-pass at 100 Hz (steep); boost +3 dB at 2–3 kHz
+                        (presence must cut through the dense wash)
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>Compressor</strong></td>
+                    <td>
+                        Threshold: −20 dBFS; Ratio: 4:1; Attack: 3 ms; Release:
+                        80 ms; Makeup: +5 dB; Knee: soft — hard compression for
+                        density and sustain
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>Chorus-Ensemble</strong></td>
+                    <td>
+                        Mode: <code>Ensemble</code>; Rate: 0.8 Hz; Depth: 80%;
+                        Delay: 2.0 ms; Feedback: 30%; Polarity: +/−; Dry/Wet:
+                        70% — primary swirling width
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>Phaser-Flanger</strong></td>
+                    <td>
+                        Mode: <code>Phaser</code>; Rate: 0.5 Hz; Feedback: 50%;
+                        Dry/Wet: 40% — deepens the psychedelic shimmer
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>Tremolo</strong></td>
+                    <td>
+                        Depth: 60%; Rate: sync 1/8T; Smooth: 30%; Phase: offset
+                        +45° for stereo wobble effect
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><strong>Reverb</strong></td>
+                    <td>
+                        Decay: 5–6 s; Pre-delay: 25 ms; Diffuse: 90%; Size:
+                        100%; Flat: 60%; Dry/Wet: 55–65% — long psychedelic wash
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><strong>Ping Pong Delay</strong></td>
+                    <td>
+                        Time: 1/4 note dotted (synced); Feedback: 45%; Filter:
+                        LP 8 kHz / HP 400 Hz; Dry/Wet: 30% — rhythmic echo that
+                        locks to the track grid
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Step 4 — Send / Return setup</h3>
+        <ul>
+            <li>
+                Add a dedicated Return track:
+                <code>Return — Parker Wash</code>
+            </li>
+            <li>
+                Insert <strong>Reverb</strong> with Decay 8 s, Diffuse 100%, Size
+                100%, Dry/Wet 100%, and a <strong>Chorus-Ensemble</strong>
+                pre-reverb (Rate 1.2 Hz, Depth 60%, Dry/Wet 80%)
+            </li>
+            <li>
+                Send the Vocal track at <strong>−8 dB</strong> — this return is intentionally
+                heavy; blend to taste until the voice is nearly subsumed by the wash
+            </li>
+        </ul>
+
+        <hr />
+
+        <h2>Section C — Thom Yorke (Radiohead)</h2>
+        <p>
+            Clean, precise, and atmospheric — intimate close-mic clarity with
+            transparent compression, deliberate EQ sculpting, and high-contrast
+            long reverb.
+        </p>
+
+        <h3>Step 1 — Hardware signal chain</h3>
+        <ul>
+            <li>
+                SM58 → MOTU UltraLite Mk3 <strong>Input 1</strong> (gain at 60–70%;
+                Thom Yorke recordings tend to be close-mic'd and present)
+            </li>
+            <li>
+                Apply MOTU's hardware <strong>LA-2A Leveler</strong> in CueMix FX
+                at moderate Peak Reduction for a first-stage transparent compression
+                before Ableton
+            </li>
+            <li>
+                Enable MOTU's hardware hi-pass at 80 Hz in CueMix FX to remove
+                rumble
+            </li>
+            <li>
+                Ableton audio track: <em>Audio From</em> →
+                <code>Ext. In 1</code> (Mono)
+            </li>
+        </ul>
+
+        <h3>Step 2 — Ableton audio track setup</h3>
+        <ul>
+            <li>Track name: <code>Vocal – Yorke</code></li>
+            <li>
+                Monitor: <strong>In</strong> (or <strong>Auto</strong> when armed)
+            </li>
+            <li>
+                Keep the dry recording as clean as possible — the processing
+                contrast between a dry close-mic'd voice and a massive reverb
+                tail is central to the Radiohead aesthetic
+            </li>
+        </ul>
+
+        <h3>Step 3 — Device chain</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Device</th>
+                    <th>Key parameters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>EQ Eight</strong> (pre-comp)</td>
+                    <td>
+                        High-pass at 120 Hz (steep, tighter than Albarn); cut −3
+                        dB at 300–400 Hz (clear out the mud); gentle +2 dB shelf
+                        at 5 kHz (articulation and clarity)
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>Compressor</strong></td>
+                    <td>
+                        Threshold: −22 dBFS; Ratio: 2:1; Attack: 12 ms; Release:
+                        200 ms; Makeup: +2 dB; Knee: very soft — transparent,
+                        barely noticeable
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>EQ Eight</strong> (post-comp)</td>
+                    <td>
+                        Narrow notch −2 dB at 800 Hz if vowels sound boxy after
+                        compression; gentle shelf +1 dB at 8 kHz for air and
+                        falsetto shimmer
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>Gate</strong> (Ableton Dynamics, gate mode)</td>
+                    <td>
+                        Threshold: −45 dBFS; Attack: 5 ms; Release: 300 ms;
+                        Floor: −60 dB — cuts room noise between phrases without
+                        obvious gating artefacts
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>Reverb</strong></td>
+                    <td>
+                        Decay: 4–5 s; Pre-delay: 30 ms; Diffuse: 70%; Size: 80%;
+                        Reflect: 60%; Dry/Wet: 30–35% — primary atmospheric
+                        wash; high contrast with the dry vocal
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><strong>Ping Pong Delay</strong></td>
+                    <td>
+                        Time: 1/8 note dotted (synced); Feedback: 35%; Filter:
+                        LP 7 kHz / HP 300 Hz; Dry/Wet: 25% — ghostly rhythmic
+                        echo just below the surface
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Step 4 — Send / Return setup (Harmonic Shimmer Layer)</h3>
+        <ul>
+            <li>
+                Add a dedicated Return track:
+                <code>Return — Yorke Shimmer</code>
+            </li>
+            <li>
+                Insert <strong>Resonator</strong> (Ableton Resonator) tuned to the
+                root note of the session; Decay: 60%; Glide: off; Width: 100%; Dry/Wet:
+                75%
+            </li>
+            <li>
+                Follow with <strong>Reverb</strong> in the same return: Decay 6 s,
+                Diffuse 80%, Size 90%, Dry/Wet 100%
+            </li>
+            <li>
+                Send the Vocal track to this return at <strong>−18 dB</strong>
+                — very subtle; adds an almost subliminal harmonic shimmer that reinforces
+                the root note without being identifiable as a separate effect
+            </li>
+        </ul>
+    </article>
+</MainLayout>
