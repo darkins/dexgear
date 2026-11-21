@@ -92,16 +92,30 @@ const vendorLabels: Record<string, string> = {
     <div class="gear-grid">
       {
         gearList.map((gear) => (
-          <a href={`/gear/${gear.id}`} class="gear-card">
-            <div>
-              <span class="gear-card__kicker">
-                {vendorLabels[gear.id] ?? "Guide"}
-              </span>
-              <h3>{gear.data.title}</h3>
-              <p>{gear.data.description}</p>
-            </div>
-            <span class="gear-card__cta">Open notes</span>
-          </a>
+          gear.id === "launch-control-xl" ? (
+            <a href="/daw/push-3" class="gear-card">
+              <div>
+                <span class="gear-card__kicker">Performance</span>
+                <h3>Push 3</h3>
+                <p>
+                  Tutorials and workflows for Ableton Push 3, with videos from
+                  Meta Mind Music and Push Bible.
+                </p>
+              </div>
+              <span class="gear-card__cta">Open Push 3 guide</span>
+            </a>
+          ) : (
+            <a href={`/gear/${gear.id}`} class="gear-card">
+              <div>
+                <span class="gear-card__kicker">
+                  {vendorLabels[gear.id] ?? "Guide"}
+                </span>
+                <h3>{gear.data.title}</h3>
+                <p>{gear.data.description}</p>
+              </div>
+              <span class="gear-card__cta">Open notes</span>
+            </a>
+          )
         ))
       }
     </div>
