@@ -1,0 +1,186 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const gettingStarted = [
+  {
+    title: 'Overview',
+    description: 'Take a look at Push 3 features and workflows, plus the steps to set it up straight out of the box.',
+    videoId: 'ZwuQ9kuMRII',
+  },
+  {
+    title: 'Switching from Standalone to Control Mode',
+    description: 'Use Push to control Live on your computer and take your tracks further.',
+    videoId: 'qfXLTC1aNGE',
+  },
+  {
+    title: 'Authorizing and Updating',
+    description: 'Authorize your Push, update the software, or perform a hard reset.',
+    videoId: 'm0Qc79cpi-8',
+  },
+];
+
+const gettingConnected = [
+  {
+    title: 'Installing Packs',
+    description: 'Install Packs on Push to play with new sounds.',
+    videoId: 'A5oV3vWNaNI',
+  },
+  {
+    title: 'Transferring Files and Sets',
+    description: 'Pair Push with your computer to transfer files, Sets, and presets.',
+    videoId: '_AM3UXuyFf4',
+  },
+  {
+    title: 'Using the Audio Interface',
+    description: 'Learn about Push 3 inputs, outputs, and audio interface settings.',
+    videoId: 'sxrU9ruw-mA',
+  },
+  {
+    title: 'ADAT',
+    description: 'Connect and record multiple instruments at once using Push 3 ADAT ports.',
+    videoId: '4LdUFeCYEvM',
+  },
+  {
+    title: 'Link',
+    description: 'Sync Push with other devices on your network using Ableton Link.',
+    videoId: 'IFtDAEVWyEM',
+  },
+  {
+    title: 'MIDI',
+    description: 'Play and control other instruments with MIDI from Push.',
+    videoId: 'qX0nRppjY-c',
+  },
+];
+
+const creating = [
+  {
+    title: 'Pad Sensitivity and Expression Settings',
+    description: 'Tweak Push 3 pad sensitivity and expression settings for finer control.',
+    videoId: '0XXVdrLtyaY',
+  },
+  {
+    title: 'Warping Audio',
+    description: 'Warp recorded takes and chop samples with precision on Push.',
+    videoId: '5apNjIMbPRE',
+  },
+  {
+    title: 'Expressive Pads',
+    description: 'Design sounds with greater nuance using Push 3 MPE-enabled pads.',
+    videoId: 'czw2e6Za5EA',
+  },
+];
+
+const sections = [
+  { title: 'Getting started with Push', id: 'getting-started', items: gettingStarted },
+  { title: 'Connecting with Push', id: 'connecting-with-push', items: gettingConnected },
+  { title: 'Creating with Push', id: 'creating-with-push', items: creating },
+];
+---
+
+<MainLayout title="Push 3" description="Official Ableton Push 3 videos, manual, setup resources, and learning links.">
+  <section class="content-intro">
+    <div>
+      <p class="eyebrow">Ableton Workflow</p>
+      <h1>Learn Push 3</h1>
+      <p class="content-intro__lede">Push is an expressive instrument on its own and the centerpiece of a studio when paired with other gear.</p>
+    </div>
+    <div class="content-intro__actions">
+      <a
+        href="https://www.ableton.com/en/push/manual/"
+        class="button-primary"
+        target="_blank"
+        rel="noopener"
+      >Push 3 Manual</a>
+      <a
+        href="https://help.ableton.com/hc/en-us/categories/201129525-Push-"
+        class="button-secondary"
+        target="_blank"
+        rel="noopener"
+      >Knowledge Base</a>
+    </div>
+  </section>
+
+  <article class="prose prose-invert">
+    <nav class="my-6" aria-label="Push 3 learning sections">
+      <h2 class="text-lg font-semibold mb-4">Contents</h2>
+      <ul class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm list-disc pl-5">
+        {sections.map((section) => (
+          <li>
+            <a href={`#${section.id}`} class="text-neutral-300 hover:underline">{section.title}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    {sections.map((section) => (
+      <section id={section.id} class="mt-10">
+        <h2>{section.title}</h2>
+        <div class="push-3-grid gap-6 mt-6">
+
+          <style>
+            .push-3-grid {
+              display: grid;
+              grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+
+            @media (min-width: 768px) {
+              .push-3-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+              }
+            }
+
+            @media (min-width: 1024px) {
+              .push-3-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+              }
+            }
+          </style>
+          {section.items.map((item) => (
+            <article class="rounded-lg border border-neutral-800 bg-neutral-900/60 overflow-hidden">
+              <div class="aspect-video">
+                <iframe
+                  class="h-full w-full"
+                  src={`https://www.youtube-nocookie.com/embed/${item.videoId}`}
+                  title={`${item.title} — Ableton Push 3`}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="push-3-card__body" style="padding: 1.25rem;">
+                <h3 style="margin: 0 0 0.5rem;">{item.title}</h3>
+                <p style="margin: 0;">{item.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <h2 class="mt-12">More learning resources</h2>
+    <ul>
+      <li>
+        <a href="https://www.ableton.com/en/push/learn-push/" target="_blank" rel="noopener">Official Ableton Learn Push page</a>
+      </li>
+      <li>
+        <a href="https://help.ableton.com/hc/en-us/categories/201129525-Push-" target="_blank" rel="noopener">Push 3 Knowledge Base</a>
+      </li>
+      <li>
+        <a href="https://www.ableton.com/en/push/manual/" target="_blank" rel="noopener">Push 3 Manual</a>
+      </li>
+      <li>
+        <a href="https://ableton.com/en/help/learn-push-2/" target="_blank" rel="noopener">Learn Push 2 videos</a>
+      </li>
+      <li>
+        <a href="https://learningmusic.ableton.com/" target="_blank" rel="noopener">Learning Music</a>
+      </li>
+      <li>
+        <a href="http://www.melodics.com/partners/ableton/learn-push" target="_blank" rel="noopener">Learn finger drumming with Melodics</a>
+      </li>
+      <li>
+        <a href="https://discord.com/invite/ableton" target="_blank" rel="noopener">Ableton on Discord</a>
+      </li>
+    </ul>
+  </article>
+</MainLayout>

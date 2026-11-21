@@ -450,6 +450,10 @@ pre {
 	width: 100%;
 }
 
+.site-main--wide {
+	max-width: 1600px;
+}
+
 .site-footer {
 	padding: 0 1rem 2rem;
 	position: relative;

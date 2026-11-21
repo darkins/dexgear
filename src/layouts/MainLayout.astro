@@ -9,7 +9,7 @@ const gearList = await getCollection("gear");
 const currentPath = Astro.url.pathname;
 const labelOverrides: Record<string, string> = {
   "launch-control-xl": "Novation",
-  ableton: "DAW",
+  ableton: "Ableton",
   hydrasynth: "Hydrasynth",
   "block-m": "Roli",
   "motu-ultralite-mk3": "Motu",
@@ -26,7 +26,6 @@ const desiredOrder = [
   "motu-ultralite-mk3",
   "hydrasynth",
   "block-m",
-  "launch-control-xl",
 ];
 
 const gearBySlug = Object.fromEntries(gearList.map((g) => [g.id, g]));
@@ -47,6 +46,7 @@ const gearNavLinks = desiredOrder
           { href: "/daw/shortcuts", label: "Shortcuts" },
           { href: "/daw/m4l", label: "M4L" },
           { href: "/daw/racks", label: "Racks" },
+          { href: "/daw/push-3", label: "Push 3" },
           { href: "/gear/knobbler", label: "Knobbler" },
           { href: "/gear/push", label: "Push 1" },
         ],
@@ -79,19 +79,6 @@ const gearNavLinks = desiredOrder
         ],
       };
     }
-    if (g.id === "launch-control-xl") {
-      return {
-        href: "/gear/launch-control-xl",
-        label: "Novation",
-        active:
-          currentPath === "/gear/launch-control-xl" ||
-          currentPath === "/gear/launchkey-37-mk3",
-        children: [
-          { href: "/gear/launch-control-xl", label: "Launch Control XL" },
-          { href: "/gear/launchkey-37-mk3", label: "Launchkey 37" },
-        ],
-      };
-    }
     return {
       href: `/gear/${g.id}`,
       label: labelOverrides[g.id] ?? g.data.title,
@@ -109,12 +96,14 @@ const navLinks = [
       "/gear/sm58",
       "/gear/roland-vt3",
       "/gear/yamaha-p225",
+      "/gear/launchkey-37-mk3",
     ].includes(currentPath),
     children: [
       { href: "/gear/yamaha-hs7", label: "HS7" },
       { href: "/gear/sm58", label: "SM58" },
       { href: "/gear/roland-vt3", label: "VT-3" },
       { href: "/gear/yamaha-p225", label: "P-225" },
+      { href: "/gear/launchkey-37-mk3", label: "Launchkey 37" },
     ],
   },
   {
@@ -413,7 +402,7 @@ const metaDescription =
         }
       });
     </script>
-    <main class="site-main">
+    <main class:list={["site-main", { "site-main--wide": title === "Push 3" }]}>
       <slot />
     </main>
     <footer class="site-footer">
